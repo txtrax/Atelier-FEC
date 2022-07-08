@@ -1,2 +1,5 @@
+client/dist/bundle.js*
+client/dist/favicon.png
+.env
 node_modules/*
 .DS_Store
