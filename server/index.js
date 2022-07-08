@@ -6,7 +6,9 @@ const path = require('path');
 
 const app = express();
 // Set up static service of assets
+
 app.use(express.static(path.join(__dirname, '../client/dist')));
+
 
 // Add app-wide middleware
 
