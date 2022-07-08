@@ -43,7 +43,9 @@ module.exports = {
     // new ReactRefreshPlugin()
     new HtmlWebpackPlugin({
       title: 'Atelier',
-      favicon: './client/src/assets/favicon.png',
+
+      favicon: './client/dist/assets/favicon.png',
+
     }),
     // This will allow you to refer to process.env variables
     // within client-side files at build-time:
