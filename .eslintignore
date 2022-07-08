@@ -1,0 +1,6 @@
+client/dist/*
+client/src/assests/*
+node_modules
+*.json
+*.md
+webpack.config.js

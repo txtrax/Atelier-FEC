@@ -1,13 +1,12 @@
 # Atelier-FEC
 
 ## Authors
-Made by the best Jennifer Lin, Pan Liu, Peter Phan, and Theresa Tran 
+Made by the best Jennifer Lin, Pan Liu, Peter Phan, and Theresa Tran
 
 ## Stack
 
 ### Dependencies
-GreenKeeper
-Yarn
+npm
 
 ### Version
 ES6
@@ -16,30 +15,26 @@ ES6
 Babel with Webpack
 
 ### Linting
-ESLint
+ESLint (Airbnb ESLint)
 
 ## Front End
 
 ### Compilation & Loading
 Webpack
-Webpack-dev
 
 ### Front-End MVC
-ReactJS
-Vue
+ReactJS (Hook)
 
 ### Data Store
 Redux
-GraphQL
 
 ### CSS Framework
-Bootstrap
 Sass
+Styled Component
 
 ## Server
 
 ### MVC
-Koa 
 ExpressJS
 
 ### Auth
@@ -47,16 +42,3 @@ Passport for FB + Google + Github OAuth
 
 ### Template
 Pug (formerly Jade)
-
-## Database
-
-### Primary Database
-Cassandra
-Elastic Search
-Postgres+Knex
-MongoDB + Mongoose
-
-### Caching and queuing
-Background jobs / work queue: Kue
-Redis for caching + session store + work queue
-memcache
