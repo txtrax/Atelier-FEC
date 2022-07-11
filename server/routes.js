@@ -1,4 +1,4 @@
-const models = require('./model/index');
+const models = require('./controller/products');
 
 module.exports.getProducts = (req, res) => {
   models.getProducts((result) => {
