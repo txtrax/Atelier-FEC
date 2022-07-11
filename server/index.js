@@ -9,7 +9,6 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
 // Add app-wide middleware
 
 const PORT = process.env.PORT || 3000;

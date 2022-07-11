@@ -1,4 +1,3 @@
-
 client/dist/bundle.js*
 client/dist/favicon.png
 .env
