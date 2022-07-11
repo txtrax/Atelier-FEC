@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
@@ -25,10 +24,6 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
@@ -37,24 +32,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-  },
-
-  plugins: [
-    // new ReactRefreshPlugin()
-    new HtmlWebpackPlugin({
-      title: 'Atelier',
-
-      favicon: './client/dist/assets/favicon.png',
-
-    }),
-    // This will allow you to refer to process.env variables
-    // within client-side files at build-time:
-    new webpack.DefinePlugin({
-      'process.env': {
-        AUTH_SECRET: JSON.stringify(process.env.AUTH_SECRET),
-      },
-    }),
-  ],
+  }
 };
 
 /**
