@@ -6,11 +6,11 @@ function RelatedProducts() {
   return (
     <div>
       <header>This is RelatedProducts</header>
-      <h1>
+      {/* <h5>
         I am rendering product:
         {productId}
-      </h1>
-      <button type="button" onClick={() => setProductId('newId')}>{productId}</button>
+      </h5> */}
+      {/* <button type="button" onClick={() => setProductId('newId')}>{productId}</button> */}
     </div>
   );
 }
