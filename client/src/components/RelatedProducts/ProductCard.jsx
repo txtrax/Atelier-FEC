@@ -77,7 +77,13 @@ function ProductCard({ card }) {
 }
 
 ProductCard.propTypes = {
-  card: PropTypes.object,
+  card: PropTypes.objectOf(
+    PropTypes.objectOf(PropTypes.any),
+  ),
+};
+
+ProductCard.defaultProps = {
+  card: {},
 };
 
 export default ProductCard;
