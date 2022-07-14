@@ -56,12 +56,12 @@ const SliderIconRight = styled(MdChevronRight)`
 function ProductList() {
   const slideLeft = () => {
     const slider = document.getElementById('slider');
-    slider.scrollLeft += 300;
+    slider.scrollLeft -= 300;
   };
 
   const slideRight = () => {
     const slider = document.getElementById('slider');
-    slider.scrollLeft -= 300;
+    slider.scrollLeft += 300;
   };
 
   const { productId } = useContext(IdContext);

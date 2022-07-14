@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
+import IdContext from '../Context';
 
 const Card = styled.div`
   width: 260px;
@@ -50,7 +51,7 @@ const StarButton = styled(MdOutlineStarOutline)`
   top: 15px;
   width: 25px;
   height: 25px;
-  transform: translate(-15px, -260px);
+  transform: translate(-20px, -260px);
 `;
 
 const Ratings = styled.div`
@@ -59,17 +60,34 @@ const Ratings = styled.div`
 `;
 
 function ProductCard({ card }) {
+  const { setProductId } = useContext(IdContext);
+
   return (
-    <Card>
-      <CardImg src={card.style.results[0].photos[0].thumbnail_url} />
+    <Card onClick={() => { setProductId(card.info.id); }}>
+      {(card.style.results[0].photos[0].thumbnail_url !== null)
+        ? (
+          <CardImg src={card.style.results[0].photos[0].thumbnail_url} />
+        )
+        : (
+          <CardImg src="https://www.jins.com/us/media/menu-redesign/womanbar.jpg" width="280px" height="380px" />
+        )}
       <StarButton />
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>
-        <Price>
-          $
-          {card.style.results[0].original_price}
-        </Price>
+        {(card.style.results[0].sale_price === null)
+          ? (
+            <Price>
+              $
+              {card.style.results[0].original_price}
+            </Price>
+          )
+          : (
+            <Price style={{ color: 'red' }}>
+              $
+              {card.style.results[0].sale_price}
+            </Price>
+          )}
         <Ratings>★★★★★</Ratings>
       </CardInfo>
     </Card>
@@ -78,7 +96,7 @@ function ProductCard({ card }) {
 
 ProductCard.propTypes = {
   card: PropTypes.objectOf(
-    PropTypes.objectOf(PropTypes.any),
+    PropTypes.oneOfType([PropTypes.any]),
   ),
 };
 
