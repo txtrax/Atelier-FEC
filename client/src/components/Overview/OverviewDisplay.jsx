@@ -33,9 +33,9 @@ function OverviewDisplay() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // const { productId } = props;
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
+        console.log('got styles');
         results.data.results.forEach((style, index) => {
           // if first index
           if (index === 0) {
@@ -51,6 +51,7 @@ function OverviewDisplay() {
       });
     axios.get(`/products/${productId}`)
       .then((results) => {
+        console.log('got overview')
         setOverview(results.data);
       })
       .then(() => setLoaded(true))
