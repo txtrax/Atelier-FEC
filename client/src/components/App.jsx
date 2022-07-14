@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import Overview from './Overview/Overview';
-import RelatedProducts from './RelatedProducts/RelatedProducts';
+// import RelatedProducts from './RelatedProducts/RelatedProducts';
 import QnA from './QnA/QuestionList';
 import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
 
 function App() {
-  const [productId, setProductId] = useState(40351);
+  const [productId, setProductId] = useState(40350);
 
   const providerIdValue = useMemo(() => ({ productId, setProductId }), [productId, setProductId]);
 
@@ -19,7 +19,7 @@ function App() {
       </h1>
       <IdContext.Provider value={providerIdValue}>
         <Overview />
-        <RelatedProducts />
+        {/* <RelatedProducts /> */}
         <QnA />
         <Ratings />
       </IdContext.Provider>
