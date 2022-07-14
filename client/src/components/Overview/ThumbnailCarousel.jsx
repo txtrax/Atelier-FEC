@@ -1,14 +1,15 @@
+
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import Image from './Image';
 
-const GalleryContainer = styled.div`
-  width: 60%;
-  height: 60%;
+const ThumbnailContainer = styled.div`
+  width: 100px;
+  height: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 `;
 // const GalleryContainer = styled.div`
 //   width: 100%;
@@ -16,7 +17,7 @@ const GalleryContainer = styled.div`
 //   object-fit: contain
 // `;
 
-const SliderIconLeft = styled(MdChevronLeft)`
+const SliderIconUp = styled(MdExpandLess)`
   height: 2em;
   width: 2em;
   position: absolute;
@@ -29,7 +30,7 @@ const SliderIconLeft = styled(MdChevronLeft)`
   }
  `;
 
-const SliderIconRight = styled(MdChevronRight)`
+const SliderIconDown = styled(MdExpandMore)`
   height: 2em;
   width: 2em;
   position: absolute;
@@ -43,30 +44,27 @@ const SliderIconRight = styled(MdChevronRight)`
 `;
 
 function MainCarousel(props) {
-  const { loaded, photos } = props;
+  const { photos } = props;
+  console.log(photos);
 
   let arrayOfURL = photos.map((image) => <Image image={image} key={image.thumbnail_url} />);
 
-  let [index, setIndex] = useState(0);
-
-  let display = arrayOfURL[index];
-
-  const slideLeft = () => {
+  const slideUp = () => {
     const newIndex = index - 1;
     setIndex(newIndex);
   };
 
-  const slideRight = () => {
+  const slideDown = () => {
     const newIndex = index + 1;
     setIndex(newIndex);
   };
 
   return (
-    <GalleryContainer>
-      <SliderIconLeft onClick={slideLeft} />
-      {display}
-      <SliderIconRight onClick={slideRight} />
-    </GalleryContainer>
+    <ThumbnailContainer>
+      <SliderIconUp onClick={slideUp} />
+      {arrayOfURL}
+      <SliderIconDown onClick={slideDown} />
+    </ThumbnailContainer>
   );
 }
 

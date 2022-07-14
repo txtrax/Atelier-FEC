@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import IdContext from '../Context';
 import MainCarousel from './MainCarousel';
 import ProductInfo from './ProductInfo';
+import ThumbnailCarousel from './ThumbnailCarousel';
 
 const DescriptionContainer = styled.div`
   position: relative;
@@ -17,11 +18,6 @@ const ProductContainer = styled.div`
   flex-direction: row;
 `;
 
-const OverviewHeader = styled.h3`
-  text-transform: uppercase;
-  padding-left: 10px;
-  padding-bottom: 10px;
-`;
 // this contains: thumbnails, main carousel, and product info
 
 function OverviewDisplay() {
@@ -46,6 +42,7 @@ function OverviewDisplay() {
           setStyles([...styles, style]);
         });
       })
+      .then(() => setLoaded(true))
       .catch((err) => {
         console.log('error getting styles', err);
       });
@@ -54,7 +51,6 @@ function OverviewDisplay() {
         console.log('got overview')
         setOverview(results.data);
       })
-      .then(() => setLoaded(true))
       .catch((err) => {
         console.log('error retrieving overview', err);
       });
@@ -65,14 +61,14 @@ function OverviewDisplay() {
   }
   return (
     <ProductContainer>
-      <OverviewHeader>Thumbnails</OverviewHeader>
-
-      {/* <OverviewHeader>Carousel</OverviewHeader> */}
+      <ThumbnailCarousel
+        loaded={loaded}
+        photos={selectedStyle.photos}
+      />
       <MainCarousel
         loaded={loaded}
         photos={selectedStyle.photos}
       />
-      {/* <OverviewHeader>Product Info</OverviewHeader> */}
       <ProductInfo
         loaded={loaded}
         overview={overview}
