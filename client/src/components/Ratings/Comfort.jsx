@@ -1,22 +1,90 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// function Comfort({ comfort }) {
-//   return (
-//     <ul>
-//       {comfort.map((characteristic) => {
-//         return <div></div>
-//       })}
-//     </ul>
-//   );
-// }
+function Comfort({ comfort }) {
+  const {
+    Size, Width, Comfort, Quality, Length, Fit,
+  } = comfort;
 
-// Comfort.propTypes = {
-//   comfort: PropTypes.objectOf(PropTypes.objectOf(PropTypes.any)),
-// };
+  let displaySize;
+  if (Size) {
+    displaySize = (
+      <div>
+        Size&nbsp;
+        {Size.value}
+      </div>
+    );
+  }
 
-// Comfort.defaultProps = {
-//   comfort: {},
-// };
+  let displayComfort;
+  if (Comfort) {
+    displayComfort = (
+      <div>
+        Comfort&nbsp;
+        {Comfort.value}
+      </div>
+    );
+  }
 
-// export default Comfort;
+  let displayWidth;
+  if (Width) {
+    displayWidth = (
+      <div>
+        Width&nbsp;
+        {Width.value}
+      </div>
+    );
+  }
+
+  let displayQuality;
+  if (Quality) {
+    displayQuality = (
+      <div>
+        Quality&nbsp;
+        {Quality.value}
+      </div>
+    );
+  }
+
+  let displayLength;
+  if (Length) {
+    displayLength = (
+      <div>
+        Length
+        {Length.value}
+      </div>
+    );
+  }
+
+  let displayFit;
+  if (Fit) {
+    displayFit = (
+      <div>
+        Width
+        {Fit.value}
+      </div>
+    );
+  }
+
+  return (
+    <ul>
+      {console.log('COMFORT', comfort)}
+      {displaySize}
+      {displayComfort}
+      {displayWidth}
+      {displayQuality}
+      {displayLength}
+      {displayFit}
+    </ul>
+  );
+}
+
+Comfort.propTypes = {
+  comfort: PropTypes.objectOf(PropTypes.objectOf(PropTypes.any)),
+};
+
+Comfort.defaultProps = {
+  comfort: {},
+};
+
+export default Comfort;

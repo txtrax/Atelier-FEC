@@ -29,7 +29,7 @@ function ReviewEntry({ review }) {
   });
 
   let displayBody;
-  if (body.length > 25) {
+  if (body.length > 250) {
     // setDisplayBody(
     displayBody = (
       <div>
