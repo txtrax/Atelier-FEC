@@ -17,7 +17,7 @@ const MainContainer = styled.div`
 
 function RelatedProducts() {
   return (
-    <MainContainer>
+    <MainContainer data-testid="related-main">
       <RelatedHeader>Related Products</RelatedHeader>
       <ProductList />
       <RelatedHeader>Your Outfit</RelatedHeader>
