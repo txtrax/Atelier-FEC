@@ -34,7 +34,7 @@ function Stars({ reviews }) {
         <span>
           {averageRating}
         </span>
-        <ReactStars count={5} value={averageRating} color2="#ffd700" half="true" edit="false" />
+        <ReactStars count={5} value={averageRating} color2="#ffd700" edit={false} />
         {/* "#575a55" */}
       </div>
       <div>

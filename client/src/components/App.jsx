@@ -6,7 +6,7 @@ import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
 
 function App() {
-  const [productId, setProductId] = useState(40351);
+  const [productId, setProductId] = useState(40350);
 
   const providerIdValue = useMemo(() => ({ productId, setProductId }), [productId, setProductId]);
 

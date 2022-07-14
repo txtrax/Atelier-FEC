@@ -1,15 +1,74 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
+import Carousel, { Modal, ModalGateway } from 'react-images';
+import { GrCheckmark } from 'react-icons/gr';
+import moment from 'moment';
 
 function ReviewEntry({ review }) {
-  const { rating } = review;
-  const date = Date.parse(review.date);
+  const {
+    body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary,
+  } = review;
+
+  // const [displayBody, setDisplayBody] = useState('');
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const lengthFilter = (string, len) => {
+    if (string && typeof string === 'string' && string.length > len) {
+      return `${string.substring(0, len)}...`;
+    }
+    return string;
+  };
+
+  const buildThumbnails = (images) => images.map((image) => {
+    const imageObj = {};
+    imageObj.source = image.url;
+    return imageObj;
+  });
+
+  let displayBody;
+  if (body.length > 25) {
+    // setDisplayBody(
+    displayBody = (
+      <div>
+        <div>{lengthFilter(body, 250)}</div>
+        <button type="button">Show More</button>
+      </div>
+    );
+  } else {
+    // setDisplayBody(
+    displayBody = (
+      <div>{body}</div>
+    );
+  }
+
+  let displayPhotos;
+  if (photos.length > 0) {
+    displayPhotos = (
+      <div>
+        {/* <Carousel views={buildThumbnails(photos)} /> */}
+        <ModalGateway>
+          {modalOpen ? (
+            <Modal onClose={() => setModalOpen((!modalOpen))}>
+              <Carousel views={buildThumbnails(photos)} />
+            </Modal>
+          ) : null }
+        </ModalGateway>
+      </div>
+    );
+  }
+
   let recommendation;
-  if (review.recommend) {
+  if (recommend) {
     recommendation = (
       <div>
-        <div>I recommend this product</div>
+        <div>
+          <GrCheckmark />
+          &nbsp;
+          I recommend this product
+        </div>
         <div>
           <span>Response:</span>
         </div>
@@ -20,22 +79,22 @@ function ReviewEntry({ review }) {
   return (
     <div>
       <div>
-        <ReactStars count={5} value={rating} color2="#ffd700" half="true" edit="false" />
-        {/* "#575a55" */}
+        <ReactStars count={5} value={rating} color2="#ffd700" edit={false} />
         <span>
-          {review.reviewer_name}
-          ,&nbsp; | &nbsp;
+          { reviewer_name }
+          ,&nbsp;
         </span>
         <span>
-          Date
-          {date}
+          {moment(date).utc().format('MMMM DD, YYYY')}
         </span>
       </div>
+      <b>
+        {lengthFilter(summary, 60)}
+      </b>
       <div>
-        {review.summary}
-      </div>
-      <div>
-        {review.body}
+        {displayBody}
+        {/* {console.log(buildThumbnails(photos))} */}
+        {displayPhotos}
       </div>
       {recommendation}
       <div>
@@ -43,7 +102,7 @@ function ReviewEntry({ review }) {
           Helpful?&nbsp;
           <button type="submit">Yes</button>
           &#40;
-          {review.helpfulness}
+          {helpfulness}
           &#41; |&nbsp;
           <button type="submit">Report</button>
         </span>
@@ -54,10 +113,12 @@ function ReviewEntry({ review }) {
 
 ReviewEntry.propTypes = {
   review: PropTypes.objectOf(PropTypes.shape()),
+  // key: PropTypes.number,
 };
 
 ReviewEntry.defaultProps = {
   review: [],
+  // key: 0,
 };
 
 export default ReviewEntry;
