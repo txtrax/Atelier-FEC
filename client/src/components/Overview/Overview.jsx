@@ -17,16 +17,15 @@ const OverviewHeader = styled.h3`
   padding-bottom: 10px;
 `;
 
+// make a get overview function but this works
 export default function Overview() {
   const { productId } = useContext(IdContext);
 
   const [overview, setOverview] = useState({});
 
   useEffect(() => {
-    // make a get overview function but this works
     axios.get(`/products/${productId}`)
       .then((results) => {
-        console.log('got overview');
         setOverview(results.data);
       })
       .catch((err) => {
@@ -36,13 +35,10 @@ export default function Overview() {
 
   return (
     <MainContainer>
-      <OverviewHeader>Ad</OverviewHeader>
 
-      <OverviewHeader>Image Gallery</OverviewHeader>
+      <OverviewHeader>Add Announcement Here</OverviewHeader>
 
       <OverviewGallery overview={overview} />
-
-      <OverviewHeader>Product Description</OverviewHeader>
 
       <OverviewDescription overview={overview} />
 

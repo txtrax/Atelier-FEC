@@ -1,9 +1,8 @@
 import React from 'react';
 
-function Style() {
+export default function Style(props) {
+  console.log(props);
   return (
-    <div>Style icons go here</div>
+    <div><b>STYLE > </b>SELECTED STYLE</div>
   );
 }
-
-export default Style;

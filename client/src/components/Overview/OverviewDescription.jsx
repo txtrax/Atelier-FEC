@@ -21,5 +21,5 @@ export default function OverviewDescription(props) {
         features={overview.features}
       />
     </DescriptionAndFeatures>
-  )
+  );
 }

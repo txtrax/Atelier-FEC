@@ -42,7 +42,8 @@ const SliderIconRight = styled(MdChevronRight)`
   }
 `;
 
-function MainCarousel(props) {
+// refactor this mess
+export default function MainCarousel(props) {
   const { loaded, photos } = props;
 
   let arrayOfURL = photos.map((image) => <Image image={image} key={image.thumbnail_url} />);
@@ -63,11 +64,13 @@ function MainCarousel(props) {
 
   return (
     <GalleryContainer>
+
       <SliderIconLeft onClick={slideLeft} />
+
       {display}
+
       <SliderIconRight onClick={slideRight} />
+
     </GalleryContainer>
   );
 }
-
-export default MainCarousel;

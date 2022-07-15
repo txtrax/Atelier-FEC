@@ -1,5 +1,4 @@
-
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import Image from './Image';
@@ -43,29 +42,26 @@ const SliderIconDown = styled(MdExpandMore)`
   }
 `;
 
-function MainCarousel(props) {
+export default function MainCarousel(props) {
   const { photos } = props;
-  console.log(photos);
-
-  let arrayOfURL = photos.map((image) => <Image image={image} key={image.thumbnail_url} />);
 
   const slideUp = () => {
-    const newIndex = index - 1;
-    setIndex(newIndex);
+    console.log('You clicked up');
   };
 
   const slideDown = () => {
-    const newIndex = index + 1;
-    setIndex(newIndex);
+    console.log('You clicked down');
   };
 
   return (
     <ThumbnailContainer>
+
       <SliderIconUp onClick={slideUp} />
-      {arrayOfURL}
+
+      {photos.map((image) => <Image image={image} key={image.thumbnail_url} />)}
+
       <SliderIconDown onClick={slideDown} />
+
     </ThumbnailContainer>
   );
 }
-
-export default MainCarousel;
