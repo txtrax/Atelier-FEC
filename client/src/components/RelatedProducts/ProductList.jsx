@@ -55,12 +55,12 @@ const SliderIconRight = styled(MdChevronRight)`
 
 function ProductList() {
   const slideLeft = () => {
-    const slider = document.getElementById('slider');
+    const slider = document.getElementById('slider-related');
     slider.scrollLeft -= 300;
   };
 
   const slideRight = () => {
-    const slider = document.getElementById('slider');
+    const slider = document.getElementById('slider-related');
     slider.scrollLeft += 300;
   };
 
@@ -107,7 +107,7 @@ function ProductList() {
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />
-      <CardContainer id="slider">
+      <CardContainer id="slider-related">
         {
           relatedInfo.map((card) => <ProductCard card={card} key={card.info.id} />)
         }
