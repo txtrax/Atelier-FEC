@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 const models = require('./controller/products');
 const modelsQuestions = require('./controller/questions');
-=======
 const products = require('./controller/products');
 const reviews = require('./controller/reviews');
->>>>>>> main
 
 module.exports.getProducts = (req, res) => {
   models.getProducts((result) => {
