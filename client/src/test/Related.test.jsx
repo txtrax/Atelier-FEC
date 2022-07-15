@@ -15,9 +15,9 @@ afterEach(() => {
 it('should render related products component', () => {
   const productId = jest.fn();
   const relatedProducts = render(
-    <IdContext.Provider value={{productId}}>
+    <IdContext.Provider value={{ productId }}>
       <RelatedProducts />
-    </IdContext.Provider>
+    </IdContext.Provider>,
   );
   expect(relatedProducts.container).toBeInTheDocument();
 });
