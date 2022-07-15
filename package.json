@@ -20,7 +20,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-stars": "^2.2.5",
-    "react-images": "^1.2.0-beta.7",
     "react-is": "^16.8",
     "styled-components": "^5.0.0",
     "react-icons": "^4.4.0"

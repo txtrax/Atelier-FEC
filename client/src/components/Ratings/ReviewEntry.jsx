@@ -2,7 +2,6 @@
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
-import Carousel, { Modal, ModalGateway } from 'react-images';
 import { GrCheckmark } from 'react-icons/gr';
 import moment from 'moment';
 
@@ -48,14 +47,6 @@ function ReviewEntry({ review }) {
   if (photos.length > 0) {
     displayPhotos = (
       <div>
-        {/* <Carousel views={buildThumbnails(photos)} /> */}
-        <ModalGateway>
-          {modalOpen ? (
-            <Modal onClose={() => setModalOpen((!modalOpen))}>
-              <Carousel views={buildThumbnails(photos)} />
-            </Modal>
-          ) : null }
-        </ModalGateway>
       </div>
     );
   }
