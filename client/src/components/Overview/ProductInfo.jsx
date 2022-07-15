@@ -11,7 +11,7 @@ const InfoContainer = styled.div`
 
 export default function ProductInfo(props) {
   const { overview , styles } = props;
-  console.log('this are props: ', overview, styles);
+
   return (
     <InfoContainer>
 
