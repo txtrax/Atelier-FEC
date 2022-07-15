@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657819258906" clover="3.2.0">
-  <project timestamp="1657819258906" name="All files">
-    <metrics statements="54" coveredstatements="25" conditionals="4" coveredconditionals="0" methods="17" coveredmethods="4" elements="75" coveredelements="29" complexity="0" loc="54" ncloc="54" packages="2" files="6" classes="6"/>
+<coverage generated="1657846644769" clover="3.2.0">
+  <project timestamp="1657846644769" name="All files">
+    <metrics statements="57" coveredstatements="31" conditionals="4" coveredconditionals="0" methods="18" coveredmethods="5" elements="79" coveredelements="36" complexity="0" loc="57" ncloc="57" packages="2" files="7" classes="7"/>
     <package name="components">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Context.js" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/Context.js">
@@ -10,53 +10,53 @@
       </file>
     </package>
     <package name="components.RelatedProducts">
-      <metrics statements="53" coveredstatements="24" conditionals="4" coveredconditionals="0" methods="17" coveredmethods="4"/>
+      <metrics statements="56" coveredstatements="30" conditionals="4" coveredconditionals="0" methods="18" coveredmethods="5"/>
       <file name="OutfitCard.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/OutfitCard.jsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
       </file>
       <file name="OutfitList.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/OutfitList.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="43" count="2" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
       </file>
       <file name="ProductCard.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/ProductCard.jsx">
         <metrics statements="12" coveredstatements="9" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="97" count="1" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
       </file>
       <file name="ProductList.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/ProductList.jsx">
-        <metrics statements="33" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="1"/>
+        <metrics statements="33" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="2"/>
         <line num="8" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="57" count="5" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
-        <line num="62" count="5" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="67" count="5" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
@@ -70,14 +70,20 @@
         <line num="97" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
         <line num="102" count="0" type="stmt"/>
-        <line num="107" count="0" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
       </file>
       <file name="RelatedProducts.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/RelatedProducts.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="StarRating.jsx" path="/Users/jpg/Documents/RFP2205/Atelier-FEC/client/src/components/RelatedProducts/StarRating.jsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
       </file>
     </package>
   </project>
