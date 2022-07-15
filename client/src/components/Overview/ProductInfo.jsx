@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Style from './Style';
+import StyleSelector from './StyleSelector';
 
 const InfoContainer = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ const InfoContainer = styled.div`
 
 export default function ProductInfo(props) {
   const { overview , styles } = props;
-
+  console.log('this are props: ', overview, styles);
   return (
     <InfoContainer>
 
@@ -23,7 +23,7 @@ export default function ProductInfo(props) {
 
       <div>{overview.default_price}</div>
 
-      <Style styles={styles}/>
+      <StyleSelector styles={styles} />
 
       <div>Size and Quantity</div>
 

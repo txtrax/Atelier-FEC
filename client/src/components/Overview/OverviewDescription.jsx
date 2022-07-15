@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductDescription from './ProductDescription';
-import ProductFeatures from './ProductFeatures';
+import ProductFeatureList from './ProductFeatureList';
 
 const DescriptionAndFeatures = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ export default function OverviewDescription(props) {
       <ProductDescription
         description={overview.description}
       />
-      <ProductFeatures
+      <ProductFeatureList
         features={overview.features}
       />
     </DescriptionAndFeatures>

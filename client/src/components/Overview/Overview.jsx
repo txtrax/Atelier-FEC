@@ -21,7 +21,7 @@ const OverviewHeader = styled.h3`
 export default function Overview() {
   const { productId } = useContext(IdContext);
 
-  const [overview, setOverview] = useState({});
+  const [overview, setOverview] = useState(null);
 
   useEffect(() => {
     axios.get(`/products/${productId}`)
@@ -33,6 +33,9 @@ export default function Overview() {
       });
   }, []);
 
+  if (overview === null) {
+    return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
+  }
   return (
     <MainContainer>
 
