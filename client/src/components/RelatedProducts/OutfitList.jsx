@@ -69,7 +69,7 @@ function OutfitList() {
       <SliderIconLeft onClick={slideLeft} />
       <CardContainer id="slider-outfit">
         {
-          slides.map(() => <OutfitCard />)
+          slides.map((ele) => <OutfitCard key={ele} />)
         }
       </CardContainer>
       <SliderIconRight onClick={slideRight} />
