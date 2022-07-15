@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import IdContext from '../Context';
 import Stars from './Stars';
 import Comfort from './Comfort';
@@ -8,6 +9,9 @@ import MoreReview from './MoreReview';
 import AddReview from './AddReview';
 
 // require('dotenv').config();
+const MainContainer = styled.div`
+    display: flex;
+`;
 
 function Ratings() {
   // WORK: const productId = useContext(IdContext);
@@ -22,8 +26,8 @@ function Ratings() {
 
   // send GET all reviews request when page is rendered
   useEffect(() => {
-    // axios.get(`http://localhost:${process.env.PORT}/reviews`, {
-    axios.get('http://localhost:7777/reviews', {
+    axios.get('/reviews', {
+    // axios.get('http://localhost:7777/reviews', {
       params: {
         product_id: productId,
         sort,
@@ -39,7 +43,7 @@ function Ratings() {
         // console.log('SORT NOT CHANGED');
         console.log('GET ALL REVIEWS FAILED', err);
       });
-    axios.get('http://localhost:7777/reviews/meta', {
+    axios.get('reviews/meta', {
       params: {
         product_id: productId,
       },
@@ -56,7 +60,7 @@ function Ratings() {
   }, [productId]);
 
   useEffect(() => {
-    axios.get('http://localhost:7777/reviews', {
+    axios.get('/reviews', {
       params: {
         product_id: productId,
         sort,
@@ -73,7 +77,7 @@ function Ratings() {
   }, [sort]);
 
   return (
-    <div>
+    <MainContainer>
       <header>This is Ratings</header>
       <Stars
         reviews={reviews}
@@ -95,7 +99,7 @@ function Ratings() {
         setDisplayedReviews={setDisplayedReviews}
       />
       <AddReview />
-    </div>
+    </MainContainer>
   );
 }
 
