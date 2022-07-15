@@ -20,7 +20,9 @@ function ReviewList({
         </select>
       </div>
       <ul>
-        {displayedReviews.map((review) => <ReviewEntry review={review} key={review.review_id.toString()} />)}
+        {displayedReviews.map(
+          (review) => <ReviewEntry review={review} key={review.review_id} />,
+        )}
       </ul>
     </div>
   );

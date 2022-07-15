@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
-import ReactStars from 'react-stars';
+import StarRating from 'react-star-ratings';
 import { GrCheckmark } from 'react-icons/gr';
 import moment from 'moment';
+
+const strFilter = require('./common/strFilter');
 
 function ReviewEntry({ review }) {
   const {
@@ -11,15 +13,6 @@ function ReviewEntry({ review }) {
   } = review;
 
   // const [displayBody, setDisplayBody] = useState('');
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const lengthFilter = (string, len) => {
-    if (string && typeof string === 'string' && string.length > len) {
-      return `${string.substring(0, len)}...`;
-    }
-    return string;
-  };
 
   const buildThumbnails = (images) => images.map((image) => {
     const imageObj = {};
@@ -32,7 +25,7 @@ function ReviewEntry({ review }) {
     // setDisplayBody(
     displayBody = (
       <div>
-        <div>{lengthFilter(body, 250)}</div>
+        <div>{strFilter.lengthFilter(body, 250)}</div>
         <button type="button">Show More</button>
       </div>
     );
@@ -70,7 +63,7 @@ function ReviewEntry({ review }) {
   return (
     <div>
       <div>
-        <ReactStars count={5} value={rating} color2="#ffd700" edit={false} />
+        <StarRating numberOfStars={5} rating={rating} starRatedColor="#ffd700" starSpacing="1px" starDimension="20px" isSelectable={false} />
         <span>
           { reviewer_name }
           ,&nbsp;
@@ -80,7 +73,7 @@ function ReviewEntry({ review }) {
         </span>
       </div>
       <b>
-        {lengthFilter(summary, 60)}
+        {strFilter.lengthFilter(summary, 60)}
       </b>
       <div>
         {displayBody}
@@ -103,7 +96,7 @@ function ReviewEntry({ review }) {
 }
 
 ReviewEntry.propTypes = {
-  review: PropTypes.objectOf(PropTypes.shape()),
+  review: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])),
   // key: PropTypes.number,
 };
 

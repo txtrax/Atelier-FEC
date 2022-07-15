@@ -17,7 +17,7 @@ const MainContainer = styled.div`
 
 function RelatedProducts() {
   return (
-    <MainContainer data-testid="related-main">
+    <MainContainer>
       <RelatedHeader>Related Products</RelatedHeader>
       <ProductList />
       <RelatedHeader>Your Outfit</RelatedHeader>
@@ -25,7 +25,5 @@ function RelatedProducts() {
     </MainContainer>
   );
 }
-
-// color: https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557
 
 export default RelatedProducts;

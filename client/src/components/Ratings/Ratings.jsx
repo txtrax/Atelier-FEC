@@ -16,7 +16,7 @@ function Ratings() {
   // reviews: array of objects
   const [reviews, setReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState([]);
-  const [starFilter, setStarFilter] = useState(0);
+  const [starFilter, setStarFilter] = useState([]);
   const [sort, setSort] = useState('relevant');
   const [comfort, setComfort] = useState({});
 
@@ -31,13 +31,13 @@ function Ratings() {
     })
       .then((res) => {
         // console.log('SORT NOT CHANGED, SORT', sort);
-        console.log('IN RATINGS, GET ALL REVIEWS SUCCESS!', res);
+        console.log('GET ALL REVIEWS SUCCESS!', res);
         setReviews(res.data.results);
         setDisplayedReviews(res.data.results.slice(0, 2));
       })
       .catch((err) => {
-        console.log('SORT NOT CHANGED');
-        console.log('IN RATINGS, GET ALL REVIEWS FAILED', err);
+        // console.log('SORT NOT CHANGED');
+        console.log('GET ALL REVIEWS FAILED', err);
       });
     axios.get('http://localhost:7777/reviews/meta', {
       params: {
@@ -46,14 +46,14 @@ function Ratings() {
     })
       .then((res) => {
         // console.log('SORT NOT CHANGED, SORT', sort);
-        console.log('IN RATINGS, GET META SUCCESS!', res.data.characteristics);
+        console.log('GET META SUCCESS!', res.data.characteristics);
         setComfort(res.data.characteristics);
       })
       .catch((err) => {
-        console.log('SORT NOT CHANGED');
-        console.log('IN RATINGS, GET META FAILED', err);
+        // console.log('SORT NOT CHANGED');
+        console.log('GET META FAILED', err);
       });
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     axios.get('http://localhost:7777/reviews', {
@@ -63,14 +63,12 @@ function Ratings() {
       },
     })
       .then((res) => {
-        console.log('SORT CHANGED, SORT', sort);
-        console.log('IN RATINGS, GET ALL REVIEWS SUCCESS!', res);
+        console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!', res);
         setReviews(res.data.results);
         setDisplayedReviews(res.data.results.slice(0, 2));
       })
       .catch((err) => {
-        console.log('SORT CHANGED');
-        console.log('IN RATINGS, GET ALL REVIEWS FAILED', err);
+        console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
       });
   }, [sort]);
 
@@ -79,6 +77,7 @@ function Ratings() {
       <header>This is Ratings</header>
       <Stars
         reviews={reviews}
+        starFilter={starFilter}
         setStarFilter={setStarFilter}
         displayedReviews={displayedReviews}
         setDisplayedReviews={setDisplayedReviews}

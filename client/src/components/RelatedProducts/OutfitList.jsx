@@ -5,12 +5,24 @@ import OutfitCard from './OutfitCard';
 
 const ListContainer = styled.div`
   width: 100%;
-  height: 380px;
-  color: #f1faee;
-  background: #1d3557;
+  height: 100%;
   position: relative;
   display: flex;
   align-items: center;
+`;
+
+const CardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #f1faee;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  align-items: center;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SliderIconLeft = styled(MdChevronLeft)`
@@ -40,11 +52,27 @@ const SliderIconRight = styled(MdChevronRight)`
 `;
 
 function OutfitList() {
+  const slideLeft = () => {
+    const slider = document.getElementById('slider-outfit');
+    slider.scrollLeft -= 300;
+  };
+
+  const slideRight = () => {
+    const slider = document.getElementById('slider-outfit');
+    slider.scrollLeft += 300;
+  };
+
+  const slides = [1, 2, 3, 4, 5, 6, 7, 8];
+
   return (
     <ListContainer>
-      <SliderIconLeft />
-      <OutfitCard />
-      <SliderIconRight />
+      <SliderIconLeft onClick={slideLeft} />
+      <CardContainer id="slider-outfit">
+        {
+          slides.map((ele) => <OutfitCard key={ele} />)
+        }
+      </CardContainer>
+      <SliderIconRight onClick={slideRight} />
     </ListContainer>
   );
 }

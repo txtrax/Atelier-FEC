@@ -68,7 +68,6 @@ function Comfort({ comfort }) {
 
   return (
     <ul>
-      {console.log('COMFORT', comfort)}
       {displaySize}
       {displayComfort}
       {displayWidth}
