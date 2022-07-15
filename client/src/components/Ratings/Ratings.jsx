@@ -31,7 +31,7 @@ function Ratings() {
     })
       .then((res) => {
         // console.log('SORT NOT CHANGED, SORT', sort);
-        console.log('GET ALL REVIEWS SUCCESS!', res);
+        // console.log('GET ALL REVIEWS SUCCESS!', res);
         setReviews(res.data.results);
         setDisplayedReviews(res.data.results.slice(0, 2));
       })
@@ -46,7 +46,7 @@ function Ratings() {
     })
       .then((res) => {
         // console.log('SORT NOT CHANGED, SORT', sort);
-        console.log('GET META SUCCESS!', res.data.characteristics);
+        // console.log('GET META SUCCESS!', res.data.characteristics);
         setComfort(res.data.characteristics);
       })
       .catch((err) => {
@@ -63,7 +63,7 @@ function Ratings() {
       },
     })
       .then((res) => {
-        console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!', res);
+        // console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!', res);
         setReviews(res.data.results);
         setDisplayedReviews(res.data.results.slice(0, 2));
       })

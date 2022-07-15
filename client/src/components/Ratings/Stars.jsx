@@ -59,7 +59,7 @@ function Stars({
     const filteredReviews = reviews.filter(
       (review) => starFilter.foreach((filter) => review.rating === filter),
     );
-    console.log('Stars useEffect, starFilter', starFilter);
+    // console.log('Stars useEffect, starFilter', starFilter);
     setDisplayedReviews(
       filteredReviews,
     );
