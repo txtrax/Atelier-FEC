@@ -1,10 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
-import IdContext from '../Context';
+import ProductDescription from './ProductDescription';
+import ProductFeatures from './ProductFeatures';
+
+const DescriptionAndFeatures = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 export default function OverviewDescription(props) {
+  const { overview } = props;
   return (
-    <div>Description goes here</div>
+    <DescriptionAndFeatures>
+      <ProductDescription
+        description={overview.description}
+      />
+      <ProductFeatures
+        features={overview.features}
+      />
+    </DescriptionAndFeatures>
   )
 }

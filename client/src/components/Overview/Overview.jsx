@@ -1,10 +1,9 @@
-import React from 'react';
-// import React, { useContext, useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-// import IdContext from '../Context';
-import OverviewDisplay from './OverviewDisplay';
-// import OverviewDescription from './OverviewDescription';
+import IdContext from '../Context';
+import OverviewGallery from './OverviewGallery';
+import OverviewDescription from './OverviewDescription';
 
 const MainContainer = styled.div`
   position: relative;
@@ -18,35 +17,35 @@ const OverviewHeader = styled.h3`
   padding-bottom: 10px;
 `;
 
-function Overview() {
-  // const { productId } = useContext(IdContext);
+export default function Overview() {
+  const { productId } = useContext(IdContext);
 
-  // const [overview, setOverview] = useState({});
+  const [overview, setOverview] = useState({});
 
-  // useEffect(() => {
-  //   axios.get(`/products/${productId}`)
-  //     .then((results) => {
-  //       setOverview(results.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log('error retrieving overview', err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // make a get overview function but this works
+    axios.get(`/products/${productId}`)
+      .then((results) => {
+        console.log('got overview');
+        setOverview(results.data);
+      })
+      .catch((err) => {
+        console.log('error retrieving overview', err);
+      });
+  }, []);
 
   return (
     <MainContainer>
       <OverviewHeader>Ad</OverviewHeader>
-      
+
       <OverviewHeader>Image Gallery</OverviewHeader>
 
-      <OverviewDisplay />
+      <OverviewGallery overview={overview} />
 
       <OverviewHeader>Product Description</OverviewHeader>
 
-      {/* <OverviewDescription overview={overview} /> */}
+      <OverviewDescription overview={overview} />
 
     </MainContainer>
   );
 }
-
-export default Overview;

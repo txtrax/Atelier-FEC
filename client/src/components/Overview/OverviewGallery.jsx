@@ -6,12 +6,6 @@ import MainCarousel from './MainCarousel';
 import ProductInfo from './ProductInfo';
 import ThumbnailCarousel from './ThumbnailCarousel';
 
-const DescriptionContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-`;
-
 const ProductContainer = styled.div`
   position: relative;
   display: flex;
@@ -20,18 +14,17 @@ const ProductContainer = styled.div`
 
 // this contains: thumbnails, main carousel, and product info
 
-function OverviewDisplay() {
+function OverviewGallery(props) {
+  const { overview } = props;
   const { productId } = useContext(IdContext);
-
-  const [overview, setOverview] = useState({});
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    //make a set styles function
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
-        console.log('got styles');
         results.data.results.forEach((style, index) => {
           // if first index
           if (index === 0) {
@@ -45,14 +38,6 @@ function OverviewDisplay() {
       .then(() => setLoaded(true))
       .catch((err) => {
         console.log('error getting styles', err);
-      });
-    axios.get(`/products/${productId}`)
-      .then((results) => {
-        console.log('got overview')
-        setOverview(results.data);
-      })
-      .catch((err) => {
-        console.log('error retrieving overview', err);
       });
   }, []);
 
@@ -75,10 +60,7 @@ function OverviewDisplay() {
         styles={styles}
       />
     </ProductContainer>
-    // <DescriptionContainer>
-
-    // </DescriptionContainer>
   );
 }
 
-export default OverviewDisplay;
+export default OverviewGallery;
