@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import OverviewDisplay from './OverviewDisplay';
+import IdContext from '../Context';
+import OverviewGallery from './OverviewGallery';
+import OverviewDescription from './OverviewDescription';
 
 const MainContainer = styled.div`
   position: relative;
@@ -14,19 +17,34 @@ const OverviewHeader = styled.h3`
   padding-bottom: 10px;
 `;
 
-function Overview(props) {
-  const { productId } = props;
+// make a get overview function but this works
+export default function Overview() {
+  const { productId } = useContext(IdContext);
+
+  const [overview, setOverview] = useState(null);
+
+  useEffect(() => {
+    axios.get(`/products/${productId}`)
+      .then((results) => {
+        setOverview(results.data);
+      })
+      .catch((err) => {
+        console.log('error retrieving overview', err);
+      });
+  }, []);
+
+  if (overview === null) {
+    return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
+  }
   return (
     <MainContainer>
 
-      <OverviewHeader>Image Gallery</OverviewHeader>
+      <OverviewHeader>Add Announcement Here</OverviewHeader>
 
-      <OverviewDisplay productId={productId} />
+      <OverviewGallery overview={overview} />
 
-      <OverviewHeader>Product Description</OverviewHeader>
+      <OverviewDescription overview={overview} />
 
     </MainContainer>
   );
 }
-
-export default Overview;
