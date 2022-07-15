@@ -4,15 +4,19 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
+<<<<<<< HEAD
 // const questionAPI = require('./model/index');
 // const getQuestions = require('./model/index');
+=======
+const cors = require('cors');
+const route = require('./routes');
+>>>>>>> main
 
 const app = express();
 // Set up static service of assets;
 // const route = require('./routes');
 
-const route = require('./routes');
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true,
@@ -34,9 +38,14 @@ app.get('/products', route.getProducts);
 app.get('/products/:id', route.getProductInfo);
 app.get('/products/:id/styles', route.getProductStyles);
 app.get('/products/:id/related', route.getRelatedProduct);
+<<<<<<< HEAD
 app.get('/qa/questions', route.getQuestions);
 // this is how to handle path parameters. No need ':' in postman
 app.get('/qa/questions/:qid/answers', route.getAnswers);
+=======
+app.get('/reviews', route.getReviews);
+app.get('/reviews/meta', route.getReviewMeta);
+>>>>>>> main
 
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);
