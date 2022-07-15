@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import Question from './Question';
 
 function QuestionsList({ questions, productId }) {
-  const answerKey = questions.answers;
-  console.log(answerKey, 'keyyy');
+  // const answerKey = questions.answers;
+  // console.log(answerKey, 'keyyy');
   return (
     <div>
       {questions.map((question, count) => (
@@ -29,25 +29,3 @@ QuestionsList.defaultProps = {
 };
 
 export default QuestionsList;
-
-// <div>
-// {questions.map((question, index) => (
-//   <div
-//   // eslint-disable-next-line react/no-array-index-key
-//     key={index}
-//   >
-//     {question.question_body}
-//     {/* {question.answers.map((answer, index2) => {
-//     <div
-//       key={index2}
-//     >
-//       {answer}
-//     </div>;
-//   })} */}
-//     {/* <Answers
-//     questions={questions}
-//     productId={productId}
-//   /> */}
-//   </div>
-// ))}
-// </div>

@@ -25,13 +25,10 @@ function Question({ question, productId }) {
 Question.propTypes = {
   productId: propTypes.number,
   question: propTypes.shape({}).isRequired,
-  // question.question_body: propTypes.string
 };
 
 Question.defaultProps = {
   productId: 40351,
-  // question: {},
-  // question_body: '',
 };
 
 export default Question;

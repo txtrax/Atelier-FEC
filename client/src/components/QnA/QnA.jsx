@@ -4,6 +4,8 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 import IdContext from '../Context';
 import QuestionsList from './QuestionsList';
+import Search from './Search';
+import AddQuestion from './AddQuestion';
 
 const FlexContainer = styled.div`
 display: flex;
@@ -57,7 +59,7 @@ const SearchBtn = styled.button`
 `;
 
 function QnA(props) {
-  console.log(props, 'this is propssss');
+  // console.log(props, 'this is propssss');
   // super(props);
   // this.state = {
   //   searchInput: '',
@@ -71,6 +73,7 @@ function QnA(props) {
   // const [productId, setProductId] = useState(40353);
   const [questions, setQuestions] = useState([]);
   const [displayQuestions, setDisplayQuestions] = useState(4);
+  const [openModal, setOpenModal] = useState(false);
   // const { productId, setProductId } = useContext(IdContext);
   // const { searchInput } = this.state;
   // const { productId } = props;
@@ -85,8 +88,8 @@ function QnA(props) {
         console.log('error getting data', err);
       });
   }, [productId]);
-  const handleSearch = (e) => {
-    setSearchInput(e.target.value);
+  const handleSearch = (searchInput) => {
+    searchInput.length > 2 ? setSearchInput(searchInput) : setSearchInput('');
   };
 
   // const questionRender = () => {
@@ -95,6 +98,12 @@ function QnA(props) {
   //       setQuestions(response);
   //     });
   // };
+  const handleModalOpen = () => {
+    setOpenModal(true);
+  };
+  const handleModalClose = () => {
+    setOpenModal(false);
+  };
 
   return (
     <FlexContainer>
@@ -102,11 +111,15 @@ function QnA(props) {
         <h1>Questions and Answers</h1>
         <form onSubmit={(event) => { event.preventDefault(); }}>
           <SearchDiv classname="searchBar">
-            <SearchBar
+            {/* <SearchBar
               type="text"
               placeholder="Type in your question"
               value={searchInput}
               onChange={handleSearch}
+            /> */}
+            <Search
+              handleSearch={handleSearch}
+              searchInput={searchInput}
             />
             <SearchBtn />
           </SearchDiv>
@@ -117,9 +130,14 @@ function QnA(props) {
           productId={productId}
           questions={questions}
         />
-        <button>
+        <button onClick={handleModalOpen}>
           Add a Question
         </button>
+        {/* <AddQuestion
+          productId={productId}
+          openModal={openModal}
+          handleModalClose={handleModalClose}
+        /> */}
       </Container>
     </FlexContainer>
   );
