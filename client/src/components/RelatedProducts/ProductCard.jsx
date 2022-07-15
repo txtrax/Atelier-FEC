@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
+import StarRating from './StarRating';
 import IdContext from '../Context';
 
 const Card = styled.div`
@@ -53,12 +54,6 @@ const StarButton = styled(MdOutlineStarOutline)`
   height: 25px;
   transform: translate(-20px, -260px);
 `;
-
-const Ratings = styled.div`
-  display:inline-block;
-  color: #ffbe0b;
-`;
-
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
 
@@ -88,7 +83,7 @@ function ProductCard({ card }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <Ratings>★★★★★</Ratings>
+        <StarRating />
       </CardInfo>
     </Card>
   );
