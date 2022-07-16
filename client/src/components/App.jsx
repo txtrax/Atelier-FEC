@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import Overview from './Overview/Overview';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
-import QnA from './QnA/QuestionList';
+import QnA from './QnA/QnA';
 import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
 
@@ -20,7 +20,10 @@ function App() {
       <IdContext.Provider value={providerIdValue}>
         <Overview />
         <RelatedProducts />
-        <QnA />
+        <QnA
+          productId={productId}
+          setProductId={setProductId}
+        />
         <Ratings />
       </IdContext.Provider>
     </div>
