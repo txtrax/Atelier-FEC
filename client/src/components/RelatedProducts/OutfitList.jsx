@@ -149,7 +149,7 @@ function OutfitList() {
         const index = allOutfits.findIndex((p) => p.product.id === currId);
         allOutfits.splice(index, 1);
         setOutfitInfo([...allOutfits]);
-        console.log(allOutfits);
+        console.log('allOutfits: ', allOutfits);
       }
     }
   }
