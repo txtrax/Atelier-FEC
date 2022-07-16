@@ -3,14 +3,32 @@ import axios from 'axios';
 import styled from 'styled-components';
 import IdContext from '../Context';
 import Stars from './Stars';
-import Comfort from './Comfort';
+import ProductBreakdown from './ProductBreakdown';
 import ReviewList from './ReviewList';
 import MoreReview from './MoreReview';
 import AddReview from './AddReview';
+import { RowContainer } from './styles';
 
 // require('dotenv').config();
 const MainContainer = styled.div`
-    display: flex;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8em;
+`;
+const RatingProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-left: 20px;
+  gap: 20px;
+`;
+const ReviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 20px;
 `;
 
 function Ratings() {
@@ -22,7 +40,7 @@ function Ratings() {
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const [starFilter, setStarFilter] = useState([]);
   const [sort, setSort] = useState('relevant');
-  const [comfort, setComfort] = useState({});
+  const [product, setProduct] = useState({});
 
   // send GET all reviews request when page is rendered
   useEffect(() => {
@@ -50,8 +68,8 @@ function Ratings() {
     })
       .then((res) => {
         // console.log('SORT NOT CHANGED, SORT', sort);
-        // console.log('GET META SUCCESS!', res.data.characteristics);
-        setComfort(res.data.characteristics);
+        console.log('GET META SUCCESS!', res.data.characteristics);
+        setProduct(res.data.characteristics);
       })
       .catch((err) => {
         // console.log('SORT NOT CHANGED');
@@ -78,27 +96,32 @@ function Ratings() {
 
   return (
     <MainContainer>
-      <header>This is Ratings</header>
-      <Stars
-        reviews={reviews}
-        starFilter={starFilter}
-        setStarFilter={setStarFilter}
-        displayedReviews={displayedReviews}
-        setDisplayedReviews={setDisplayedReviews}
-      />
-      <Comfort comfort={comfort} />
-      <ReviewList
-        reviews={reviews}
-        displayedReviews={displayedReviews}
-        sort={sort}
-        setSort={setSort}
-      />
-      <MoreReview
-        reviews={reviews}
-        displayedReviews={displayedReviews}
-        setDisplayedReviews={setDisplayedReviews}
-      />
-      <AddReview />
+      <RatingProductContainer>
+        <Stars
+          reviews={reviews}
+          starFilter={starFilter}
+          setStarFilter={setStarFilter}
+          displayedReviews={displayedReviews}
+          setDisplayedReviews={setDisplayedReviews}
+        />
+        <ProductBreakdown product={product} />
+      </RatingProductContainer>
+      <ReviewContainer>
+        <ReviewList
+          reviews={reviews}
+          displayedReviews={displayedReviews}
+          sort={sort}
+          setSort={setSort}
+        />
+        <RowContainer>
+          <MoreReview
+            reviews={reviews}
+            displayedReviews={displayedReviews}
+            setDisplayedReviews={setDisplayedReviews}
+          />
+          <AddReview />
+        </RowContainer>
+      </ReviewContainer>
     </MainContainer>
   );
 }

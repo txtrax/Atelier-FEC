@@ -1,11 +1,48 @@
 /* eslint-disable camelcase */
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import StarRating from 'react-star-ratings';
 import { GrCheckmark } from 'react-icons/gr';
 import moment from 'moment';
 
 const strFilter = require('./common/strFilter');
+
+const EntryContainer = styled.div`
+  border-bottom: 1px solid;
+  margin-bottom: 1em;
+`;
+
+const TopBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+`;
+
+const Header = styled.div`
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-bottom: 1em;
+`;
+
+const Body = styled.div`
+  margin-bottom: 1em;
+`;
+
+const Recommendation = styled.div`
+  margin-bottom: 1em;
+`;
+
+const BottomBar = styled.div`
+  margin-bottom: 1em;
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  text-decoration: underline;
+  font-weight: normal;
+`;
 
 function ReviewEntry({ review }) {
   const {
@@ -13,13 +50,6 @@ function ReviewEntry({ review }) {
   } = review;
 
   // const [displayBody, setDisplayBody] = useState('');
-
-  const buildThumbnails = (images) => images.map((image) => {
-    const imageObj = {};
-    imageObj.source = image.url;
-    return imageObj;
-  });
-
   let displayBody;
   if (body.length > 250) {
     // setDisplayBody(
@@ -53,45 +83,42 @@ function ReviewEntry({ review }) {
           &nbsp;
           I recommend this product
         </div>
-        <div>
-          <span>Response:</span>
-        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <div>
+    <EntryContainer>
+      <TopBar>
         <StarRating numberOfStars={5} rating={rating} starRatedColor="#ffd700" starSpacing="1px" starDimension="20px" isSelectable={false} />
         <span>
           { reviewer_name }
           ,&nbsp;
-        </span>
-        <span>
           {moment(date).utc().format('MMMM DD, YYYY')}
         </span>
-      </div>
-      <b>
+      </TopBar>
+      <Header>
         {strFilter.lengthFilter(summary, 60)}
-      </b>
-      <div>
+      </Header>
+      <Body>
         {displayBody}
         {/* {console.log(buildThumbnails(photos))} */}
         {displayPhotos}
-      </div>
-      {recommendation}
-      <div>
+      </Body>
+      <Recommendation>
+        {recommendation}
+      </Recommendation>
+      <BottomBar>
         <span>
           Helpful?&nbsp;
-          <button type="submit">Yes</button>
+          <Button type="submit">Yes</Button>
           &#40;
           {helpfulness}
           &#41; |&nbsp;
-          <button type="submit">Report</button>
+          <Button type="submit">Report</Button>
         </span>
-      </div>
-    </div>
+      </BottomBar>
+    </EntryContainer>
   );
 }
 
