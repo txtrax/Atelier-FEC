@@ -85,7 +85,6 @@ function OutfitList() {
 
   const { productId } = useContext(IdContext);
   const [outfitInfo, setOutfitInfo] = useState([]);
-  const [hasCard, setHasCard] = useState(false);
 
   function getOutfitInfo(id) {
     return axios.get(`/products/${id}`);
@@ -143,7 +142,6 @@ function OutfitList() {
   }
 
   function addCard() {
-    setHasCard(true);
     if (typeof (Storage) !== 'undefined') {
       saveToLocalStorage(productId);
       getOutfits(productId);
@@ -160,7 +158,6 @@ function OutfitList() {
       if (currIdx === 0 && localStorageItem.length === 1) {
         localStorage.removeItem('outfits');
         setOutfitInfo([]);
-        setHasCard(!hasCard);
       } else {
         localStorageItem.splice(currIdx, 1);
         localStorage.setItem('outfits', JSON.stringify(localStorageItem));
@@ -176,7 +173,6 @@ function OutfitList() {
     const localStorageItem = localStorage.getItem('outfits');
     if (localStorageItem !== null) {
       const productIds = JSON.parse(localStorageItem);
-      setHasCard(!hasCard);
       productIds.forEach((id) => {
         getOutfits(id);
       });
