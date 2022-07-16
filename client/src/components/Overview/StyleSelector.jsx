@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StyleThumbnail from './StyleThumbnail';
 
+// make this into 4 columns
 const StylesContainer = styled.div`
   position: relative;
   display: flex;
@@ -10,14 +11,11 @@ const StylesContainer = styled.div`
 
 export default function StyleSelector(props) {
   const { styles } = props;
-  console.log(styles);
 
   return (
     <StylesContainer>
 
-      <div><b>STYLE > </b>{styles[0].name.toUpperCase()}</div>
-
-      <StyleThumbnail />
+      {styles.map((style) => <StyleThumbnail style={style} key={style.style_id} />)}
 
     </StylesContainer>
   );

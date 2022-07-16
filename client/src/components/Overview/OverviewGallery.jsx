@@ -30,7 +30,7 @@ export default function OverviewGallery(props) {
   }, []);
 
   if (styles.length === 0 || selectedStyle === null) {
-    return <div>Hello from Overview Gallery</div>;
+    return <div>Hello from Overview Gallery ┬┴┬┴┤(･_├┬┴┬┴</div>;
   }
 
   return (

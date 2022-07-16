@@ -23,6 +23,8 @@ export default function ProductInfo(props) {
 
       <div>{overview.default_price}</div>
 
+      <div><b>STYLE > </b>{styles[0].name.toUpperCase()}</div>
+
       <StyleSelector styles={styles} />
 
       <div>Size and Quantity</div>
