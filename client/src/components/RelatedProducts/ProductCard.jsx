@@ -27,7 +27,7 @@ const CardImg = styled.img`
 const CardInfo = styled.div`
   width: 100%;
   height: 100px;
-  padding: 5px 10px;
+  padding: 5px 0 0 5px;
   display: flex;
   flex-direction: column;
   gap: 1px;

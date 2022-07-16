@@ -54,6 +54,24 @@ const SliderIconRight = styled(MdChevronRight)`
   }
 `;
 
+const AddOutfit = styled.button`
+  width: 266px;
+  height: 394.75px;
+  font-size: 30px;
+  color: #1d3557;
+  background: #f1faee;
+  border: 3px solid #1d3557;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  &:hover {
+  background: #a8dadc;
+  color: #f1faee;
+  }
+`;
+
 function OutfitList() {
   const slideLeft = () => {
     const slider = document.getElementById('slider-outfit');
@@ -186,7 +204,7 @@ function OutfitList() {
             ),
           )
         }
-        <button type="button" onClick={() => addCard()}>Click Me</button>
+        <AddOutfit type="button" onClick={() => addCard()}>+</AddOutfit>
       </CardContainer>
       <SliderIconRight onClick={slideRight} />
     </ListContainer>

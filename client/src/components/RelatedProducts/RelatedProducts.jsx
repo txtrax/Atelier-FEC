@@ -5,8 +5,7 @@ import OutfitList from './OutfitList';
 
 const RelatedHeader = styled.h3`
   text-transform: uppercase;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0 10px 10px;
 `;
 
 const MainContainer = styled.div`
