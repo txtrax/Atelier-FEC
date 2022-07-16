@@ -21,12 +21,8 @@ export default function OverviewGallery(props) {
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
-        results.data.results.forEach((style, index) => {
-          if (index === 0) {
-            setSelectedStyle(style);
-          }
-          setStyles([...styles, style]);
-        });
+        setStyles(results.data.results);
+        setSelectedStyle(results.data.results[0]);
       })
       .catch((err) => {
         console.log('error getting styles', err);
