@@ -6,7 +6,8 @@ import StyleThumbnail from './StyleThumbnail';
 const StylesContainer = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export default function StyleSelector(props) {
