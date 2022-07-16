@@ -5,9 +5,8 @@ import StyleThumbnail from './StyleThumbnail';
 // make this into 4 columns
 const StylesContainer = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 
 export default function StyleSelector(props) {
