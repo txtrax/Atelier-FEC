@@ -6,7 +6,7 @@ import StarRating from './StarRating';
 
 const Card = styled.div`
   width: 260px;
-  height: 380px;
+  height: 100%;
   color: #1d3557;
   background: #f1faee;
   border: 3px solid #1d3557;
@@ -24,8 +24,8 @@ const CardImg = styled.img`
 
 const CardInfo = styled.div`
   width: 100%;
-  height: 98px;
-  padding: 5px 19px;
+  height: 100px;
+  padding: 5px 10px;
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -50,7 +50,7 @@ const DeleteButton = styled(TiDeleteOutline)`
   top: 15px;
   width: 25px;
   height: 25px;
-  transform: translate(-40px, -390px);
+  transform: translate(-20px, -260px);
 `;
 
 function OutfitCard({ card }) {
