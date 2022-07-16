@@ -74,10 +74,10 @@ function QnA(props) {
   const [questions, setQuestions] = useState([]);
   const [displayQuestions, setDisplayQuestions] = useState(4);
   const [openModal, setOpenModal] = useState(false);
-  // const { productId, setProductId } = useContext(IdContext);
+  const { productId, setProductId } = useContext(IdContext);
   // const { searchInput } = this.state;
   // const { productId } = props;
-  const { productId, setProductId } = useContext(IdContext);
+
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
@@ -92,12 +92,6 @@ function QnA(props) {
     searchInput.length > 2 ? setSearchInput(searchInput) : setSearchInput('');
   };
 
-  // const questionRender = () => {
-  //   axios.get(`qa/questions/?product_id=${productId}`)
-  //     .then((response) => {
-  //       setQuestions(response);
-  //     });
-  // };
   const handleModalOpen = () => {
     setOpenModal(true);
   };
@@ -126,10 +120,13 @@ function QnA(props) {
         </form>
       </Container>
       <Container>
-        <QuestionsList
-          productId={productId}
-          questions={questions}
-        />
+        {questions !== undefined && Object.keys(questions).length !== 0 ? (
+          <QuestionsList
+            productId={productId}
+            questions={questions}
+          />
+        )
+          : null}
         <button onClick={handleModalOpen}>
           Add a Question
         </button>
