@@ -47,6 +47,7 @@ export default function OverviewGallery(props) {
       <ProductInfo
         overview={overview}
         styles={styles}
+        selectedStyle={selectedStyle}
       />
 
     </ProductContainer>

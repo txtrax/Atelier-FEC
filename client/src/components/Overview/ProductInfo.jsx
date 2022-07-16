@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import StyleSelector from './StyleSelector';
+import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ const InfoContainer = styled.div`
 `;
 
 export default function ProductInfo(props) {
-  const { overview , styles } = props;
+  const { overview , styles , selectedStyle} = props;
 
   return (
     <InfoContainer>
@@ -27,9 +28,7 @@ export default function ProductInfo(props) {
 
       <StyleSelector styles={styles} />
 
-      <div>Size and Quantity</div>
-
-      <button>Add to Cart</button>
+      <AddToCartForm selectedStyle={selectedStyle}/>
 
     </InfoContainer>
   );
