@@ -10,7 +10,7 @@ const StylesContainer = styled.div`
 
 export default function StyleSelector(props) {
   const { styles } = props;
-  console.log(styles);
+  // console.log(styles);
 
   return (
     <StylesContainer>
