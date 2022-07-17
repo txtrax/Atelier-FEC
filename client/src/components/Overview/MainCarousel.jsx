@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import Image from './Image';
 
 const GalleryContainer = styled.div`
+  border: 10px;
+  padding: 15px;
   width: 50%;
   height: 500px;
+  background-color: rgb(248,248,248);
   position: relative;
   display: flex;
   justify-content: center;
@@ -17,7 +20,7 @@ const SliderIconLeft = styled(MdChevronLeft)`
   width: 2em;
   position: absolute;
   left: 0;
-  background: white;
+  background: rgb(248,248,248);
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
@@ -31,7 +34,7 @@ const SliderIconRight = styled(MdChevronRight)`
   width: 2em;
   position: absolute;
   right: 0;
-  background: white;
+  background: rgb(248,248,248);
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
@@ -41,18 +44,18 @@ const SliderIconRight = styled(MdChevronRight)`
 `;
 
 export default function MainCarousel(props) {
-  const { index, setIndex, photos } = props;
+  const { currentIndex, setIndex, photos } = props;
 
-  let display = photos[index];
+  let display = photos[currentIndex];
 
   return (
     <GalleryContainer>
 
-      {index > 0 && <SliderIconLeft onClick={() => setIndex(index - 1)} />}
+      {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
       <Image image={display} key={display.thumbnail_url} />
 
-      {index < photos.length - 1 && <SliderIconRight onClick={() => setIndex(index + 1)} />}
+      {currentIndex < photos.length - 1 && <SliderIconRight onClick={() => setIndex(currentIndex + 1)} />}
 
     </GalleryContainer>
   );

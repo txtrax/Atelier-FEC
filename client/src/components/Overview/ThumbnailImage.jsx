@@ -9,11 +9,23 @@ const MiniImage = styled.img`
   justify-content: space-between
 `;
 
+const CurrentImage = styled.img`
+  margin: 1px;
+  border: solid 2px;
+  border-color: black;
+  object-fit: contain;
+  height: 62px;
+  width: 62px;
+  justify-content: space-between
+`;
+
 function ThumbnailImage(props) {
-  const { image } = props;
+  const { index, image, currentIndex } = props;
 
   return (
-    <MiniImage src={image.thumbnail_url} />
+    <div>
+      { currentIndex === index ? (<CurrentImage src={image.thumbnail_url} />) : (<MiniImage style={{ opacity: 0.5 }} src={image.thumbnail_url} />)}
+    </div>
   );
 }
 

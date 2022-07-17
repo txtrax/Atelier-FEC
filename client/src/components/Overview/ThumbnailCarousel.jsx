@@ -7,6 +7,7 @@ const ThumbnailContainer = styled.div`
   width: 130px;
   padding: 40px 5px 40px 5px;
   position: relative;
+  background-color: rgb(248,248,248);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +43,7 @@ opacity: 0.5;
 `;
 
 export default function ThumbnailCarousel(props) {
-  const { index, setIndex, photos } = props;
+  const { currentIndex, setIndex, photos } = props;
 
   const slideDown = () => {
     console.log('You clicked down');
@@ -51,9 +52,9 @@ export default function ThumbnailCarousel(props) {
   return (
     <ThumbnailContainer>
 
-      {index > 0 && <SliderIconUp onClick={() => setIndex(index - 1)} />}
+      {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />}
 
-      {photos.map((image) => <ThumbnailImage image={image} key={image.thumbnail_url} />)}
+      {photos.map((image, index) => <ThumbnailImage image={image} index={index} key={image.thumbnail_url} currentIndex={currentIndex} />)}
 
       {/* adjust this to show only 7 */}
       <SliderIconDown onClick={slideDown} />

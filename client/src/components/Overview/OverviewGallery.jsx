@@ -14,10 +14,11 @@ const ProductContainer = styled.div`
 
 export default function OverviewGallery(props) {
   const { overview , setAd } = props;
+
   const { productId } = useContext(IdContext);
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
-  let [index, setIndex] = useState(0);
+  let [currentIndex, setIndex] = useState(0);
 
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
@@ -38,13 +39,13 @@ export default function OverviewGallery(props) {
     <ProductContainer>
 
       <ThumbnailCarousel
-        index={index}
+        currentIndex={currentIndex}
         setIndex={setIndex}
         photos={selectedStyle.photos}
       />
 
       <MainCarousel
-        index={index}
+        currentIndex={currentIndex}
         setIndex={setIndex}
         photos={selectedStyle.photos}
       />
