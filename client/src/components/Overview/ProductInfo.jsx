@@ -11,7 +11,7 @@ const InfoContainer = styled.div`
 `;
 
 export default function ProductInfo(props) {
-  const { overview , styles , selectedStyle} = props;
+  const { overview , styles , selectedStyle, setAd } = props;
 
   return (
     <InfoContainer>
@@ -31,6 +31,7 @@ export default function ProductInfo(props) {
       <AddToCartForm
         selectedStyle={selectedStyle}
         price={overview.default_price}
+        setAd={setAd}
       />
 
     </InfoContainer>

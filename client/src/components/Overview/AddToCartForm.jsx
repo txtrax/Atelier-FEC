@@ -27,7 +27,7 @@ const QuantityDropdown = styled.select`
 `;
 
 export default function AddToCartForm(props) {
-  const { selectedStyle } = props;
+  const { selectedStyle , price, setAd } = props;
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
   const [clicked, setClicked] = useState(false);
@@ -38,13 +38,13 @@ export default function AddToCartForm(props) {
   // adjust quantity dropdown according to size selection
   // on add-to-cart click, save price and
   const onSizeSelect = (e) => {
-    console.log(e.target.value);
+    setClicked(false);
   };
-
+  console.log(props);
   return (
     <>
       <SizeAndQuantity>
-        <SizeDropdown id="size" onClick={() => { setClicked(!clicked); }} onChange={() => { onSizeSelect; }}>
+        <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={() => { onSizeSelect; }}>
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
           {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size}>{sizeQuan.size}</option>)}
         </SizeDropdown>
@@ -54,7 +54,7 @@ export default function AddToCartForm(props) {
       </SizeAndQuantity>
       <AddToCartContainer>
         <button>Add to Cart</button>
-        <button>☆</button>
+        <button onClick={() => {setAd("(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ I love you ✧ﾟ･: *ヽ(◕ヮ◕ヽ)")}}>☆</button>
       </AddToCartContainer>
     </>
   );

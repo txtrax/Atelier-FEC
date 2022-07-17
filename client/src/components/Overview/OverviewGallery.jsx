@@ -13,7 +13,7 @@ const ProductContainer = styled.div`
 `;
 
 export default function OverviewGallery(props) {
-  const { overview } = props;
+  const { overview , setAd } = props;
   const { productId } = useContext(IdContext);
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
@@ -48,6 +48,7 @@ export default function OverviewGallery(props) {
         overview={overview}
         styles={styles}
         selectedStyle={selectedStyle}
+        setAd={setAd}
       />
 
     </ProductContainer>
