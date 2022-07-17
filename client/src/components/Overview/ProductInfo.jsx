@@ -4,6 +4,7 @@ import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
+  padding: 25px;
   position: relative;
   display: flex;
   flex-direction: column;
