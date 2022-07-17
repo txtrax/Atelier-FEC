@@ -42,14 +42,13 @@ const SliderIconRight = styled(MdChevronRight)`
   }
 `;
 
-// refactor this mess
 export default function MainCarousel(props) {
   const { photos } = props;
 
   let [index, setIndex] = useState(0);
 
   let display = photos[index];
-  console.log(display)
+
   return (
     <GalleryContainer>
 
