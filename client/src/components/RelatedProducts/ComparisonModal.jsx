@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FaCheck } from 'react-icons/fa';
-import { GrFormClose } from 'react-icons/gr';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import ModalContext from '../ModalContext';
 
 const TableWrapper = styled.div`
@@ -24,7 +24,7 @@ const MainTable = styled.table`
   margin-right: auto;
 `;
 
-const CloseButton = styled(GrFormClose)`
+const CloseButton = styled(AiFillCloseCircle)`
   position: absolute;
   width: 25px;
   height: 25px;
@@ -69,7 +69,7 @@ function ComparisonModal() {
               // eslint-disable-next-line react/no-array-index-key
               <TableRow key={index}>
                 <td>{conditionHolder ? <Check /> : ''}</td>
-                <td>characteristic</td>
+                <td>{characteristic}</td>
                 <td>{conditionHolder ? <Check /> : ''}</td>
               </TableRow>
             ))
