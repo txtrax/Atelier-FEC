@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import StyleThumbnail from './StyleThumbnail';
 
-// make this into 4 columns
 const StylesContainer = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
 `;
 
 export default function StyleSelector(props) {

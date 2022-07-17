@@ -1,7 +1,9 @@
 import React from 'react';
+// import { MdOutlineStarOutline } from 'react-icons/md';
 import styled from 'styled-components';
 
 const SizeAndQuantity = styled.div`
+  margin: 2px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -9,6 +11,7 @@ const SizeAndQuantity = styled.div`
 `;
 
 const AddToCartContainer = styled.div`
+  margin: 2px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -40,7 +43,7 @@ export default function AddToCartForm(props) {
       </SizeAndQuantity>
       <AddToCartContainer>
         <button>Add to Cart</button>
-        {/* <button>❤️</button> */}
+        <button>☆</button>
       </AddToCartContainer>
     </>
   );
