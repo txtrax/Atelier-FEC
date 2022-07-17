@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import ProductList from './ProductList';
 import OutfitList from './OutfitList';
+import ComparisonModal from './ComparisonModal';
+import ModalContext from '../ModalContext';
 
 const RelatedHeader = styled.h3`
   text-transform: uppercase;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0 10px 10px;
 `;
 
 const MainContainer = styled.div`
@@ -16,12 +17,18 @@ const MainContainer = styled.div`
 `;
 
 function RelatedProducts() {
+  const [isOpen, setIsOpen] = useState(false);
+  const providerModalValue = useMemo(() => ({ isOpen, setIsOpen }), [isOpen, setIsOpen]);
+
   return (
     <MainContainer>
-      <RelatedHeader>Related Products</RelatedHeader>
-      <ProductList />
-      <RelatedHeader>Your Outfit</RelatedHeader>
-      <OutfitList />
+      <ModalContext.Provider value={providerModalValue}>
+        <RelatedHeader>Related Products</RelatedHeader>
+        <ProductList />
+        {isOpen ? <ComparisonModal /> : ''}
+        <RelatedHeader>Your Outfit</RelatedHeader>
+        <OutfitList />
+      </ModalContext.Provider>
     </MainContainer>
   );
 }

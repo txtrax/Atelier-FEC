@@ -22,6 +22,7 @@ export default function Overview() {
   const { productId } = useContext(IdContext);
 
   const [overview, setOverview] = useState(null);
+  const [ad, setAd] = useState(undefined);
 
   useEffect(() => {
     axios.get(`/products/${productId}`)
@@ -29,19 +30,20 @@ export default function Overview() {
         setOverview(results.data);
       })
       .catch((err) => {
-        console.log('error retrieving overview', err);
+        ('error retrieving overview', err);
       });
   }, []);
 
   if (overview === null) {
     return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
   }
+
   return (
     <MainContainer>
 
-      <OverviewHeader>Add Announcement Here</OverviewHeader>
+      <OverviewHeader>{ ad || 'Add Announcement Here'}</OverviewHeader>
 
-      <OverviewGallery overview={overview} />
+      <OverviewGallery overview={overview} setAd={setAd} />
 
       <OverviewDescription overview={overview} />
 

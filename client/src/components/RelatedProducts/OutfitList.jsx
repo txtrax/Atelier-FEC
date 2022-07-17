@@ -54,6 +54,24 @@ const SliderIconRight = styled(MdChevronRight)`
   }
 `;
 
+const AddOutfit = styled.button`
+  width: 266px;
+  height: 394.75px;
+  font-size: 30px;
+  color: #1d3557;
+  background: #f1faee;
+  border: 3px solid #1d3557;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  &:hover {
+  background: #a8dadc;
+  color: #f1faee;
+  }
+`;
+
 function OutfitList() {
   const slideLeft = () => {
     const slider = document.getElementById('slider-outfit');
@@ -67,7 +85,6 @@ function OutfitList() {
 
   const { productId } = useContext(IdContext);
   const [outfitInfo, setOutfitInfo] = useState([]);
-  const [hasCard, setHasCard] = useState(false);
 
   function getOutfitInfo(id) {
     return axios.get(`/products/${id}`);
@@ -77,32 +94,23 @@ function OutfitList() {
     return axios.get(`/products/${id}/styles`);
   }
 
+  const allOutfits = [];
+  const allPromises = [];
+
   function saveToLocalStorage(currId) {
-    const localStorageItem = localStorage.getItem('outfits');
-    if (localStorageItem === null) {
-      localStorage.setItem('outfits', JSON.stringify([currId]));
+    if (localStorage.getItem('outfitIds') === null) {
+      localStorage.setItem('outfitIds', JSON.stringify([currId]));
     } else {
-      const allProductId = JSON.parse(localStorageItem);
-      if (allProductId.indexOf(currId) < 0) {
-        allProductId.push(currId);
-        localStorage.setItem('outfits', JSON.stringify(allProductId));
+      const allIds = JSON.parse(localStorage.getItem('outfitIds'));
+      if (!allIds.includes(currId)) {
+        allIds.push(currId);
+        localStorage.setItem('outfitIds', JSON.stringify(allIds));
       }
     }
   }
 
-  const allOutfits = [];
-  const allPromises = [];
-
-  function getOutfits(currId) {
-    let currIdx = -1;
-    const localStorageItem = JSON.parse(localStorage.getItem('outfits'));
-    const index = localStorageItem.indexOf(currId);
-    allOutfits.forEach((element) => {
-      if (element.info.id === currId) {
-        currIdx = index;
-      }
-    });
-    if (currIdx < 0) {
+  function saveToOutfitState(currId) {
+    if (!allOutfits.some((element) => element === currId)) {
       const promise = Promise.all([getOutfitInfo(currId),
         getOutfitStyle(currId)]);
       allPromises.push(promise);
@@ -115,7 +123,7 @@ function OutfitList() {
             product.style = element[1].data;
             allOutfits.push(product);
           });
-          // console.log('allOutfits: ', allOutfits);
+          console.log('allOutfits: ', allOutfits);
           setOutfitInfo([...allOutfits]);
         })
         .catch((err) => {
@@ -124,52 +132,41 @@ function OutfitList() {
     }
   }
 
-  function addCard() {
-    setHasCard(true);
-    if (typeof (Storage) !== 'undefined') {
-      saveToLocalStorage(productId);
-      getOutfits(productId);
-    } else {
-      console.err('Sorry! No Web Storage support..');
-    }
-  }
-
-  function deleteCard(currId) {
-    const localStorageItem = JSON.parse(localStorage.getItem('outfits'));
-    if (localStorageItem.length > 0) {
-      const currIdx = localStorageItem
-        .findIndex((id) => id === currId);
-      if (currIdx === 0 && localStorageItem.length === 1) {
-        localStorage.removeItem('outfits');
-        setOutfitInfo([]);
-        setHasCard(!hasCard);
-      } else {
-        localStorageItem.splice(currIdx, 1);
-        localStorage.setItem('outfits', JSON.stringify(localStorageItem));
-        const index = allOutfits.findIndex((p) => p.product.id === currId);
-        allOutfits.splice(index, 1);
-        setOutfitInfo([...allOutfits]);
-        console.log(allOutfits);
+  function deleteFromLocalStorage(currId) {
+    const allIds = JSON.parse(localStorage.getItem('outfitIds'));
+    for (let i = 0; i < allIds.length; i += 1) {
+      if (allIds[i] === currId) {
+        allIds.splice(i, 1);
+        localStorage.setItem('outfitIds', JSON.stringify(allIds));
       }
     }
   }
 
-  function getSavedOutfits() {
-    const localStorageItem = localStorage.getItem('outfits');
-    if (localStorageItem !== null) {
-      const productIds = JSON.parse(localStorageItem);
-      setHasCard(!hasCard);
-      productIds.forEach((id) => {
-        getOutfits(id);
-      });
-    }
+  function deleteFromOutfitState(currId) {
+    const i = allOutfits.findIndex((outfit) => outfit.info.id === currId);
+    allOutfits.splice(i, 1);
+    setOutfitInfo([...allOutfits]);
+  }
+
+  function addCard() {
+    saveToLocalStorage(productId);
+    saveToOutfitState(productId);
+  }
+
+  function deleteCard(currId) {
+    deleteFromLocalStorage(currId);
+    deleteFromOutfitState(currId);
   }
 
   useEffect(() => {
-    getSavedOutfits();
+    if (localStorage.getItem('outfitIds') !== null) {
+      JSON.parse(localStorage.getItem('outfitIds')).forEach((id) => {
+        saveToOutfitState(id);
+      });
+    }
   }, []);
 
-  // console.log('outfitInfo: ', outfitInfo);
+  console.log('outfitInfo: ', outfitInfo);
 
   return (
     <ListContainer>
@@ -186,7 +183,7 @@ function OutfitList() {
             ),
           )
         }
-        <button type="button" onClick={() => addCard()}>Click Me</button>
+        <AddOutfit type="button" onClick={() => addCard()}>+</AddOutfit>
       </CardContainer>
       <SliderIconRight onClick={slideRight} />
     </ListContainer>
