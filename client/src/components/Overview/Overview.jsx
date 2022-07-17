@@ -33,7 +33,7 @@ export default function Overview() {
         console.log('error retrieving overview', err);
       });
   }, []);
-  console.log(ad);
+
   if (overview === null) {
     return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
   }

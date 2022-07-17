@@ -45,30 +45,19 @@ const SliderIconRight = styled(MdChevronRight)`
 // refactor this mess
 export default function MainCarousel(props) {
   const { photos } = props;
+
   let [index, setIndex] = useState(0);
 
-  let arrayOfURL = photos.map((image) => <Image image={image} key={image.thumbnail_url} />);
-
-  let display = arrayOfURL[index];
-
-  const slideLeft = () => {
-    const newIndex = index - 1;
-    setIndex(newIndex);
-  };
-
-  const slideRight = () => {
-    const newIndex = index + 1;
-    setIndex(newIndex);
-  };
+  let display = photos[index];
 
   return (
     <GalleryContainer>
 
-      {index > 0 && <SliderIconLeft onClick={slideLeft} />}
+      {index > 0 && <SliderIconLeft onClick={() => setIndex(index - 1)} />}
 
-      {display}
+      <Image image={display} key={display.thumbnail_url} />
 
-      {index < photos.length - 1 && <SliderIconRight onClick={slideRight} />}
+      {index < photos.length - 1 && <SliderIconRight onClick={() => setIndex(index + 1)} />}
 
     </GalleryContainer>
   );
