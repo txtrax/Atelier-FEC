@@ -8,7 +8,7 @@ const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export default function ProductInfo(props) {
@@ -19,7 +19,7 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      <div>Stars go here</div>
+      {/* <div>Stars go here</div> */}
 
       <div>{overview.category.toUpperCase()}</div>
 

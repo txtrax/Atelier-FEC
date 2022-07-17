@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SizeAndQuantity = styled.div`
-  margin: 2px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -11,7 +10,7 @@ const SizeAndQuantity = styled.div`
 `;
 
 const AddToCartContainer = styled.div`
-  margin: 2px;
+  padding: 0px 0px 20px 0px;
   position: relative;
   display: flex;
   flex-direction: row;
