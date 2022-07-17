@@ -29,7 +29,7 @@ export default function Overview() {
         setOverview(results.data);
       })
       .catch((err) => {
-        console.log('error retrieving overview', err);
+        ('error retrieving overview', err);
       });
   }, []);
 
