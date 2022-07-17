@@ -42,9 +42,7 @@ opacity: 0.5;
 `;
 
 export default function ThumbnailCarousel(props) {
-  const { photos } = props;
-
-  let [index, setIndex] = useState(0);
+  const { index, setIndex, photos } = props;
 
   const slideDown = () => {
     console.log('You clicked down');

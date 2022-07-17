@@ -41,9 +41,7 @@ const SliderIconRight = styled(MdChevronRight)`
 `;
 
 export default function MainCarousel(props) {
-  const { photos } = props;
-
-  let [index, setIndex] = useState(0);
+  const { index, setIndex, photos } = props;
 
   let display = photos[index];
 
