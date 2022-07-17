@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { MdOutlineStarOutline } from 'react-icons/md';
 import styled from 'styled-components';
 
@@ -30,11 +30,22 @@ export default function AddToCartForm(props) {
   const { selectedStyle } = props;
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
+  const [clicked, setClicked] = useState(false);
+  const [size, setSize] = useState(null);
+  const [quantity, setQuantity] = useState(null);
+
+  // grab siz from size dropdown
+  // adjust quantity dropdown according to size selection
+  // on add-to-cart click, save price and
+  const onSizeSelect = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <>
       <SizeAndQuantity>
-        <SizeDropdown>
-          <option value="default">Select Size</option>
+        <SizeDropdown id="size" onClick={() => { setClicked(!clicked); }} onChange={() => { onSizeSelect; }}>
+          {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
           {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size}>{sizeQuan.size}</option>)}
         </SizeDropdown>
         <QuantityDropdown>

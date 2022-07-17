@@ -28,7 +28,10 @@ export default function ProductInfo(props) {
 
       <StyleSelector styles={styles} />
 
-      <AddToCartForm selectedStyle={selectedStyle}/>
+      <AddToCartForm
+        selectedStyle={selectedStyle}
+        price={overview.default_price}
+      />
 
     </InfoContainer>
   );
