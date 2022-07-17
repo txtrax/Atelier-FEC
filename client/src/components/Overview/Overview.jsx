@@ -41,7 +41,7 @@ export default function Overview() {
   return (
     <MainContainer>
 
-      <OverviewHeader>{ ad ? ad : "Add Announcement Here"}</OverviewHeader>
+      <OverviewHeader>{ ad || 'Add Announcement Here'}</OverviewHeader>
 
       <OverviewGallery overview={overview} setAd={setAd} />
 
