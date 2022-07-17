@@ -49,7 +49,7 @@ export default function MainCarousel(props) {
   let [index, setIndex] = useState(0);
 
   let display = photos[index];
-
+  console.log(display)
   return (
     <GalleryContainer>
 
