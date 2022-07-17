@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
 import StarRating from './StarRating';
 import IdContext from '../Context';
+import ModalContext from '../ModalContext';
 
 const Card = styled.div`
   width: 260px;
@@ -56,6 +57,7 @@ const StarButton = styled(MdOutlineStarOutline)`
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
+  const { setIsOpen } = useContext(ModalContext);
 
   return (
     <Card onClick={() => { setProductId(card.info.id); }}>
@@ -66,7 +68,8 @@ function ProductCard({ card }) {
         : (
           <CardImg src="https://www.jins.com/us/media/menu-redesign/womanbar.jpg" width="280px" height="380px" />
         )}
-      <StarButton />
+      <StarButton onClick={() => { setIsOpen(true); }} />
+      {/* StarButton can toggle Modal, but inside Card will also change the curr product, fix it */}
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>

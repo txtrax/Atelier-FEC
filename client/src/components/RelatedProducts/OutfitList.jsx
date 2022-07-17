@@ -102,7 +102,7 @@ function OutfitList() {
       localStorage.setItem('outfitIds', JSON.stringify([currId]));
     } else {
       const allIds = JSON.parse(localStorage.getItem('outfitIds'));
-      if (allIds.indexOf(currId) < 0) {
+      if (!allIds.includes(currId)) {
         allIds.push(currId);
         localStorage.setItem('outfitIds', JSON.stringify(allIds));
       }
@@ -143,7 +143,7 @@ function OutfitList() {
   }
 
   function deleteFromOutfitState(currId) {
-    const i = allOutfits.findIndex((element) => element.info.id === currId);
+    const i = allOutfits.findIndex((outfit) => outfit.info.id === currId);
     allOutfits.splice(i, 1);
     setOutfitInfo([...allOutfits]);
   }
