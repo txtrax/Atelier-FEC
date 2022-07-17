@@ -82,7 +82,7 @@ function QnA(props) {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
         setQuestions(response.data.results);
-        // console.log(response.data.results, 'this is questions');
+        console.log(response.data.results, 'this is questions');
       })
       .catch((err) => {
         console.log('error getting data', err);
@@ -130,11 +130,11 @@ function QnA(props) {
         <button onClick={handleModalOpen}>
           Add a Question
         </button>
-        {/* <AddQuestion
+        <AddQuestion
           productId={productId}
           openModal={openModal}
           handleModalClose={handleModalClose}
-        /> */}
+        />
       </Container>
     </FlexContainer>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import IdContext from '../Context';
@@ -27,7 +27,7 @@ function Ratings() {
   // send GET all reviews request when page is rendered
   useEffect(() => {
     axios.get('/reviews', {
-    // axios.get('http://localhost:7777/reviews', {
+      // axios.get('http://localhost:7777/reviews', {
       params: {
         product_id: productId,
         sort,
@@ -41,7 +41,7 @@ function Ratings() {
       })
       .catch((err) => {
         // console.log('SORT NOT CHANGED');
-        console.log('GET ALL REVIEWS FAILED', err);
+        // console.log('GET ALL REVIEWS FAILED', err);
       });
     axios.get('reviews/meta', {
       params: {
@@ -55,7 +55,7 @@ function Ratings() {
       })
       .catch((err) => {
         // console.log('SORT NOT CHANGED');
-        console.log('GET META FAILED', err);
+        // console.log('GET META FAILED', err);
       });
   }, [productId]);
 
@@ -72,7 +72,7 @@ function Ratings() {
         setDisplayedReviews(res.data.results.slice(0, 2));
       })
       .catch((err) => {
-        console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
+        // console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
       });
   }, [sort]);
 

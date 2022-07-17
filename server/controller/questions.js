@@ -27,3 +27,13 @@ module.exports.getAnswers = (qid, cb) => {
       console.log('Error when getting questions info: ', err);
     });
 };
+
+// module.exports.postQuestion = (qid, cb) => {
+//   axios.post(`${options.url}qa/questions`, { headers: options.headers })
+//     .then((result) => {
+//       cb(result);
+//     })
+//     .catch((err) => {
+//       console.log('Error when posting question: ', err);
+//     });
+// };

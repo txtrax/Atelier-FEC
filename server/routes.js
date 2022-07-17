@@ -37,6 +37,11 @@ module.exports.getQuestions = (req, res) => {
   });
 };
 
+// module.exports.postQuestion = (req, res) => {
+//   modelsQuestions.post(req.body);
+//   res.status(201);
+// };
+
 module.exports.getAnswers = (req, res) => {
   const { qid } = req.params;
   modelsQuestions.getAnswers(qid, (result) => {
