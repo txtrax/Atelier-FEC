@@ -29,7 +29,7 @@ export default function ProductInfo(props) {
 
       <div>
         <b>STYLE > </b>
-        {styles[0].name.toUpperCase()}
+        {selectedStyle.name.toUpperCase()}
       </div>
 
       <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} setIndex={setIndex} />
