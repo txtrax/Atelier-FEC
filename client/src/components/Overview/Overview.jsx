@@ -17,6 +17,12 @@ const OverviewHeader = styled.h3`
   padding-bottom: 10px;
 `;
 
+const OverviewSlogan = styled.p`
+  text-align: center;
+  padding-left: 3px;
+  padding-bottom: 3px;
+`;
+
 // make a get overview function but this works
 export default function Overview() {
   const { productId } = useContext(IdContext);
@@ -42,6 +48,8 @@ export default function Overview() {
     <MainContainer>
 
       <OverviewHeader>{ ad || 'Add Announcement Here'}</OverviewHeader>
+
+      <OverviewSlogan><em>{ overview.slogan || null }</em></OverviewSlogan>
 
       <OverviewGallery overview={overview} setAd={setAd} />
 
