@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import Image from './Image';
 
 const GalleryContainer = styled.div`
-  width: 60%;
-  height: 60%;
+  border: 10px;
+  padding: 15px;
+  width: 50%;
+  height: 500px;
+  background-color: rgb(248,248,248);
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
-// const GalleryContainer = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   object-fit: contain
-// `;
 
 const SliderIconLeft = styled(MdChevronLeft)`
   height: 2em;
   width: 2em;
   position: absolute;
   left: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -34,30 +34,28 @@ const SliderIconRight = styled(MdChevronRight)`
   width: 2em;
   position: absolute;
   right: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
   }
 `;
 
-// refactor this mess
 export default function MainCarousel(props) {
-  const { photos } = props;
+  const { currentIndex, setIndex, photos } = props;
 
-  let [index, setIndex] = useState(0);
+  let display = photos[currentIndex];
 
-  let display = photos[index];
-  console.log(display)
   return (
     <GalleryContainer>
 
-      {index > 0 && <SliderIconLeft onClick={() => setIndex(index - 1)} />}
+      {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
       <Image image={display} key={display.thumbnail_url} />
 
-      {index < photos.length - 1 && <SliderIconRight onClick={() => setIndex(index + 1)} />}
+      {currentIndex < photos.length - 1 && <SliderIconRight onClick={() => setIndex(currentIndex + 1)} />}
 
     </GalleryContainer>
   );

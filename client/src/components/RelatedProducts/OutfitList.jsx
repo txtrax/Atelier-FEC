@@ -166,8 +166,6 @@ function OutfitList() {
     }
   }, []);
 
-  console.log('outfitInfo: ', outfitInfo);
-
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />

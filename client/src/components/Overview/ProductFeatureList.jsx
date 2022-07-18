@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ProductFeature from './ProductFeature';
 
 const DescriptionContainer = styled.div`
+  border: 2px;
+  border-left-color: black;
   position: relative;
   display: flex;
   flex-direction: column;

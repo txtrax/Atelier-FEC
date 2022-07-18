@@ -4,10 +4,11 @@ import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
+  padding: 25px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export default function ProductInfo(props) {
@@ -18,7 +19,7 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      <div>Stars go here</div>
+      {/* <div>Stars go here</div> */}
 
       <div>{overview.category.toUpperCase()}</div>
 
