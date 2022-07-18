@@ -38,7 +38,7 @@ export default function StyleThumbnail(props) {
     setSelectedStyle(style);
     setIndex(0);
   };
-
+  console.log(style)
   if (selectedStyle.style_id === style.style_id) {
     return (
       <ThumbnailContainer>
