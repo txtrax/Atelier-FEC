@@ -33,8 +33,9 @@ const SliderIconLeft = styled(MdChevronLeft)`
   width: 2em;
   position: absolute;
   left: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -46,8 +47,9 @@ const SliderIconRight = styled(MdChevronRight)`
   width: 2em;
   position: absolute;
   right: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -110,21 +112,17 @@ function OutfitList() {
   }
 
   function saveToOutfitState(currId) {
-    if (!allOutfits.some((element) => element === currId)) {
+    if (!allOutfits.some((element) => element.info.id === currId)) {
       const promise = Promise.all([getOutfitInfo(currId),
         getOutfitStyle(currId)]);
       allPromises.push(promise);
-
       Promise.all(allPromises)
         .then((result) => {
-          result.forEach((element) => {
-            const product = {};
-            product.info = element[0].data;
-            product.style = element[1].data;
-            allOutfits.push(product);
-          });
-          console.log('allOutfits: ', allOutfits);
-          setOutfitInfo([...allOutfits]);
+          const product = {};
+          product.info = result[0][0].data;
+          product.style = result[0][1].data;
+          allOutfits.push(product);
+          setOutfitInfo([...outfitInfo, product]);
         })
         .catch((err) => {
           console.error('Error when retrieving outfit data: ', err);
@@ -143,9 +141,16 @@ function OutfitList() {
   }
 
   function deleteFromOutfitState(currId) {
-    const i = allOutfits.findIndex((outfit) => outfit.info.id === currId);
-    allOutfits.splice(i, 1);
-    setOutfitInfo([...allOutfits]);
+    let index;
+    const outfitCopy = outfitInfo.slice();
+    for (let i = 0; i < outfitCopy.length; i += 1) {
+      if (outfitCopy[i].info.id === currId) {
+        index = i;
+        break;
+      }
+    }
+    outfitCopy.splice(index, 1);
+    setOutfitInfo([...outfitCopy]);
   }
 
   function addCard() {
@@ -166,12 +171,17 @@ function OutfitList() {
     }
   }, []);
 
+  const OutfitObj = {};
+  for (let i = 0; i < outfitInfo.length; i += 1) {
+    OutfitObj[JSON.stringify(outfitInfo[i])] = outfitInfo[i];
+  }
+
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />
       <CardContainer id="slider-outfit">
         {
-          outfitInfo.map(
+          Object.values(OutfitObj).map(
             (card) => (
               <OutfitCard
                 key={card.info.id}

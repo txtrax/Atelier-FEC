@@ -32,8 +32,9 @@ const SliderIconLeft = styled(MdChevronLeft)`
   width: 2em;
   position: absolute;
   left: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -45,8 +46,9 @@ const SliderIconRight = styled(MdChevronRight)`
   width: 2em;
   position: absolute;
   right: 0;
-  background: #a8dadc;
+  background: rgb(248,248,248);
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
   &:hover {
     opacity: 1;
