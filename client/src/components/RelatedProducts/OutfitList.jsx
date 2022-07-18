@@ -98,6 +98,7 @@ function OutfitList() {
   const allPromises = [];
 
   function saveToLocalStorage(currId) {
+    console.log('saveToLocalStorage on ', currId);
     if (localStorage.getItem('outfitIds') === null) {
       localStorage.setItem('outfitIds', JSON.stringify([currId]));
     } else {
@@ -110,7 +111,9 @@ function OutfitList() {
   }
 
   function saveToOutfitState(currId) {
-    if (!allOutfits.some((element) => element === currId)) {
+    console.log('saveToOutfitState was invoked on', currId);
+    console.log('allOutfits at the beginning of saveToOutfitState', allOutfits);
+    if (!allOutfits.some((element) => element.info.id === currId)) {
       const promise = Promise.all([getOutfitInfo(currId),
         getOutfitStyle(currId)]);
       allPromises.push(promise);
@@ -122,8 +125,9 @@ function OutfitList() {
             product.info = element[0].data;
             product.style = element[1].data;
             allOutfits.push(product);
+            console.log('in the promise.all, allOutfits: ', allOutfits);
           });
-          console.log('allOutfits: ', allOutfits);
+          console.log('allOutfits at the end of saveToOutfitState: ', allOutfits);
           setOutfitInfo([...allOutfits]);
         })
         .catch((err) => {
@@ -149,6 +153,7 @@ function OutfitList() {
   }
 
   function addCard() {
+    console.log('addCard was invoked on', productId);
     saveToLocalStorage(productId);
     saveToOutfitState(productId);
   }
@@ -159,6 +164,7 @@ function OutfitList() {
   }
 
   useEffect(() => {
+    console.log('useEffect was invoked');
     if (localStorage.getItem('outfitIds') !== null) {
       JSON.parse(localStorage.getItem('outfitIds')).forEach((id) => {
         saveToOutfitState(id);
@@ -166,7 +172,7 @@ function OutfitList() {
     }
   }, []);
 
-  console.log('outfitInfo: ', outfitInfo);
+  // console.log('outfitInfo: ', outfitInfo);
 
   return (
     <ListContainer>
