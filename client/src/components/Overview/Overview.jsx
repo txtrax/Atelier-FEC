@@ -37,7 +37,7 @@ export default function Overview() {
   if (overview === null) {
     return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
   }
-  console.log(overview)
+
   return (
     <MainContainer>
 

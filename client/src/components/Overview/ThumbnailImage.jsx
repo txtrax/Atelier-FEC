@@ -12,7 +12,7 @@ const MiniImage = styled.img`
 
 const CurrentImage = styled.img`
   margin: 1px;
-  border: solid 1px;
+  border: solid 2px;
   border-color: black;
   height: 62px;
   width: 62px;

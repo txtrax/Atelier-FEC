@@ -63,7 +63,7 @@ export default function ThumbnailCarousel(props) {
       })}
 
       {/* adjust this to show only 7 */}
-      <SliderIconDown onClick={slideDown} />
+      {currentIndex < photos.length - 1 && <SliderIconDown onClick={slideDown} />}
 
     </ThumbnailContainer>
   );
