@@ -4,7 +4,9 @@ import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
-  padding: 25px;
+  border: 10px;
+  padding: 15px;
+  width: 35%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,7 +21,7 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      {/* <div>Stars go here</div> */}
+      {/* <div>Stars go here. Remember to add</div> */}
 
       <div>{overview.category.toUpperCase()}</div>
 
@@ -32,7 +34,11 @@ export default function ProductInfo(props) {
         {selectedStyle.name.toUpperCase()}
       </div>
 
-      <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} setIndex={setIndex} />
+      <StyleSelector
+        styles={styles}
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        setIndex={setIndex} />
 
       <AddToCartForm
         selectedStyle={selectedStyle}

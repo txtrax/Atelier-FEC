@@ -6,6 +6,7 @@ import OverviewGallery from './OverviewGallery';
 import OverviewDescription from './OverviewDescription';
 
 const MainContainer = styled.div`
+  padding: 0px 80px 0px 80px;
   position: relative;
   display: flex;
   flex-direction: column;

@@ -7,7 +7,6 @@ const GalleryContainer = styled.div`
   border: 10px;
   padding: 15px;
   width: 50%;
-  height: 500px;
   background-color: rgb(248,248,248);
   position: relative;
   display: flex;
@@ -19,7 +18,7 @@ const SliderIconLeft = styled(MdChevronLeft)`
   height: 2em;
   width: 2em;
   position: absolute;
-  left: 0;
+  left: 10px;
   background: rgb(248,248,248);
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -33,7 +32,7 @@ const SliderIconRight = styled(MdChevronRight)`
   height: 2em;
   width: 2em;
   position: absolute;
-  right: 0;
+  right: 10px;
   background: rgb(248,248,248);
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
