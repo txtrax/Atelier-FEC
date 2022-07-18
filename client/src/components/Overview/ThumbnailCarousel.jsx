@@ -4,7 +4,7 @@ import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
-  width: 130px;
+  width: 10%;
   padding: 40px 0px 40px 0px;
   position: relative;
   background-color: rgb(248,248,248);

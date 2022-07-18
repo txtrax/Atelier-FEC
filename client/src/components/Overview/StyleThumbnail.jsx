@@ -13,9 +13,14 @@ const ThumbnailImage = styled.img`
 `;
 
 export default function StyleThumbnail(props) {
-  const { style } = props;
+  const { style, setSelectedStyle, setIndex } = props;
+
+  const onSelect = () => {
+    setSelectedStyle(style);
+    setIndex(0);
+  };
 
   return (
-    <ThumbnailImage src={style.photos[0].thumbnail_url} />
+    <ThumbnailImage src={style.photos[0].thumbnail_url} onClick={() => onSelect()} />
   );
 }

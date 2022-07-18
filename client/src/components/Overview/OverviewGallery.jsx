@@ -18,7 +18,7 @@ export default function OverviewGallery(props) {
   const { productId } = useContext(IdContext);
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
-  let [currentIndex, setIndex] = useState(0);
+  const [currentIndex, setIndex] = useState(0);
 
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
@@ -54,6 +54,8 @@ export default function OverviewGallery(props) {
         overview={overview}
         styles={styles}
         selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        setIndex={setIndex}
         setAd={setAd}
       />
 

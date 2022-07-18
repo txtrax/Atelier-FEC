@@ -13,7 +13,7 @@ const InfoContainer = styled.div`
 
 export default function ProductInfo(props) {
   const {
-    overview, styles, selectedStyle, setAd,
+    overview, styles, selectedStyle, setSelectedStyle, setIndex, setAd
   } = props;
 
   return (
@@ -32,7 +32,7 @@ export default function ProductInfo(props) {
         {styles[0].name.toUpperCase()}
       </div>
 
-      <StyleSelector styles={styles} />
+      <StyleSelector styles={styles} setSelectedStyle={setSelectedStyle} setIndex={setIndex}/>
 
       <AddToCartForm
         selectedStyle={selectedStyle}

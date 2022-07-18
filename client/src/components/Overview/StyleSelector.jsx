@@ -11,12 +11,12 @@ const StylesContainer = styled.div`
 `;
 
 export default function StyleSelector(props) {
-  const { styles } = props;
+  const { styles, setSelectedStyle, setIndex } = props;
 
   return (
     <StylesContainer>
 
-      {styles.map((style) => <StyleThumbnail style={style} key={style.style_id} />)}
+      {styles.map((style) => <StyleThumbnail style={style} key={style.style_id} setSelectedStyle={setSelectedStyle} setIndex={setIndex} />)}
 
     </StylesContainer>
   );
