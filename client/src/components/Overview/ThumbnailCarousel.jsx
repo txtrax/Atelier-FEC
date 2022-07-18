@@ -5,7 +5,7 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 130px;
-  padding: 40px 5px 40px 5px;
+  padding: 40px 0px 40px 0px;
   position: relative;
   background-color: rgb(248,248,248);
   display: flex;
@@ -19,9 +19,8 @@ height: 2em;
 width: 2em;
 position: absolute;
 top: 0;
-background: white;
+background: rgb(248,248,248);
 border-radius: 50%;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 opacity: 0.5;
 &:hover {
   opacity: 1;
@@ -33,9 +32,8 @@ height: 2em;
 width: 2em;
 position: absolute;
 bottom: 0;
-background: white;
+background: rgb(248,248,248);
 border-radius: 50%;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 opacity: 0.5;
 &:hover {
   opacity: 1;
