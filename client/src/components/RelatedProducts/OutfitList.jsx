@@ -100,7 +100,6 @@ function OutfitList() {
   const allPromises = [];
 
   function saveToLocalStorage(currId) {
-    // console.log('saveToLocalStorage on ', currId);
     if (localStorage.getItem('outfitIds') === null) {
       localStorage.setItem('outfitIds', JSON.stringify([currId]));
     } else {
@@ -113,24 +112,17 @@ function OutfitList() {
   }
 
   function saveToOutfitState(currId) {
-    // console.log('saveToOutfitState was invoked on', currId);
-    // console.log('allOutfits at the beginning of saveToOutfitState', allOutfits);
     if (!allOutfits.some((element) => element.info.id === currId)) {
       const promise = Promise.all([getOutfitInfo(currId),
         getOutfitStyle(currId)]);
       allPromises.push(promise);
-
       Promise.all(allPromises)
         .then((result) => {
-          result.forEach((element) => {
-            const product = {};
-            product.info = element[0].data;
-            product.style = element[1].data;
-            allOutfits.push(product);
-            // console.log('in the promise.all, allOutfits: ', allOutfits);
-          });
-          // console.log('allOutfits at the end of saveToOutfitState: ', allOutfits);
-          setOutfitInfo([...allOutfits]);
+          const product = {};
+          product.info = result[0][0].data;
+          product.style = result[0][1].data;
+          allOutfits.push(product);
+          setOutfitInfo([...outfitInfo, product]);
         })
         .catch((err) => {
           console.error('Error when retrieving outfit data: ', err);
@@ -149,13 +141,19 @@ function OutfitList() {
   }
 
   function deleteFromOutfitState(currId) {
-    const i = allOutfits.findIndex((outfit) => outfit.info.id === currId);
-    allOutfits.splice(i, 1);
-    setOutfitInfo([...allOutfits]);
+    let index;
+    const outfitCopy = outfitInfo.slice();
+    for (let i = 0; i < outfitCopy.length; i += 1) {
+      if (outfitCopy[i].info.id === currId) {
+        index = i;
+        break;
+      }
+    }
+    outfitCopy.splice(index, 1);
+    setOutfitInfo([...outfitCopy]);
   }
 
   function addCard() {
-    // console.log('addCard was invoked on', productId);
     saveToLocalStorage(productId);
     saveToOutfitState(productId);
   }
@@ -166,7 +164,6 @@ function OutfitList() {
   }
 
   useEffect(() => {
-    // console.log('useEffect was invoked');
     if (localStorage.getItem('outfitIds') !== null) {
       JSON.parse(localStorage.getItem('outfitIds')).forEach((id) => {
         saveToOutfitState(id);
@@ -174,12 +171,17 @@ function OutfitList() {
     }
   }, []);
 
+  const OutfitObj = {};
+  for (let i = 0; i < outfitInfo.length; i += 1) {
+    OutfitObj[JSON.stringify(outfitInfo[i])] = outfitInfo[i];
+  }
+
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />
       <CardContainer id="slider-outfit">
         {
-          outfitInfo.map(
+          Object.values(OutfitObj).map(
             (card) => (
               <OutfitCard
                 key={card.info.id}
