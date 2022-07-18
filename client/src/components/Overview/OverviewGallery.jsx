@@ -34,7 +34,7 @@ export default function OverviewGallery(props) {
   if (styles.length === 0 || selectedStyle === null) {
     return <div>Hello from Overview Gallery ┬┴┬┴┤(･_├┬┴┬┴</div>;
   }
-  console.log(overview)
+  // console.log(overview)
   return (
     <ProductContainer>
 
