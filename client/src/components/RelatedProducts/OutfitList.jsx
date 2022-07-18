@@ -166,7 +166,7 @@ function OutfitList() {
     }
   }, []);
 
-  // console.log('outfitInfo: ', outfitInfo);
+  console.log('outfitInfo: ', outfitInfo);
 
   return (
     <ListContainer>

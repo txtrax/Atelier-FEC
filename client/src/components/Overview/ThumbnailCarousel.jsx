@@ -52,9 +52,17 @@ export default function ThumbnailCarousel(props) {
   return (
     <ThumbnailContainer>
 
-      {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />}
+      {currentIndex > 0 && <SliderIconUp />}
 
-      {photos.map((image, index) => <ThumbnailImage image={image} index={index} key={image.thumbnail_url} currentIndex={currentIndex} />)}
+      {photos.map((image, index) => {
+        return <ThumbnailImage
+          image={image}
+          index={index}
+          key={image.thumbnail_url}
+          currentIndex={currentIndex}
+          setIndex={setIndex}
+        />;
+      })}
 
       {/* adjust this to show only 7 */}
       <SliderIconDown onClick={slideDown} />

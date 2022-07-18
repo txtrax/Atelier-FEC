@@ -24,7 +24,7 @@ function App() {
           productId={productId}
           setProductId={setProductId}
         />
-        {/* <Ratings /> */}
+        <Ratings />
       </IdContext.Provider>
     </div>
   );
