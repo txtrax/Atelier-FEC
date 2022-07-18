@@ -32,13 +32,12 @@ export default function ProductInfo(props) {
         {styles[0].name.toUpperCase()}
       </div>
 
-      <StyleSelector styles={styles} setSelectedStyle={setSelectedStyle} setIndex={setIndex}/>
+      <StyleSelector styles={styles} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle} setIndex={setIndex} />
 
       <AddToCartForm
         selectedStyle={selectedStyle}
         price={overview.default_price}
-        setAd={setAd}
-      />
+        setAd={setAd} />
 
     </InfoContainer>
   );
