@@ -33,19 +33,22 @@ export default function AddToCartForm(props) {
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
 
-  // grab siz from size dropdown
+  // grab size from size dropdown
   // adjust quantity dropdown according to size selection
   // on add-to-cart click, save price and
   const onSizeSelect = (e) => {
+    console.log(e.target.value)
     setClicked(false);
+    setSize(e.target.value);
+
   };
 
   return (
     <>
       <SizeAndQuantity>
-        <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={() => { onSizeSelect; }}>
+        <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
-          {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size}>{sizeQuan.size}</option>)}
+          {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>)}
         </SizeDropdown>
         <QuantityDropdown>
           <option value="1">1</option>
