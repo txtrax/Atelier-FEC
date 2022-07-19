@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Overview from './Overview/Overview';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import QnA from './QnA/QuestionList';

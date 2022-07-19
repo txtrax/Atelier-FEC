@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import IdContext from '../Context';
 import Stars from './Stars';
@@ -8,6 +7,9 @@ import ReviewList from './ReviewList';
 import MoreReview from './MoreReview';
 import AddReview from './AddReview';
 import { RowContainer } from './styles';
+import { useIsFirstRender, usePrevious } from './services/customHooks';
+
+const { getAllReviews, getReviewMeta } = require('./services/reviews');
 
 // require('dotenv').config();
 const MainContainer = styled.div`
@@ -29,6 +31,7 @@ const ReviewContainer = styled.div`
   flex-direction: column;
   width: 70%;
   gap: 20px;
+  padding-left: 20px;
 `;
 
 function Ratings() {
@@ -37,62 +40,72 @@ function Ratings() {
   const { productId, setProductId } = useContext(IdContext);
   // reviews: array of objects
   const [reviews, setReviews] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const [starFilter, setStarFilter] = useState([]);
   const [sort, setSort] = useState('relevant');
   const [product, setProduct] = useState({});
+  const isFirstRender = useIsFirstRender();
+  const prev = usePrevious({ productId, sort });
 
-  // send GET all reviews request when page is rendered
+  // When page is refreshed,
+  // send GET all reviews request, setReviews
+  // send GET review meta, setProduct
   useEffect(() => {
-    axios.get('/reviews', {
-    // axios.get('http://localhost:7777/reviews', {
-      params: {
-        product_id: productId,
-        sort,
-      },
-    })
+    if (!isFirstRender && prev.productId === productId) return;
+    // console.log('useEffect [productId] isFirstRender:', isFirstRender, ' prev: ', prev);
+    getAllReviews(productId, sort)
       .then((res) => {
-        // console.log('SORT NOT CHANGED, SORT', sort);
         // console.log('GET ALL REVIEWS SUCCESS!', res);
-        setReviews(res.data.results);
-        setDisplayedReviews(res.data.results.slice(0, 2));
+        setReviews(res);
+        // setDisplayedReviews(res.slice(0, 2));
       })
       .catch((err) => {
-        // console.log('SORT NOT CHANGED');
         console.log('GET ALL REVIEWS FAILED', err);
       });
-    axios.get('reviews/meta', {
-      params: {
-        product_id: productId,
-      },
-    })
+    getReviewMeta(productId)
       .then((res) => {
-        // console.log('SORT NOT CHANGED, SORT', sort);
-        console.log('GET META SUCCESS!', res.data.characteristics);
-        setProduct(res.data.characteristics);
+        // console.log('GET META SUCCESS!', res);
+        setProduct(res);
       })
       .catch((err) => {
-        // console.log('SORT NOT CHANGED');
         console.log('GET META FAILED', err);
       });
   }, [productId]);
 
+  // When sort is updated, setReviews
   useEffect(() => {
-    axios.get('/reviews', {
-      params: {
-        product_id: productId,
-        sort,
-      },
-    })
+    if (isFirstRender || prev.sort === sort) return;
+    console.log('useEffect [sort] isFirstRender: ', isFirstRender, ' prev: ', prev);
+    getAllReviews(productId, sort)
       .then((res) => {
-        // console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!', res);
-        setReviews(res.data.results);
-        setDisplayedReviews(res.data.results.slice(0, 2));
+        console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!');
+        setReviews(res);
+        // setDisplayedReviews(res.slice(0, 2));
       })
       .catch((err) => {
         console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
       });
   }, [sort]);
+
+  // When reviews/starFiltered is updated, set filteredReviews
+  useEffect(() => {
+    if (starFilter.length === 0) {
+      setFilteredReviews(reviews);
+    } else {
+      setFilteredReviews(reviews.filter((review) => {
+        if (starFilter.includes(review.rating.toString())) {
+          return true;
+        }
+        return false;
+      }));
+    }
+  }, [reviews, starFilter]);
+
+  // When filteredReviews is updated, set displayedReviews
+  useEffect(() => {
+    setDisplayedReviews(filteredReviews.slice(0, 2));
+  }, [filteredReviews]);
 
   return (
     <MainContainer>
@@ -101,8 +114,7 @@ function Ratings() {
           reviews={reviews}
           starFilter={starFilter}
           setStarFilter={setStarFilter}
-          displayedReviews={displayedReviews}
-          setDisplayedReviews={setDisplayedReviews}
+          // setDisplayedReviews={setDisplayedReviews}
         />
         <ProductBreakdown product={product} />
       </RatingProductContainer>
@@ -115,7 +127,7 @@ function Ratings() {
         />
         <RowContainer>
           <MoreReview
-            reviews={reviews}
+            filteredReviews={filteredReviews}
             displayedReviews={displayedReviews}
             setDisplayedReviews={setDisplayedReviews}
           />

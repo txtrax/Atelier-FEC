@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ProductBreakdownEntry from './ProductBreakdownEntry';
 
 const ProductContainer = styled.div`
   display: flex;
@@ -44,20 +45,19 @@ function ProductBreakdown({ product }) {
   return (
     <ProductContainer>
       {Object.entries(product).map((entry) => {
-        console.log('Product = ', product, 'ENTRY = ', entry);
-        const [key, value] = entry;
-        const characteristic = ProductChar.key;
+        // console.log('Product = ', product, 'ENTRY = ', entry);
+        const [char, value] = entry;
+        // console.log('key', key);
+        // console.log('value', value);
+        const description = ProductChar[char];
+        // console.log('characteristic', characteristic);
         return (
-          <div key={value.id}>
-            <Header>
-              {key}
-            </Header>
-            <Slider type="range" min="1" max="5" value={value.value} readOnly />
-            <Char>
-              {/* {characteristic[0]}
-              {characteristic[1]} */}
-            </Char>
-          </div>
+          <ProductBreakdownEntry
+            char={char}
+            value={value}
+            description={description}
+            key={char}
+          />
         );
       })}
     </ProductContainer>

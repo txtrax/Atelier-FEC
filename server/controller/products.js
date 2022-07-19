@@ -19,7 +19,7 @@ module.exports.getProducts = (cb) => {
 };
 
 module.exports.getProductInfo = (id, cb) => {
-  console.log('IN CONTROLLER getProductInfo, ID = ', id);
+  // console.log('IN CONTROLLER getProductInfo, ID = ', id);
   axios.get(`${options.url}products/${id}`, { headers: options.headers })
     .then((result) => {
       cb(result);
