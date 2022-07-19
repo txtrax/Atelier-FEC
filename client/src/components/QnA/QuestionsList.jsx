@@ -3,26 +3,31 @@ import propTypes from 'prop-types';
 import Question from './Question';
 import MoreQuestions from './MoreQuestions';
 
-function QuestionsList({ questions, productId, searchInput, displayQuestions }) {
+function QuestionsList({ questions, productId, searchInput, displayQuestions, setDisplayQuestions
+}) {
   // const answerKey = questions.answers;
   // console.log(answerKey, 'keyyy');
+  console.log(displayQuestions, 'display questionsss');
+  console.log(questions, 'here is questionsss');
   return (
     <div className="question-list">
       {/* {console.log('SEARCH INPUT = ', searchInput)}
       {console.log('QUESTIONS = ', questions)} */}
       {searchInput === null
-        ? questions.slice(0, 4).map((question, count) => {
+        ? displayQuestions.map((question, count) => {
           // count >= 2 ?
           //   console.log(question, count, 'here to test')
           //     (<MoreQuestions
           //       questions={questions}
           //       key={question.question_id}
           //     />)
-          if (count >= 2) {
+          if (count >= 3) {
             return (
               <MoreQuestions
                 questions={questions}
                 key={question.question_id}
+                displayQuestions={displayQuestions}
+                setDisplayQuestions={setDisplayQuestions}
               />
             );
           }

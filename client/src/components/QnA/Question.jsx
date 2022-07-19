@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Answers from './Answers';
+import MoreAnswers from './MoreAnswers';
 
 function Question({ question, questionId }) {
   const answerKey = Object.keys(question.answers);
@@ -13,12 +14,15 @@ function Question({ question, questionId }) {
         {question.question_body}
       </span>
       {answerList.map((answer, count) => (
-        <Answers
-          key={answer.id}
-          answer={answer}
-        />
+        count > 1
+          ? <MoreAnswers answerList={answerList} answer={answer} key={0} />
+          : (
+            <Answers
+              key={answer.id}
+              answer={answer}
+            />
+          )
       ))}
-
     </div>
   );
 }

@@ -129,6 +129,7 @@ function QnA(props) {
             questions={questions}
             searchInput={searchInput}
             displayQuestions={displayQuestions}
+            setDisplayQuestions={setDisplayQuestions}
           />
         )
           : null}
