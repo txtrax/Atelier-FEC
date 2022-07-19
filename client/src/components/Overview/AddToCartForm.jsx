@@ -47,7 +47,7 @@ export default function AddToCartForm(props) {
     const count = targetPair[0].quantity <= 15 ? targetPair[0].quantity : 15;
 
     const quantityOptions = [];
-    for (let i = 2; i <= count; i += 1) {
+    for (let i = 1; i <= count; i += 1) {
       const option = (<option value={i} key={i}>{i}</option>);
       quantityOptions.push(option);
     }
@@ -72,7 +72,7 @@ export default function AddToCartForm(props) {
 
         <QuantityDropdown id="quantity" onChange={(e) => { onQuantitySelect(e); }}>
 
-          <option value="1">1</option>
+          {size ? null : <option value="-">-</option>}
 
           {size && getQuantity(sizeQuantArr).map((option) => option)}
 
