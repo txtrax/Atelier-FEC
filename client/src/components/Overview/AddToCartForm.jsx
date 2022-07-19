@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdOutlineStarOutline } from 'react-icons/md';
+
+const AddToCartContainer = styled.div`
+  height: 115px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 const SizeAndQuantity = styled.div`
   position: relative;
@@ -21,13 +28,6 @@ const QuantityDropdown = styled.select`
   height: 52px;
   border: 1px solid;
   text-align: center;
-`;
-
-const AddToCartContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 `;
 
 const AddToCartButton = styled.button`
@@ -73,7 +73,8 @@ export default function AddToCartForm(props) {
   }
 
   return (
-    <>
+    <AddToCartContainer>
+
       <SizeAndQuantity>
 
         <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
@@ -90,13 +91,10 @@ export default function AddToCartForm(props) {
 
       </SizeAndQuantity>
 
-      <AddToCartContainer>
+      <AddToCartButton>
+        Add to Cart
+      </AddToCartButton>
 
-        <AddToCartButton>
-          Add to Cart
-        </AddToCartButton>
-
-      </AddToCartContainer>
-    </>
+    </AddToCartContainer>
   );
 }
