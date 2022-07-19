@@ -7,16 +7,17 @@ import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
 const TableWrapper = styled.div`
-  width: 50%;
+  width: 30%;
   height: 30%;
   top: auto;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -100%);
   position: fixed;
   overflow: hidden;
-  border-radius:15px;
-  border:4px solid #457b9d;
-  padding:20px;
+  border-radius: 15px;
+  border: 4px solid #457b9d;
+  padding: 20px;
   background-color: #a8dadc;
 `;
 
