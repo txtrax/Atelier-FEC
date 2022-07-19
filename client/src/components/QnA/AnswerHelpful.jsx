@@ -11,7 +11,7 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
     // eslint-disable-next-line no-unused-expressions, no-nested-ternary
     !helpfulToggle && event.target.getAttribute('name') === 'helpful'
       ? (axios.put(`/qa/answers/${answerId}/helpful`)
-        .then((response) => console.log('+1'), setHelpfulToggle(true))
+        .then((response) => console.log('added +1 helpful'), setHelpfulToggle(true))
         .catch((err) => console.log(err))
       )
       : !reportToggle && event.target.getAttribute('name') === 'report'
