@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { FaCheck } from 'react-icons/fa';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
 const TableWrapper = styled.div`
-  width: 20%;
-  height: 20%;
-  top: 50%;
+  width: 50%;
+  height: 30%;
+  top: auto;
   left: 50%;
-  transform: translate(-50%, -150%);
+  transform: translate(-50%, -100%);
   position: fixed;
   overflow: hidden;
   border-radius:15px;
@@ -47,25 +49,60 @@ const Check = styled(FaCheck)`
   color: #43aa8b;
 `;
 
-const dummyData = ['Sole', 'Material', 'Stitching'];
-
 function ComparisonModal() {
   const conditionHolder = true;
   const { setIsOpen } = useContext(ModalContext);
+  const { productId } = useContext(IdContext);
+  const { relatedId } = useContext(ModalContext);
+  const [comparedFeatures, setComparedFeatures] = useState([]);
+  const [comparedItemsName, setComparedItemsName] = useState([]);
+
+  function getProductFeature(id) {
+    return axios.get(`/products/${id}`);
+  }
+
+  const allFeatures = [];
+  const itemsName = [];
+
+  function saveComparedItems() {
+    Promise.all([getProductFeature(productId), getProductFeature(relatedId)])
+      .then((result) => {
+        const compare = {};
+        compare.currentItem = result[0].data;
+        compare.relatedItem = result[1].data;
+        compare.currentItem.features.forEach((x) => allFeatures.push(x.feature));
+        compare.relatedItem.features.forEach((x) => allFeatures.push(x.feature));
+        itemsName.push(compare.currentItem.name);
+        itemsName.push(compare.relatedItem.name);
+        const noDupAllFeatures = Array.from(new Set(allFeatures));
+        setComparedFeatures([...noDupAllFeatures]);
+        setComparedItemsName([...itemsName]);
+      })
+      .catch((err) => {
+        console.error('Error when retrieving comparison data: ', err);
+      });
+  }
+
+  console.log('state:', comparedFeatures, comparedItemsName);
+
+  useEffect(() => {
+    saveComparedItems();
+  }, []);
+
   return (
     <TableWrapper>
       <MainTable>
         <CloseButton onClick={() => { setIsOpen(false); }} />
         <thead>
           <TableRow>
-            <TableHeader>Item</TableHeader>
+            <TableHeader>{comparedItemsName[0]}</TableHeader>
             <TableHeader aria-label="Characteristic" />
-            <TableHeader>Related Item</TableHeader>
+            <TableHeader>{comparedItemsName[1]}</TableHeader>
           </TableRow>
         </thead>
         <tbody style={{ textAlign: 'center' }}>
           {
-            dummyData.map((characteristic, index) => (
+            comparedFeatures.map((characteristic, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <TableRow key={index}>
                 <td>{conditionHolder ? <Check /> : ''}</td>
