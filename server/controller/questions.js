@@ -28,6 +28,16 @@ module.exports.getAnswers = (qid, cb) => {
     });
 };
 
+module.exports.putHelpfulAnswers = (answerId, cb) => {
+  axios.put(`${options.url}qa/answers/${answerId}/helpful`, {}, { headers: options.headers })
+    .then((result) => {
+      cb(result);
+    })
+    .catch((err) => {
+      console.log('Error when putting helpfulness: ', err);
+    });
+};
+
 // module.exports.postQuestion = (qid, cb) => {
 //   axios.post(`${options.url}qa/questions`, { headers: options.headers })
 //     .then((result) => {

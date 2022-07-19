@@ -36,7 +36,9 @@ app.get('/products/:id/related', route.getRelatedProduct);
 app.get('/qa/questions', route.getQuestions);
 // this is how to handle path parameters. No need ':' in postman
 app.get('/qa/questions/:qid/answers', route.getAnswers);
+app.put('/qa/answers/:answerId/helpful', route.putHelpfulAnswers);
 app.get('/reviews', route.getReviews);
 app.get('/reviews/meta', route.getReviewMeta);
+
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);

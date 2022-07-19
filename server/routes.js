@@ -1,5 +1,5 @@
 const products = require('./controller/products');
-const modelsQuestions = require('./controller/questions');
+const questions = require('./controller/questions');
 const reviews = require('./controller/reviews');
 
 module.exports.getProducts = (req, res) => {
@@ -31,7 +31,7 @@ module.exports.getRelatedProduct = (req, res) => {
 
 module.exports.getQuestions = (req, res) => {
   const id = req.query.product_id;
-  modelsQuestions.getQuestions(id, (result) => {
+  questions.getQuestions(id, (result) => {
     res.status(200).json(result.data);
   });
 };
@@ -43,8 +43,14 @@ module.exports.getQuestions = (req, res) => {
 
 module.exports.getAnswers = (req, res) => {
   const { qid } = req.params;
-  modelsQuestions.getAnswers(qid, (result) => {
+  questions.getAnswers(qid, (result) => {
     res.status(200).json(result.data);
+  });
+};
+module.exports.putHelpfulAnswers = (req, res) => {
+  const { answerId } = req.params;
+  questions.putHelpfulAnswers(answerId, (result) => {
+    res.status(201).json(result.data);
   });
 };
 
