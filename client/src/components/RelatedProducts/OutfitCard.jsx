@@ -44,13 +44,19 @@ const Price = styled.p`
 
 const DeleteButton = styled(TiDeleteOutline)`
   position: relative;
-  background: #a8dadc;
+  background: rgb(248,248,248);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 50%;
   right: 15px;
   top: 15px;
   width: 25px;
   height: 25px;
   transform: translate(-20px, -260px);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    background: #e63946;
+  }
 `;
 
 function OutfitCard({ card, deleteCard }) {
@@ -75,7 +81,7 @@ function OutfitCard({ card, deleteCard }) {
             </Price>
           )
           : (
-            <Price style={{ color: 'red' }}>
+            <Price style={{ color: ' #e63946' }}>
               $
               {card.style.results[0].sale_price}
             </Price>
