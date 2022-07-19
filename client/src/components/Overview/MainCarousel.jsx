@@ -23,6 +23,10 @@ const FullscreenIcon = styled(MdFullscreen)`
   right: 10px;
   width: 27px;
   height: 27px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const SliderIconLeft = styled(MdChevronLeft)`

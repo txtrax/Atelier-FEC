@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdFacebook, MdChevronRight } from 'react-icons/md';
+import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa';
 import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
@@ -17,6 +17,32 @@ const InfoContainer = styled.div`
 const ShareContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding: 0px 3px 0px 3px;
+`;
+
+const IconButton = styled.div`
+  height: 40px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+`;
+
+const FacebookIcon = styled(FaFacebookF)`
+  height: 15px;
+  color: white;
+`;
+
+const TwitterIcon = styled(FaTwitter)`
+  height: 15px;
+  color: white;
+`;
+
+const PinterestIcon = styled(FaPinterestP)`
+  height: 15px;
+  color: white;
 `;
 
 export default function ProductInfo(props) {
@@ -51,7 +77,9 @@ export default function ProductInfo(props) {
         price={overview.default_price} />
 
       <ShareContainer>
-        Share:
+        <IconButton style={{backgroundColor: "#4267B2"}}><FacebookIcon /></IconButton>
+        <IconButton style={{backgroundColor: "#1DA1F2"}}><TwitterIcon /></IconButton>
+        <IconButton style={{backgroundColor: "#E60023"}}><PinterestIcon /></IconButton>
       </ShareContainer>
 
     </InfoContainer>
