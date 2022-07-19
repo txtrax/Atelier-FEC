@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MdFacebook, MdChevronRight } from 'react-icons/md';
 import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
@@ -11,6 +12,11 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+const ShareContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export default function ProductInfo(props) {
@@ -43,6 +49,10 @@ export default function ProductInfo(props) {
       <AddToCartForm
         selectedStyle={selectedStyle}
         price={overview.default_price} />
+
+      <ShareContainer>
+        Share:
+      </ShareContainer>
 
     </InfoContainer>
   );

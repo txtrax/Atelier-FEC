@@ -11,6 +11,7 @@ const AddToCartContainer = styled.div`
 
 const SizeAndQuantity = styled.div`
   position: relative;
+  padding: 0px 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

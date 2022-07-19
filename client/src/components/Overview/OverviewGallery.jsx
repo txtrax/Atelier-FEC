@@ -7,7 +7,6 @@ import ProductInfo from './ProductInfo';
 import ThumbnailCarousel from './ThumbnailCarousel';
 
 const ProductContainer = styled.div`
-  position: relative;
   display: flex;
   flex-direction: row;
 `;
