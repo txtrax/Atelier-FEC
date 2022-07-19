@@ -137,14 +137,8 @@ function OutfitList() {
   }
 
   function deleteFromOutfitState(currId) {
-    let index;
-    const outfitCopy = outfitInfo.slice();
-    for (let i = 0; i < outfitCopy.length; i += 1) {
-      if (outfitCopy[i].info.id === currId) {
-        index = i;
-        break;
-      }
-    }
+    const outfitCopy = [...outfitInfo];
+    const index = outfitCopy.findIndex((ele) => ele.info.id === currId);
     outfitCopy.splice(index, 1);
     setOutfitInfo([...outfitCopy]);
   }
@@ -190,4 +184,3 @@ function OutfitList() {
 }
 
 export default OutfitList;
-
