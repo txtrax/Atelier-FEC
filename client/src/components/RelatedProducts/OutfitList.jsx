@@ -97,7 +97,6 @@ function OutfitList() {
   }
 
   const allOutfits = [];
-  const allPromises = [];
 
   function saveToLocalStorage(currId) {
     if (localStorage.getItem('outfitIds') === null) {
@@ -113,16 +112,13 @@ function OutfitList() {
 
   function saveToOutfitState(currId) {
     if (!allOutfits.some((element) => element.info.id === currId)) {
-      const promise = Promise.all([getOutfitInfo(currId),
-        getOutfitStyle(currId)]);
-      allPromises.push(promise);
-      Promise.all(allPromises)
+      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId)])
         .then((result) => {
           const product = {};
-          product.info = result[0][0].data;
-          product.style = result[0][1].data;
-          allOutfits.push(product);
-          setOutfitInfo([...outfitInfo, product]);
+          product.info = result[0].data;
+          product.style = result[1].data;
+          allOutfits.unshift(product);
+          setOutfitInfo((prevState) => ([...prevState, product]));
         })
         .catch((err) => {
           console.error('Error when retrieving outfit data: ', err);
@@ -171,17 +167,12 @@ function OutfitList() {
     }
   }, []);
 
-  const OutfitObj = {};
-  for (let i = 0; i < outfitInfo.length; i += 1) {
-    OutfitObj[JSON.stringify(outfitInfo[i])] = outfitInfo[i];
-  }
-
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />
       <CardContainer id="slider-outfit">
         {
-          Object.values(OutfitObj).map(
+          outfitInfo.map(
             (card) => (
               <OutfitCard
                 key={card.info.id}
@@ -199,3 +190,4 @@ function OutfitList() {
 }
 
 export default OutfitList;
+
