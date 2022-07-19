@@ -1,9 +1,17 @@
 import React, { useState, useMemo } from 'react';
+import styled from 'styled-components';
 import Overview from './Overview/Overview';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import QnA from './QnA/QnA';
 import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
+
+const AppContainer = styled.div`
+  padding: 0px 80px 0px 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   const [productId, setProductId] = useState(40350);
@@ -11,7 +19,7 @@ function App() {
   const providerIdValue = useMemo(() => ({ productId, setProductId }), [productId, setProductId]);
 
   return (
-    <div>
+    <AppContainer>
       <header>This is App</header>
       {/* <h4>
         We use product:
@@ -26,7 +34,7 @@ function App() {
         />
         <Ratings />
       </IdContext.Provider>
-    </div>
+    </AppContainer>
   );
 }
 

@@ -5,20 +5,19 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
-  padding: 40px 0px 40px 0px;
+  padding: 30px 0px 30px 10px;
   position: relative;
   background-color: rgb(248,248,248);
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 
 const SliderIconUp = styled(MdExpandLess)`
 height: 2em;
 width: 2em;
 position: absolute;
-top: 0;
+top: 5px;
 background: rgb(248,248,248);
 border-radius: 50%;
 opacity: 0.5;
@@ -31,7 +30,7 @@ const SliderIconDown = styled(MdExpandMore)`
 height: 2em;
 width: 2em;
 position: absolute;
-bottom: 0;
+bottom: 5px;
 background: rgb(248,248,248);
 border-radius: 50%;
 opacity: 0.5;
@@ -58,12 +57,11 @@ export default function ThumbnailCarousel(props) {
           index={index}
           key={image.thumbnail_url}
           currentIndex={currentIndex}
-          setIndex={setIndex}
-        />;
+          setIndex={setIndex} />;
       })}
 
       {/* adjust this to show only 7 */}
-      <SliderIconDown onClick={slideDown} />
+      {currentIndex < photos.length - 1 && <SliderIconDown onClick={slideDown} />}
 
     </ThumbnailContainer>
   );

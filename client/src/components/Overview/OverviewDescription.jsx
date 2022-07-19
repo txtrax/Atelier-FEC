@@ -16,6 +16,7 @@ export default function OverviewDescription(props) {
   return (
     <DescriptionAndFeatures>
       <ProductDescription
+        slogan={overview.slogan}
         description={overview.description}
       />
       <ProductFeatureList
