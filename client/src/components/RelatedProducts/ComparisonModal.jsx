@@ -50,19 +50,22 @@ const Check = styled(FaCheck)`
 `;
 
 function ComparisonModal() {
-  const conditionHolder = true;
   const { setIsOpen } = useContext(ModalContext);
   const { productId } = useContext(IdContext);
   const { relatedId } = useContext(ModalContext);
   const [comparedFeatures, setComparedFeatures] = useState([]);
   const [comparedItemsName, setComparedItemsName] = useState([]);
+  const [currFeatures, setCurrFeatures] = useState([]);
+  const [relatedFeatures, setRelatedFeatures] = useState([]);
 
   function getProductFeature(id) {
     return axios.get(`/products/${id}`);
   }
 
-  const allFeatures = [];
-  const itemsName = [];
+  const currentItemFeatures = [];
+  const relatedItemFeatures = [];
+  let allFeatures = [];
+  let itemsName = [];
 
   function saveComparedItems() {
     Promise.all([getProductFeature(productId), getProductFeature(relatedId)])
@@ -70,20 +73,20 @@ function ComparisonModal() {
         const compare = {};
         compare.currentItem = result[0].data;
         compare.relatedItem = result[1].data;
-        compare.currentItem.features.forEach((x) => allFeatures.push(x.feature));
-        compare.relatedItem.features.forEach((x) => allFeatures.push(x.feature));
-        itemsName.push(compare.currentItem.name);
-        itemsName.push(compare.relatedItem.name);
+        compare.currentItem.features.forEach((x) => currentItemFeatures.push(x.feature));
+        compare.relatedItem.features.forEach((x) => relatedItemFeatures.push(x.feature));
+        allFeatures = [...currentItemFeatures, ...relatedItemFeatures];
+        itemsName = [compare.currentItem.name, compare.relatedItem.name];
         const noDupAllFeatures = Array.from(new Set(allFeatures));
         setComparedFeatures([...noDupAllFeatures]);
         setComparedItemsName([...itemsName]);
+        setCurrFeatures([...currentItemFeatures]);
+        setRelatedFeatures([...relatedItemFeatures]);
       })
       .catch((err) => {
         console.error('Error when retrieving comparison data: ', err);
       });
   }
-
-  console.log('state:', comparedFeatures, comparedItemsName);
 
   useEffect(() => {
     saveComparedItems();
@@ -105,9 +108,9 @@ function ComparisonModal() {
             comparedFeatures.map((characteristic, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <TableRow key={index}>
-                <td>{conditionHolder ? <Check /> : ''}</td>
+                <td>{currFeatures.some((x) => x === characteristic) ? <Check /> : ''}</td>
                 <td>{characteristic}</td>
-                <td>{conditionHolder ? <Check /> : ''}</td>
+                <td>{relatedFeatures.some((x) => x === characteristic) ? <Check /> : ''}</td>
               </TableRow>
             ))
           }
