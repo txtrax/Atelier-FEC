@@ -4,20 +4,29 @@ import StyleThumbnail from './StyleThumbnail';
 
 const StylesContainer = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
 `;
 
 export default function StyleSelector(props) {
-  const { styles } = props;
-  // console.log(styles);
+  const {
+    styles, setSelectedStyle, setIndex, selectedStyle,
+  } = props;
 
   return (
     <StylesContainer>
 
-      <div><b>STYLE > </b>{styles[0].name.toUpperCase()}</div>
-
-      <StyleThumbnail />
+      {styles.map((style) => {
+        return <StyleThumbnail
+          style={style}
+          key={style.style_id}
+          selectedStyle={selectedStyle}
+          setSelectedStyle={setSelectedStyle}
+          setIndex={setIndex}
+        />;
+      })}
 
     </StylesContainer>
   );

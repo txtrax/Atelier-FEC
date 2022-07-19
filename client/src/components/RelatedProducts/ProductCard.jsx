@@ -4,10 +4,11 @@ import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
 import StarRating from './StarRating';
 import IdContext from '../Context';
+import ModalContext from '../ModalContext';
 
 const Card = styled.div`
   width: 260px;
-  height: 380px;
+  height: 100%;
   color: #1d3557;
   background: #f1faee;
   border: 3px solid #1d3557;
@@ -26,8 +27,8 @@ const CardImg = styled.img`
 
 const CardInfo = styled.div`
   width: 100%;
-  height: 98px;
-  padding: 5px 19px;
+  height: 100px;
+  padding: 5px 0 0 5px;
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -46,16 +47,23 @@ const Price = styled.p`
 
 const StarButton = styled(MdOutlineStarOutline)`
   position: relative;
-  background: #a8dadc;
+  background: rgb(248,248,248);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 50%;
   right: 15px;
   top: 15px;
   width: 25px;
   height: 25px;
   transform: translate(-20px, -260px);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    background: #ffbe0b;
+  }
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
+  const { setIsOpen } = useContext(ModalContext);
 
   return (
     <Card onClick={() => { setProductId(card.info.id); }}>
@@ -66,7 +74,8 @@ function ProductCard({ card }) {
         : (
           <CardImg src="https://www.jins.com/us/media/menu-redesign/womanbar.jpg" width="280px" height="380px" />
         )}
-      <StarButton />
+      <StarButton onClick={() => { setIsOpen(true); }} />
+      {/* StarButton can toggle Modal, but inside Card will also change the curr product, fix it */}
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>

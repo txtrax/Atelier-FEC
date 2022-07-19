@@ -14,19 +14,17 @@ const ProductContainer = styled.div`
 
 export default function OverviewGallery(props) {
   const { overview } = props;
+
   const { productId } = useContext(IdContext);
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [currentIndex, setIndex] = useState(0);
 
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
-        results.data.results.forEach((style, index) => {
-          if (index === 0) {
-            setSelectedStyle(style);
-          }
-          setStyles([...styles, style]);
-        });
+        setStyles(results.data.results);
+        setSelectedStyle(results.data.results[0]);
       })
       .catch((err) => {
         console.log('error getting styles', err);
@@ -34,23 +32,30 @@ export default function OverviewGallery(props) {
   }, []);
 
   if (styles.length === 0 || selectedStyle === null) {
-    return <div>Hello from Overview Gallery</div>;
+    return <div>Hello from Overview Gallery ┬┴┬┴┤(･_├┬┴┬┴</div>;
   }
-
+  // console.log(overview)
   return (
     <ProductContainer>
 
       <ThumbnailCarousel
+        currentIndex={currentIndex}
+        setIndex={setIndex}
         photos={selectedStyle.photos}
       />
 
       <MainCarousel
+        currentIndex={currentIndex}
+        setIndex={setIndex}
         photos={selectedStyle.photos}
       />
 
       <ProductInfo
         overview={overview}
         styles={styles}
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        setIndex={setIndex}
       />
 
     </ProductContainer>

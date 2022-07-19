@@ -9,29 +9,6 @@ const ProductContainer = styled.div`
   width: 100%;
 `;
 
-const Header = styled.div`
-  font-size: 1.1em;
-  padding-bottom: 0.5em;
-`;
-
-const Slider = styled.input`
-  -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
-  background: #d3d3d3;
-  opacity: 0.7;
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 0px;
-    height: 0px;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 15px solid #575b54;
-  }
-`;
-const Char = styled.div`
-`;
-
 function ProductBreakdown({ product }) {
   const ProductChar = {
     Size: ['Too small', 'Too large'],

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { React, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StarRating from 'react-star-ratings';
@@ -42,7 +42,7 @@ const BottomBar = styled.div`
 
 function ReviewEntry({ review }) {
   const {
-    summary, body, photos, recommend, response, date, helpfulness, rating, review_id, reviewer_name,
+    summary, body, photos, recommend, date, helpfulness, rating, review_id, reviewer_name,
   } = review;
 
   return (
