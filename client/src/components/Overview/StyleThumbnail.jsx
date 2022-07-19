@@ -39,7 +39,7 @@ export default function StyleThumbnail(props) {
     setSelectedStyle(style);
     setIndex(0);
   };
-  // console.log(style)
+
   if (selectedStyle.style_id === style.style_id) {
     return (
       <ThumbnailContainer>
@@ -49,6 +49,10 @@ export default function StyleThumbnail(props) {
     );
   }
   return (
-    <ThumbnailImage src={style.photos[0].thumbnail_url} onClick={() => onSelect()} />
+    <ThumbnailContainer>
+
+      <ThumbnailImage src={style.photos[0].thumbnail_url} onClick={() => onSelect()} />
+    </ThumbnailContainer>
+
   );
 }

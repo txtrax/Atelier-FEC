@@ -5,7 +5,7 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0px 30px 10px;
   position: relative;
   background-color: rgb(248,248,248);
   display: flex;

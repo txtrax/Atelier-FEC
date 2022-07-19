@@ -1,31 +1,46 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { MdOutlineStarOutline } from 'react-icons/md';
 
 const SizeAndQuantity = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-`;
-
-const AddToCartContainer = styled.div`
-  padding: 0px 0px 20px 0px;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const SizeDropdown = styled.select`
-  background-color: white;
+  width: 175px;
+  height: 52px;
+  border: 1px solid;
+  text-align: center;
 `;
 
 const QuantityDropdown = styled.select`
-  background-color: white;
+  width: 75px;
+  height: 52px;
+  border: 1px solid;
+  text-align: center;
+`;
+
+const AddToCartContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const AddToCartButton = styled.button`
+  width: 100%;
+  height: 52px;
+  border: 1px solid;
+  border-radius: 26px;
+  background-color: black;
+  color: white;
 `;
 
 export default function AddToCartForm(props) {
-  const { selectedStyle, price, setAd } = props;
+  const { selectedStyle, price } = props;
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
   const [clicked, setClicked] = useState(false);
@@ -54,7 +69,7 @@ export default function AddToCartForm(props) {
   };
 
   if (quantity) {
-    console.log("this is size: " + size, "this is quantity: " + quantity);
+    console.log(`this is size: ${size}`, `this is quantity: ${quantity}`);
   }
 
   return (
@@ -75,12 +90,11 @@ export default function AddToCartForm(props) {
 
       </SizeAndQuantity>
 
-
       <AddToCartContainer>
 
-        <button className="add-to-cart" type="button" style={{ display: 'block' }}>Add to Cart</button>
-
-        <button onClick={() => { setAd('(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ I love you ✧ﾟ･: *ヽ(◕ヮ◕ヽ)'); }}>☆</button>
+        <AddToCartButton>
+          Add to Cart
+        </AddToCartButton>
 
       </AddToCartContainer>
     </>
