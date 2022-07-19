@@ -18,21 +18,21 @@ const SizeAndQuantity = styled.div`
 
 const SizeDropdown = styled.select`
   width: 175px;
-  height: 52px;
+  height: 50px;
   border: 1px solid;
   text-align: center;
 `;
 
 const QuantityDropdown = styled.select`
   width: 75px;
-  height: 52px;
+  height: 50px;
   border: 1px solid;
   text-align: center;
 `;
 
 const AddToCartButton = styled.button`
   width: 100%;
-  height: 52px;
+  height: 50px;
   border: 1px solid;
   border-radius: 26px;
   background-color: black;
@@ -68,9 +68,9 @@ export default function AddToCartForm(props) {
     return quantityOptions;
   };
 
-  // if (quantity) {
-  //   console.log(`this is size: ${size}`, `this is quantity: ${quantity}`, `this is total: ${price * quantity}`);
-  // }
+  if (quantity) {
+    console.log(`this is size: ${size}`, `this is quantity: ${quantity}`, `this is total: ${price * quantity}`);
+  }
 
   return (
     <AddToCartContainer>

@@ -21,7 +21,7 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      {/* <div>Stars go here. Remember to add</div> */}
+      <div>Stars go here. Remember to add</div>
 
       <div>{overview.category.toUpperCase()}</div>
 
