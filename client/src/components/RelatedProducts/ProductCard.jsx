@@ -63,19 +63,26 @@ const StarButton = styled(MdOutlineStarOutline)`
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
-  const { setIsOpen } = useContext(ModalContext);
+  const { setIsOpen, setRelatedId } = useContext(ModalContext);
 
   return (
-    <Card onClick={() => { setProductId(card.info.id); }}>
+    <Card>
       {(card.style.results[0].photos[0].thumbnail_url !== null)
         ? (
-          <CardImg src={card.style.results[0].photos[0].thumbnail_url} />
+          <CardImg
+            src={card.style.results[0].photos[0].thumbnail_url}
+            onClick={() => { setProductId(card.info.id); }}
+          />
         )
         : (
-          <CardImg src="https://www.jins.com/us/media/menu-redesign/womanbar.jpg" width="280px" height="380px" />
+          <CardImg
+            src="https://www.jins.com/us/media/menu-redesign/womanbar.jpg"
+            width="280px"
+            height="380px"
+            onClick={() => { setProductId(card.info.id); }}
+          />
         )}
-      <StarButton onClick={() => { setIsOpen(true); }} />
-      {/* StarButton can toggle Modal, but inside Card will also change the curr product, fix it */}
+      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); }} />
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>
