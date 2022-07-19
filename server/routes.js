@@ -72,3 +72,29 @@ module.exports.getReviewMeta = (req, res) => {
     res.status(200).json(result.data);
   });
 };
+
+module.exports.markReviewHelpful = (req, res) => {
+  const { id } = req.params;
+  console.log('IN ROUTES markReviewHelpful id = ', id);
+  reviews.markReviewHelpful(id, (err) => {
+    if (err) {
+      console.log('IN ROUTES, markReviewHelpful FAILED');
+      res.status(500).send();
+    }
+    console.log('IN ROUTES, markReviewHelpful SUCCESS!!!');
+    res.status(204).send();
+  });
+};
+
+module.exports.reportReview = (req, res) => {
+  const { id } = req.params;
+  console.log('IN ROUTES reportReview id = ', id);
+  reviews.reportReview(id, (err) => {
+    if (err) {
+      console.log('IN ROUTES, reportReview FAILED');
+      res.status(500).send();
+    }
+    console.log('IN ROUTES, reportReview SUCCESS!!!');
+    res.status(204).send();
+  });
+};

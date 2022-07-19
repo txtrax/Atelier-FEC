@@ -1,11 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const FeaturesContainer = styled.li`
+  padding: 1px;
+`;
 
 export default function ProductFeature(props) {
   const { feature } = props;
 
   return (
-    <div>
-      {feature.feature} : {feature.value}
-    </div>
+    <FeaturesContainer>
+      {feature.feature}: {feature.value}
+    </FeaturesContainer>
   );
 }

@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from './styles';
 
-function MoreReview({ reviews, displayedReviews, setDisplayedReviews }) {
+function MoreReview({ filteredReviews, displayedReviews, setDisplayedReviews }) {
   let button;
-  if (reviews.length > displayedReviews.length) {
+  if (filteredReviews.length > displayedReviews.length) {
     button = (
-      <button
+      <Button
         type="button"
-        onClick={() => setDisplayedReviews(reviews.slice(0, displayedReviews.length + 2))}
+        onClick={() => setDisplayedReviews(filteredReviews.slice(0, displayedReviews.length + 2))}
       >
         MORE REVIEWS
-      </button>
+      </Button>
     );
   }
 
@@ -22,7 +23,7 @@ function MoreReview({ reviews, displayedReviews, setDisplayedReviews }) {
 }
 
 MoreReview.propTypes = {
-  reviews: PropTypes.arrayOf(
+  filteredReviews: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.any),
   ),
   displayedReviews: PropTypes.arrayOf(
@@ -32,7 +33,7 @@ MoreReview.propTypes = {
 };
 
 MoreReview.defaultProps = {
-  reviews: [],
+  filteredReviews: [],
   displayedReviews: [],
   setDisplayedReviews: (e) => e,
 };

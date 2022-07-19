@@ -1,23 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StarRating from 'react-star-ratings';
+import StarBarEntry from './StarBarEntry';
 
-const starRating = require('./common/starRating');
+const { buildRatingBreakDown } = require('./services/starRating');
 
-const Wrapper = styled.div`
-    padding 3em;
-    background: papayawhip;
+const starRating = require('./services/starRating');
+
+const StarContainer = styled.div`
 `;
-
+const Header = styled.div`
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+`;
+const Rating = styled.div`
+  display:flex;
+  align-items: flex-start;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  gap: 10px;
+`;
+const RatingNum = styled.div`
+  font-size: 3em;
+  font-weight: bolder;
+`;
+const RatingStar = styled.div`
+  padding-top: 0.5em;
+`;
+const Recommendation = styled.div`
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+`;
+const Filter = styled.div`
+  font-style: italic;
+  font-weight: bold;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+`;
 function Stars({
-  reviews, starFilter, setStarFilter, displayedReviews, setDisplayedReviews,
+  reviews, starFilter, setStarFilter, setDisplayedReviews,
 }) {
   useEffect(() => {
     const filteredReviews = reviews.filter(
       (review) => starFilter.forEach((filter) => review.rating === filter),
     );
-    // console.log('Stars useEffect, starFilter', starFilter);
     setDisplayedReviews(
       filteredReviews,
     );
@@ -25,44 +54,45 @@ function Stars({
 
   const averageRating = starRating.toAverageRating(reviews);
   const averageRecommendation = starRating.toAverageRecommendation(reviews);
-  const starBreakdown = starRating.buildRatingBreakDown(reviews);
+  const starBreakdown = buildRatingBreakDown(reviews);
+
+  let displayFilter;
+  if (starFilter.length !== 0) {
+    const filter = starFilter.join(', ');
+    displayFilter = `Filter for ${filter} stars applyed`;
+  }
 
   return (
-    <Wrapper>
-      <div>RATINGS &amp; REVIEWS</div>
-      <div>
-        <span>
+    <StarContainer>
+      <Header>RATINGS &amp; REVIEWS</Header>
+      <Rating>
+        <RatingNum>
           {averageRating}
+        </RatingNum>
+        <RatingStar>
           <StarRating numberOfStars={5} rating={averageRating} starRatedColor="#ffd700" starSpacing="1px" starDimension="20px" isSelectable={false} />
-        </span>
-      </div>
-      <div>
+        </RatingStar>
+      </Rating>
+      <Recommendation>
         {averageRecommendation}
         % of reviews recommend this product
-      </div>
+      </Recommendation>
       <div>
-        <div value="5" onClick={() => setStarFilter([5])} aria-hidden="true">
-          5 stars&nbsp;
-          <progress value={starBreakdown.five} max={reviews.length} />
-        </div>
-        <div>
-          4 stars&nbsp;
-          <progress value={starBreakdown.four} max={reviews.length} />
-        </div>
-        <div>
-          3 stars&nbsp;
-          <progress value={starBreakdown.three} max={reviews.length} />
-        </div>
-        <div>
-          2 stars&nbsp;
-          <progress value={starBreakdown.two} max={reviews.length} />
-        </div>
-        <div>
-          1 stars&nbsp;
-          <progress value={starBreakdown.one} max={reviews.length} />
-        </div>
+        {Object.keys(starBreakdown).map(
+          (key) => (
+            <StarBarEntry
+              reviews={reviews}
+              count={starBreakdown[key]}
+              stars={key}
+              starFilter={starFilter}
+              setStarFilter={setStarFilter}
+              key={key}
+            />
+          ),
+        )}
       </div>
-    </Wrapper>
+      <Filter>{displayFilter}</Filter>
+    </StarContainer>
   );
 }
 
@@ -71,12 +101,12 @@ Stars.propTypes = {
     PropTypes.oneOfType([PropTypes.any]),
   ),
   starFilter: PropTypes.arrayOf(
-    PropTypes.number,
+    PropTypes.string,
   ),
   setStarFilter: PropTypes.func,
-  displayedReviews: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.any),
-  ),
+  // displayedReviews: PropTypes.arrayOf(
+  //   PropTypes.objectOf(PropTypes.any),
+  // ),
   setDisplayedReviews: PropTypes.func,
 };
 
@@ -84,7 +114,7 @@ Stars.defaultProps = {
   reviews: [],
   starFilter: [],
   setStarFilter: (e) => e,
-  displayedReviews: [],
+  // displayedReviews: [],
   setDisplayedReviews: (e) => e,
 };
 

@@ -10,11 +10,20 @@ const DescriptionContainer = styled.div`
   flex-direction: column;
 `;
 
+const FeaturesSlogan = styled.p`
+  padding-bottom: 2px;
+`;
+
 export default function ProductFeatureList(props) {
   const { features } = props;
 
   return (
     <DescriptionContainer>
+
+      <FeaturesSlogan>
+        <b>Product Details</b>
+      </FeaturesSlogan>
+
       {features.map((feature) => <ProductFeature feature={feature} key={feature.feature} />)}
     </DescriptionContainer>
   );

@@ -1,5 +1,6 @@
 import 'jest';
-const strFilter = require('../../components/Ratings/common/strFilter');
+
+const strFilter = require('../../components/Ratings/services/strFilter');
 
 test('lengthFilter capped the string according to the provided length', () => {
   const originalStr = 'My length is larger than 10';
