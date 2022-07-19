@@ -66,13 +66,14 @@ function QnA(props) {
   // };
   // const [questionsData, setQuestionsData] = useState([]);
   // const [filteredQuestions, setFilteredQuestions] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState(null);
 
   // this id is for testing
 
   // const [productId, setProductId] = useState(40353);
   const [questions, setQuestions] = useState([]);
-  const [displayQuestions, setDisplayQuestions] = useState(4);
+  const [displayQuestions, setDisplayQuestions] = useState([]);
+  // const [itemToShow, setItemToShow] = useState(4);
   const [openModal, setOpenModal] = useState(false);
   const { productId, setProductId } = useContext(IdContext);
   // const { searchInput } = this.state;
@@ -82,6 +83,8 @@ function QnA(props) {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
         setQuestions(response.data.results);
+        setDisplayQuestions(response.data.results.slice(0, 4));
+        console.log(response.data.results.slice(0, 4), 'this is what displayed');
         console.log(response.data.results, 'this is questions');
       })
       .catch((err) => {
@@ -124,6 +127,8 @@ function QnA(props) {
           <QuestionsList
             productId={productId}
             questions={questions}
+            searchInput={searchInput}
+            displayQuestions={displayQuestions}
           />
         )
           : null}
