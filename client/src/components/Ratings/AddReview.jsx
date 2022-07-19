@@ -1,8 +1,9 @@
 import React from 'react';
+import { Button } from './styles';
 
 function AddReview() {
   return (
-    <button type="submit">ADD A REVIEW +</button>
+    <Button type="submit">ADD A REVIEW +</Button>
   );
 }
 

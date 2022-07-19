@@ -38,6 +38,8 @@ app.get('/qa/questions', route.getQuestions);
 app.get('/qa/questions/:qid/answers', route.getAnswers);
 app.get('/reviews', route.getReviews);
 app.get('/reviews/meta', route.getReviewMeta);
+app.put('/reviews/:id/helpful', route.markReviewHelpful);
+app.put('/reviews/:id/report', route.reportReview);
 
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);
