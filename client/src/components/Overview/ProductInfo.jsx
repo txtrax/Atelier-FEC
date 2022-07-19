@@ -5,7 +5,7 @@ import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
   border: 10px;
-  padding: 15px;
+  padding: 0px 0px 0px 25px;
   width: 35%;
   position: relative;
   display: flex;
@@ -27,7 +27,7 @@ export default function ProductInfo(props) {
 
       <h2>{overview.name}</h2>
 
-      <div>{overview.default_price}</div>
+      <div>${overview.default_price}</div>
 
       <div>
         <b>STYLE > </b>

@@ -10,8 +10,8 @@ const ThumbnailImage = styled.img`
   border: solid 1px;
   border-color: black;
   object-fit: cover;
-  height: 60px;
-  width: 60px;
+  height: 52px;
+  width: 52px;
   border-radius: 50%;
 `;
 
@@ -23,8 +23,8 @@ const FontAwesomeIcon = styled.i`
   border-color: black;
   top: 0;
   right: 0;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   background-color: white;
   border-radius: 50%;
 `;

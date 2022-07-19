@@ -33,26 +33,49 @@ export default function AddToCartForm(props) {
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
 
-  // grab size from size dropdown
-  // adjust quantity dropdown according to size selection
-  // on add-to-cart click, save price and
   const onSizeSelect = (e) => {
-    console.log(e.target.value);
     setClicked(false);
     setSize(e.target.value);
   };
+
+  const onQuantitySelect = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const getQuantity = (arr) => {
+    const targetPair = arr.filter((pair) => pair.size === size);
+    const count = targetPair[0].quantity <= 15 ? targetPair[0].quantity : 15;
+
+    const quantityOptions = [];
+    for (let i = 2; i <= count; i += 1) {
+      const option = (<option value={i} key={i}>{i}</option>);
+      quantityOptions.push(option);
+    }
+    return quantityOptions;
+  };
+
+  if (quantity) {
+    console.log("this is size: " + size, "this is quantity: " + quantity);
+  }
 
   return (
     <>
       <SizeAndQuantity>
 
         <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
+
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
+
           {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>)}
+
         </SizeDropdown>
 
-        <QuantityDropdown>
+        <QuantityDropdown id="quantity" onChange={(e) => { onQuantitySelect(e); }}>
+
           <option value="1">1</option>
+
+          {size && getQuantity(sizeQuantArr).map((option) => option)}
+
         </QuantityDropdown>
 
       </SizeAndQuantity>
