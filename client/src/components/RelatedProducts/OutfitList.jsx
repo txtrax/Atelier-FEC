@@ -161,12 +161,17 @@ function OutfitList() {
     }
   }, []);
 
+  const OutfitObj = {};
+  for (let i = 0; i < outfitInfo.length; i += 1) {
+    OutfitObj[JSON.stringify(outfitInfo[i])] = outfitInfo[i];
+  }
+
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />
       <CardContainer id="slider-outfit">
         {
-          outfitInfo.map(
+          Object.values(OutfitObj).map(
             (card) => (
               <OutfitCard
                 key={card.info.id}
