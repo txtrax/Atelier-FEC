@@ -6,7 +6,7 @@ import Image from './Image';
 const GalleryContainer = styled.div`
   border: 10px;
   padding: 15px;
-  width: 50%;
+  width: 70%;
   height: 500px;
   background-color: rgb(248,248,248);
   position: relative;

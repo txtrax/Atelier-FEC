@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MdCheck } from 'react-icons/md';
 
 const ThumbnailContainer = styled.div`
   postion: relative;
@@ -15,7 +16,7 @@ const ThumbnailImage = styled.img`
   border-radius: 50%;
 `;
 
-const FontAwesomeIcon = styled.i`
+const CheckIcon = styled(MdCheck)`
   position: absolute;
   padding: 2px;
   object-fit: cover;
@@ -23,8 +24,8 @@ const FontAwesomeIcon = styled.i`
   border-color: black;
   top: 0;
   right: 0;
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   background-color: white;
   border-radius: 50%;
 `;
@@ -42,7 +43,7 @@ export default function StyleThumbnail(props) {
   if (selectedStyle.style_id === style.style_id) {
     return (
       <ThumbnailContainer>
-        <FontAwesomeIcon icon="fa-solid fa-check" />
+        <CheckIcon />
         <ThumbnailImage src={style.photos[0].thumbnail_url} />
       </ThumbnailContainer>
     );

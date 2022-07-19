@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { MdOutlineStarOutline } from 'react-icons/md';
 import styled from 'styled-components';
 
 const SizeAndQuantity = styled.div`
@@ -67,18 +66,15 @@ export default function AddToCartForm(props) {
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
 
           {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>)}
-
         </SizeDropdown>
 
         <QuantityDropdown id="quantity" onChange={(e) => { onQuantitySelect(e); }}>
-
           {size ? null : <option value="-">-</option>}
-
           {size && getQuantity(sizeQuantArr).map((option) => option)}
-
         </QuantityDropdown>
 
       </SizeAndQuantity>
+
 
       <AddToCartContainer>
 
