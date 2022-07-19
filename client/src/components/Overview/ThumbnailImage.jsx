@@ -19,7 +19,7 @@ const CurrentImage = styled.img`
   border-color: black;
   height: 52px;
   width: 52px;
-  border-radius: 8px;
+  border-radius: 5px;
   object-fit: contain;
   justify-content: space-between
 `;

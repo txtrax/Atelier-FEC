@@ -69,7 +69,7 @@ export default function AddToCartForm(props) {
   };
 
   if (quantity) {
-    console.log(`this is size: ${size}`, `this is quantity: ${quantity}`);
+    console.log(`this is size: ${size}`, `this is quantity: ${quantity}`, `this is total: ${price * quantity}`);
   }
 
   return (
