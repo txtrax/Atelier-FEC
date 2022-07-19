@@ -39,8 +39,7 @@ const Name = styled.p`
   margin: 0;
 `;
 
-const Price = styled.p`
-  margin:0;
+const Price = styled.span`
   font-weight: 600;
   color: #43aa8b;
 `;
@@ -94,10 +93,16 @@ function ProductCard({ card }) {
             </Price>
           )
           : (
-            <Price style={{ color: 'red' }}>
-              $
-              {card.style.results[0].sale_price}
-            </Price>
+            <p style={{ padding: 0, margin: 0 }}>
+              <del>
+                $
+                {card.style.results[0].original_price}
+              </del>
+              <Price style={{ color: 'red' }}>
+                {'  $'}
+                {card.style.results[0].sale_price}
+              </Price>
+            </p>
           )}
         <StarRating />
       </CardInfo>
