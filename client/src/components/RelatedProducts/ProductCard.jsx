@@ -63,7 +63,7 @@ const StarButton = styled(MdOutlineStarOutline)`
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
-  const { setIsOpen } = useContext(ModalContext);
+  const { setIsOpen, setRelatedId } = useContext(ModalContext);
 
   return (
     <Card>
@@ -82,7 +82,7 @@ function ProductCard({ card }) {
             onClick={() => { setProductId(card.info.id); }}
           />
         )}
-      <StarButton onClick={() => { setIsOpen(true); }} />
+      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); }} />
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>
