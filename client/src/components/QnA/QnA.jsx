@@ -66,13 +66,14 @@ function QnA(props) {
   // };
   // const [questionsData, setQuestionsData] = useState([]);
   // const [filteredQuestions, setFilteredQuestions] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState(null);
 
   // this id is for testing
 
   // const [productId, setProductId] = useState(40353);
   const [questions, setQuestions] = useState([]);
-  const [displayQuestions, setDisplayQuestions] = useState(4);
+  const [displayQuestions, setDisplayQuestions] = useState([]);
+  // const [itemToShow, setItemToShow] = useState(4);
   const [openModal, setOpenModal] = useState(false);
   const { productId, setProductId } = useContext(IdContext);
   // const { searchInput } = this.state;
@@ -81,7 +82,9 @@ function QnA(props) {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
-        setQuestions(response.data.results);
+        setQuestions(response.data.results.sort((a, b) => a.helpfulness - b.helpfulness));
+        setDisplayQuestions(response.data.results.slice(0, 4).sort((a, b) => a.helpfulness - b.helpfulness));
+        // console.log(response.data.results.slice(0, 4), 'this is what displayed');
         // console.log(response.data.results, 'this is questions');
       })
       .catch((err) => {
@@ -115,7 +118,7 @@ function QnA(props) {
               handleSearch={handleSearch}
               searchInput={searchInput}
             />
-            <SearchBtn />
+            {/* <SearchBtn /> */}
           </SearchDiv>
         </form>
       </Container>
@@ -124,17 +127,20 @@ function QnA(props) {
           <QuestionsList
             productId={productId}
             questions={questions}
+            searchInput={searchInput}
+            displayQuestions={displayQuestions}
+            setDisplayQuestions={setDisplayQuestions}
           />
         )
           : null}
         <button onClick={handleModalOpen}>
           Add a Question
         </button>
-        {/* <AddQuestion
+        <AddQuestion
           productId={productId}
           openModal={openModal}
           handleModalClose={handleModalClose}
-        /> */}
+        />
       </Container>
     </FlexContainer>
   );
