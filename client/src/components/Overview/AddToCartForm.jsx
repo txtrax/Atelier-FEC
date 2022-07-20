@@ -109,7 +109,7 @@ export default function AddToCartForm(props) {
         size={size}
         quantity={quantity}
         photo={selectedStyle.photos[0]}
-        showModal={showModal}
+        setIsOpen={setIsOpen}
       />
       )}
 
