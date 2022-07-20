@@ -9,9 +9,9 @@ import ModalContext from '../ModalContext';
 const Card = styled.div`
   width: 260px;
   height: 100%;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #DABECA;
+  border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -21,7 +21,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #1d3557;
+  background: #5D5F71;
   object-fit: cover;
 `;
 
@@ -41,7 +41,6 @@ const Name = styled.p`
 
 const Price = styled.span`
   font-weight: 600;
-  color: #43aa8b;
 `;
 
 const StarButton = styled(MdOutlineStarOutline)`
