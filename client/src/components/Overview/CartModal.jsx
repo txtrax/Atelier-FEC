@@ -20,6 +20,7 @@ const ModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
   border: 1px solid #888;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -41,6 +42,7 @@ const ExitIcon = styled(MdClose)`
 
 const CheckoutContainer = styled.div`
   display: flex;
+  object-fit: cover;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
@@ -83,34 +85,44 @@ const CartContainer = styled.div`
 
 export default function CartModal(props) {
   const {
-    name, photo, price, quantity, size, style, setIsOpen
+    name, photo, price, quantity, size, style, setIsOpen,
   } = props;
 
   return (
     <Background>
       <ModalContent>
         <CheckoutContainer>
+
           <ExitIcon onClick={() => setIsOpen(false)} />
 
-          Subtotal:
-          {' $'}
-          {price * quantity}
+          <p>
+            Subtotal: $
+            {price * quantity}
+          </p>
+
           <CheckOutButton>
             Checkout
           </CheckOutButton>
+
         </CheckoutContainer>
-
         <ProductDetails>
+
           <ImageContainer>
+
             <img style={{ width: '90%', height: 'auto' }} src={photo.thumbnail_url} />
+
           </ImageContainer>
-
           <CartContainer>
-            <div>{`${name} - ${style} (${size})`}</div>
-            <div>{`${quantity} x $${price}`}</div>
-          </CartContainer>
-        </ProductDetails>
 
+            <p>{`${name} - ${style} (${size})`}</p>
+
+            <p>
+              {`${quantity}\u00A0\u00A0\u00A0\u00A0x\u00A0\u00A0\u00A0\u00A0$${price}`}
+            </p>
+
+          </CartContainer>
+
+        </ProductDetails>
       </ModalContent>
     </Background>
   );

@@ -80,18 +80,20 @@ export default function AddToCartForm(props) {
 
   return (
     <AddToCartContainer>
-
       <SizeAndQuantity>
 
         <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
 
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
 
-          {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>)}
+          {sizeQuantArr.map((sizeQuan) => {
+            <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>;
+          })}
         </SizeDropdown>
 
         <QuantityDropdown id="quantity" onChange={(e) => { onQuantitySelect(e); }}>
           {size ? null : <option value="-">-</option>}
+
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
 

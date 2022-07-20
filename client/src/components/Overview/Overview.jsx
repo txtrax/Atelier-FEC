@@ -12,9 +12,9 @@ const MainContainer = styled.div`
 `;
 
 const OverviewHeader = styled.h3`
-  text-transform: uppercase;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  display: flex;
+  font-style: italic;
+  justify-content: center;
 `;
 
 // make a get overview function but this works
@@ -22,6 +22,7 @@ export default function Overview() {
   const { productId } = useContext(IdContext);
 
   const [overview, setOverview] = useState(null);
+  const [ad, setAd] = useState(undefined); // for fun
 
   useEffect(() => {
     axios.get(`/products/${productId}`)
@@ -29,23 +30,18 @@ export default function Overview() {
         setOverview(results.data);
       })
       .catch((err) => {
-        ('error retrieving overview', err);
+        console.log('error retrieving product', err);
       });
   }, []);
-
-  if (overview === null) {
-    return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
-  }
 
   return (
     <MainContainer>
 
-      {/* <OverviewHeader>{ ad || 'Add Announcement Here'}</OverviewHeader> */}
-      <OverviewHeader>{'Add Logo or Announcement Here'}</OverviewHeader>
+      <OverviewHeader>{ ad || 'Add Logo or Announcement Here'}</OverviewHeader>
 
-      <OverviewGallery overview={overview} />
+      {overview && <OverviewGallery overview={overview} />}
 
-      <OverviewDescription overview={overview} />
+      {overview && <OverviewDescription overview={overview} />}
 
     </MainContainer>
   );

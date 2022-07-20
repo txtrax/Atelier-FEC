@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 import ProductDescription from './ProductDescription';
 import ProductFeatureList from './ProductFeatureList';
 
@@ -13,6 +14,7 @@ const DescriptionAndFeatures = styled.div`
 
 export default function OverviewDescription(props) {
   const { overview } = props;
+
   return (
     <DescriptionAndFeatures>
       <ProductDescription
@@ -25,3 +27,18 @@ export default function OverviewDescription(props) {
     </DescriptionAndFeatures>
   );
 }
+
+OverviewDescription.propTypes = {
+  overview: PropTypes.shape({
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }),
+};
+
+OverviewDescription.defaultProps = {
+  overview: {},
+};
