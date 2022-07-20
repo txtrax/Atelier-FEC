@@ -16,9 +16,9 @@ const TableWrapper = styled.div`
   position: fixed;
   overflow: hidden;
   border-radius: 15px;
-  border: 4px solid #457b9d;
+  border: 4px solid #DABECA;
   padding: 20px;
-  background-color: #a8dadc;
+  background-color: #5D5F71;
 `;
 
 const MainTable = styled.table`
@@ -33,21 +33,22 @@ const CloseButton = styled(AiFillCloseCircle)`
   height: 25px;
   top: 10px;
   right: 10px;
-  color: #e63946;
+  color: #DABECA;
 `;
 
 const TableRow = styled.tr`
   padding: 20px;
+  color: #DABECA;
 `;
 
 const TableHeader = styled.th`
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
-  color: #1d3557;
+  color: #DABECA;
 `;
 
 const Check = styled(FaCheck)`
-  color: #43aa8b;
+  color: #DABECA;
 `;
 
 function ComparisonModal() {
