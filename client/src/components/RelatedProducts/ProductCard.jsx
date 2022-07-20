@@ -9,9 +9,9 @@ import ModalContext from '../ModalContext';
 const Card = styled.div`
   width: 260px;
   height: 100%;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #DABECA;
+  border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -21,7 +21,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #1d3557;
+  background: #5D5F71;
   object-fit: cover;
 `;
 
@@ -39,10 +39,8 @@ const Name = styled.p`
   margin: 0;
 `;
 
-const Price = styled.p`
-  margin:0;
+const Price = styled.span`
   font-weight: 600;
-  color: #43aa8b;
 `;
 
 const StarButton = styled(MdOutlineStarOutline)`
@@ -58,7 +56,7 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #ffbe0b;
+    background: #DABECA;
   }
 `;
 function ProductCard({ card }) {
@@ -94,10 +92,16 @@ function ProductCard({ card }) {
             </Price>
           )
           : (
-            <Price style={{ color: 'red' }}>
-              $
-              {card.style.results[0].sale_price}
-            </Price>
+            <p style={{ padding: 0, margin: 0 }}>
+              <del>
+                $
+                {card.style.results[0].original_price}
+              </del>
+              <Price style={{ color: 'red' }}>
+                {'  $'}
+                {card.style.results[0].sale_price}
+              </Price>
+            </p>
           )}
         <StarRating />
       </CardInfo>

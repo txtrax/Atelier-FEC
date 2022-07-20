@@ -16,7 +16,7 @@ const ListContainer = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  color: #f1faee;
+  color: #5D5F71;
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;

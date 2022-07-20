@@ -17,7 +17,7 @@ const ListContainer = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  color: #f1faee;
+  color: #5D5F71;
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -60,17 +60,17 @@ const AddOutfit = styled.button`
   width: 266px;
   height: 394.75px;
   font-size: 30px;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #DABECA;
+  border: 3px solid #BF8B85;
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  background: #a8dadc;
-  color: #f1faee;
+  background: #5D5F71;
+  color: #DABECA;
   }
 `;
 

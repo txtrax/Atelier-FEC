@@ -20,11 +20,6 @@ function App() {
 
   return (
     <AppContainer>
-      <header>This is App</header>
-      {/* <h4>
-        We use product:
-        { productId }
-      </h4> */}
       <IdContext.Provider value={providerIdValue}>
         <Overview />
         <RelatedProducts />
