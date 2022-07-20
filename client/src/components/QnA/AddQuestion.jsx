@@ -123,7 +123,7 @@ function AddQuestion({ productId, handleModalClose, openModal }) {
       </div>
     </div>
   );
-  console.log(questionBody);
+  // console.log(questionBody);
 
   let renderValue = null;
   if (openModal) {
