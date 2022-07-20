@@ -78,6 +78,7 @@ const CartContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 60%;
 `;
 
 export default function CartModal(props) {
@@ -91,8 +92,8 @@ export default function CartModal(props) {
         <CheckoutContainer>
           <ExitIcon onClick={() => setIsOpen(false)} />
 
-          Subtotal :
-          {' '}
+          Subtotal:
+          {' $'}
           {price * quantity}
           <CheckOutButton>
             Checkout
@@ -106,7 +107,7 @@ export default function CartModal(props) {
 
           <CartContainer>
             <div>{`${name} - ${style} (${size})`}</div>
-            <div>{`${quantity} x ${price}`}</div>
+            <div>{`${quantity} x $${price}`}</div>
           </CartContainer>
         </ProductDetails>
 
