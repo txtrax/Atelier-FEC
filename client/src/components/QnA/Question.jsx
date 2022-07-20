@@ -8,7 +8,7 @@ function Question({ question, questionId }) {
   const answerList = answerKey.map((Ans) => question.answers[Ans]);
   return (
     <div>
-      {console.log('QUESTION, question = ', question)}
+      {/* {console.log('QUESTION, question = ', question)} */}
       <span>
         Q:
         {question.question_body}

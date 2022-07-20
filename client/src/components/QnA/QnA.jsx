@@ -84,8 +84,8 @@ function QnA(props) {
       .then((response) => {
         setQuestions(response.data.results.sort((a, b) => a.helpfulness - b.helpfulness));
         setDisplayQuestions(response.data.results.slice(0, 4).sort((a, b) => a.helpfulness - b.helpfulness));
-        console.log(response.data.results.slice(0, 4), 'this is what displayed');
-        console.log(response.data.results, 'this is questions');
+        // console.log(response.data.results.slice(0, 4), 'this is what displayed');
+        // console.log(response.data.results, 'this is questions');
       })
       .catch((err) => {
         console.log('error getting data', err);

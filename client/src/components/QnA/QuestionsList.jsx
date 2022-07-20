@@ -7,8 +7,8 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
 }) {
   // const answerKey = questions.answers;
   // console.log(answerKey, 'keyyy');
-  console.log(displayQuestions, 'display questionsss');
-  console.log(questions, 'here is questionsss');
+  // console.log(displayQuestions, 'display questionsss');
+  // console.log(questions, 'here is questionsss');
   return (
     <div className="question-list">
       {/* {console.log('SEARCH INPUT = ', searchInput)}
