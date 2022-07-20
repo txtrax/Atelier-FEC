@@ -54,7 +54,7 @@ const DeleteButton = styled(TiDeleteOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #e63946;
+    background: #DABECA;
   }
 `;
 
