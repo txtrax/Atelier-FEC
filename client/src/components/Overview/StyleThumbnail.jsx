@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { MdCheck } from 'react-icons/md';
 
 const ThumbnailContainer = styled.div`
-  postion: relative;
+  position: relative;
+  display: flex;
+  height: 52px;
+  width: 52px;
 `;
 
 const ThumbnailImage = styled.img`
@@ -50,9 +53,7 @@ export default function StyleThumbnail(props) {
   }
   return (
     <ThumbnailContainer>
-
       <ThumbnailImage src={style.photos[0].thumbnail_url} onClick={() => onSelect()} />
     </ThumbnailContainer>
-
   );
 }
