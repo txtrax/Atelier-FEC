@@ -74,7 +74,8 @@ export default function ProductInfo(props) {
 
       <AddToCartForm
         selectedStyle={selectedStyle}
-        price={overview.default_price} />
+        price={overview.default_price}
+        name={overview.name} />
 
       <ShareContainer>
         <IconButton style={{backgroundColor: "#4267B2"}}><FacebookIcon /></IconButton>

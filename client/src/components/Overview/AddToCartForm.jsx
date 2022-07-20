@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import CartModal from './CartModal';
 
 const AddToCartContainer = styled.div`
   height: 115px;
@@ -41,12 +42,14 @@ const AddToCartButton = styled.button`
 `;
 
 export default function AddToCartForm(props) {
-  const { selectedStyle, price } = props;
+  const { selectedStyle, price, name } = props;
+
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
   const [clicked, setClicked] = useState(false);
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const onSizeSelect = (e) => {
     setClicked(false);
@@ -69,9 +72,11 @@ export default function AddToCartForm(props) {
     return quantityOptions;
   };
 
-  if (quantity) {
-    console.log(`this is size: ${size}`, `this is quantity: ${quantity}`, `this is total: ${price * quantity}`);
-  }
+  const showModal = () => {
+    if (quantity) {
+      setIsOpen(true);
+    }
+  };
 
   return (
     <AddToCartContainer>
@@ -92,9 +97,21 @@ export default function AddToCartForm(props) {
 
       </SizeAndQuantity>
 
-      <AddToCartButton>
+      <AddToCartButton onClick={showModal}>
         Add to Cart
       </AddToCartButton>
+
+      {isOpen && (
+      <CartModal
+        price={price}
+        name={name}
+        style={selectedStyle.name}
+        size={size}
+        quantity={quantity}
+        photo={selectedStyle.photos[0]}
+        showModal={showModal}
+      />
+      )}
 
     </AddToCartContainer>
   );
