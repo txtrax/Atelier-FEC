@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { MdChevronLeft, MdChevronRight, MdFullscreen, MdFullscreenExit } from 'react-icons/md';
 import Image from './Image';
 
 const GalleryContainer = styled.div`
@@ -13,6 +13,20 @@ const GalleryContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const FullscreenIcon = styled(MdFullscreen)`
+  position: absolute;
+  padding: 2px;
+  object-fit: cover;
+  top: 10px;
+  right: 10px;
+  width: 27px;
+  height: 27px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const SliderIconLeft = styled(MdChevronLeft)`
@@ -50,6 +64,8 @@ export default function MainCarousel(props) {
 
   return (
     <GalleryContainer>
+
+      <FullscreenIcon />
 
       {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 

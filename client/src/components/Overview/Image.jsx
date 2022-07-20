@@ -13,7 +13,6 @@ function Image(props) {
 
   return (
     <MainImage src={image.thumbnail_url} />
-    // <img alt="mainImage" src={image.thumbnail_url} />
   );
 }
 
