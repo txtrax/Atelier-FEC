@@ -7,25 +7,25 @@ const FeaturesContainer = styled.li`
 `;
 
 export default function ProductFeature(props) {
-  const { feature } = props;
+  const { pair } = props;
 
   return (
     <FeaturesContainer>
-      {feature.feature}
+      {pair.feature}
       :
       {' '}
-      {feature.value}
+      {pair.value}
     </FeaturesContainer>
   );
 }
 
 ProductFeature.propTypes = {
-  feature: PropTypes.shape({
+  pair: PropTypes.shape({
     feature: PropTypes.string,
     value: PropTypes.string,
   }),
 };
 
 ProductFeature.defaultProps = {
-  feature: {},
+  pair: {},
 };

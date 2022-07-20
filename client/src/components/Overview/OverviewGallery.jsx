@@ -30,32 +30,28 @@ export default function OverviewGallery(props) {
       });
   }, []);
 
-  if (styles.length === 0 || selectedStyle === null) {
-    return <div>Hello from Overview Gallery ┬┴┬┴┤(･_├┬┴┬┴</div>;
-  }
-  // console.log(overview)
   return (
     <ProductContainer>
 
-      <ThumbnailCarousel
+      {selectedStyle && (<ThumbnailCarousel
         currentIndex={currentIndex}
         setIndex={setIndex}
         photos={selectedStyle.photos}
-      />
+      />)}
 
-      <MainCarousel
+      {selectedStyle && (<MainCarousel
         currentIndex={currentIndex}
         setIndex={setIndex}
         photos={selectedStyle.photos}
-      />
+      />)}
 
-      <ProductInfo
+      {styles.length !== 0 && (<ProductInfo
         overview={overview}
         styles={styles}
         selectedStyle={selectedStyle}
         setSelectedStyle={setSelectedStyle}
         setIndex={setIndex}
-      />
+      />)}
 
     </ProductContainer>
   );

@@ -25,7 +25,7 @@ export default function ProductFeatureList(props) {
         <b>Product Details</b>
       </FeaturesSlogan>
 
-      {features.map((feature) => <ProductFeature feature={feature} key={feature.feature} />)}
+      {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
 
     </DescriptionContainer>
   );

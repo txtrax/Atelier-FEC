@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import ThumbnailImage from './ThumbnailImage';
@@ -42,14 +42,10 @@ opacity: 0.5;
 export default function ThumbnailCarousel(props) {
   const { currentIndex, setIndex, photos } = props;
 
-  const slideDown = () => {
-    console.log('You clicked down');
-  };
-
   return (
     <ThumbnailContainer>
 
-      {currentIndex > 0 && <SliderIconUp />}
+      {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />}
 
       {photos.map((image, index) => {
         return <ThumbnailImage
@@ -60,8 +56,7 @@ export default function ThumbnailCarousel(props) {
           setIndex={setIndex} />;
       })}
 
-      {/* adjust this to show only 7 */}
-      {currentIndex < photos.length - 1 && <SliderIconDown onClick={slideDown} />}
+      {currentIndex + 7 < photos.length - 1 && <SliderIconDown onClick={() => setIndex(currentIndex + 1)} />}
 
     </ThumbnailContainer>
   );
