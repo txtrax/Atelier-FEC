@@ -81,16 +81,15 @@ const CartContainer = styled.div`
 `;
 
 export default function CartModal(props) {
-  console.log(props);
   const {
-    name, photo, price, quantity, size, style, showModal
+    name, photo, price, quantity, size, style, setIsOpen
   } = props;
 
   return (
     <Background>
       <ModalContent>
         <CheckoutContainer>
-          <ExitIcon onClick={showModal(false)} />
+          <ExitIcon onClick={() => setIsOpen(false)} />
 
           Subtotal :
           {' '}
