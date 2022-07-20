@@ -4,6 +4,7 @@ import ProductDescription from './ProductDescription';
 import ProductFeatureList from './ProductFeatureList';
 
 const DescriptionAndFeatures = styled.div`
+  padding: 20px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -15,6 +16,7 @@ export default function OverviewDescription(props) {
   return (
     <DescriptionAndFeatures>
       <ProductDescription
+        slogan={overview.slogan}
         description={overview.description}
       />
       <ProductFeatureList

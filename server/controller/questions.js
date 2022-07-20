@@ -9,12 +9,22 @@ const options = {
 };
 
 module.exports.getQuestions = (id, cb) => {
-  axios.get(`${options.url}qa/questions?product_id=${id}`, { headers: options.headers })
+  axios.get(`${options.url}qa/questions?product_id=${id}&count=100`, { headers: options.headers })
     .then((result) => {
       cb(result);
     })
     .catch((err) => {
       console.log('Error when getting questions info: ', err);
+    });
+};
+
+module.exports.postQuestion = (params, cb) => {
+  axios.post(`${options.url}qa/questions`, params, { headers: options.headers })
+    .then((result) => {
+      cb(result);
+    })
+    .catch((err) => {
+      console.log('Error when posting question: ', err);
     });
 };
 

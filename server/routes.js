@@ -41,6 +41,18 @@ module.exports.getQuestions = (req, res) => {
 //   res.status(201);
 // };
 
+module.exports.postQuestion = (req, res) => {
+  const params = {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+    product_id: req.body.product_id,
+  };
+  questions.postQuestion(params, (result) => {
+    res.status(201).json(result.data);
+  });
+};
+
 module.exports.getAnswers = (req, res) => {
   const { qid } = req.params;
   questions.getAnswers(qid, (result) => {
@@ -81,5 +93,31 @@ module.exports.getReviewMeta = (req, res) => {
     }
     console.log('IN ROUTES, getReviewMeta SUCCESS!!!');
     res.status(200).json(result.data);
+  });
+};
+
+module.exports.markReviewHelpful = (req, res) => {
+  const { id } = req.params;
+  console.log('IN ROUTES markReviewHelpful id = ', id);
+  reviews.markReviewHelpful(id, (err) => {
+    if (err) {
+      console.log('IN ROUTES, markReviewHelpful FAILED');
+      res.status(500).send();
+    }
+    console.log('IN ROUTES, markReviewHelpful SUCCESS!!!');
+    res.status(204).send();
+  });
+};
+
+module.exports.reportReview = (req, res) => {
+  const { id } = req.params;
+  console.log('IN ROUTES reportReview id = ', id);
+  reviews.reportReview(id, (err) => {
+    if (err) {
+      console.log('IN ROUTES, reportReview FAILED');
+      res.status(500).send();
+    }
+    console.log('IN ROUTES, reportReview SUCCESS!!!');
+    res.status(204).send();
   });
 };

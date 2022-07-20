@@ -1,11 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
+
+const MainImage = styled.img`
+  position: relative;
+  border: 1px;
+  border-radius: 5px;
+`;
 
 function Image(props) {
   const { image } = props;
 
   return (
-    <img alt="mainImage" src={image.thumbnail_url} />
+    <MainImage src={image.thumbnail_url} />
+    // <img alt="mainImage" src={image.thumbnail_url} />
   );
 }
 

@@ -82,8 +82,8 @@ function QnA(props) {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
-        setQuestions(response.data.results);
-        setDisplayQuestions(response.data.results.slice(0, 4));
+        setQuestions(response.data.results.sort((a, b) => a.helpfulness - b.helpfulness));
+        setDisplayQuestions(response.data.results.slice(0, 4).sort((a, b) => a.helpfulness - b.helpfulness));
         console.log(response.data.results.slice(0, 4), 'this is what displayed');
         console.log(response.data.results, 'this is questions');
       })
@@ -118,7 +118,7 @@ function QnA(props) {
               handleSearch={handleSearch}
               searchInput={searchInput}
             />
-            <SearchBtn />
+            {/* <SearchBtn /> */}
           </SearchDiv>
         </form>
       </Container>

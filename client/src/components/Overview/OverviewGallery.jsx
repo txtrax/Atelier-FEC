@@ -13,10 +13,12 @@ const ProductContainer = styled.div`
 `;
 
 export default function OverviewGallery(props) {
-  const { overview , setAd } = props;
+  const { overview } = props;
+
   const { productId } = useContext(IdContext);
   const [styles, setStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [currentIndex, setIndex] = useState(0);
 
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
@@ -32,15 +34,19 @@ export default function OverviewGallery(props) {
   if (styles.length === 0 || selectedStyle === null) {
     return <div>Hello from Overview Gallery ┬┴┬┴┤(･_├┬┴┬┴</div>;
   }
-
+  // console.log(overview)
   return (
     <ProductContainer>
 
       <ThumbnailCarousel
+        currentIndex={currentIndex}
+        setIndex={setIndex}
         photos={selectedStyle.photos}
       />
 
       <MainCarousel
+        currentIndex={currentIndex}
+        setIndex={setIndex}
         photos={selectedStyle.photos}
       />
 
@@ -48,7 +54,8 @@ export default function OverviewGallery(props) {
         overview={overview}
         styles={styles}
         selectedStyle={selectedStyle}
-        setAd={setAd}
+        setSelectedStyle={setSelectedStyle}
+        setIndex={setIndex}
       />
 
     </ProductContainer>

@@ -4,40 +4,45 @@ import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
+  border: 10px;
+  padding: 0px 0px 0px 25px;
+  width: 35%;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export default function ProductInfo(props) {
   const {
-    overview, styles, selectedStyle, setAd,
+    overview, styles, selectedStyle, setSelectedStyle, setIndex
   } = props;
 
   return (
     <InfoContainer>
 
-      <div>Stars go here</div>
+      {/* <div>Stars go here. Remember to add</div> */}
 
       <div>{overview.category.toUpperCase()}</div>
 
       <h2>{overview.name}</h2>
 
-      <div>{overview.default_price}</div>
+      <div>${overview.default_price}</div>
 
       <div>
         <b>STYLE > </b>
-        {styles[0].name.toUpperCase()}
+        {selectedStyle.name.toUpperCase()}
       </div>
 
-      <StyleSelector styles={styles} />
+      <StyleSelector
+        styles={styles}
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        setIndex={setIndex} />
 
       <AddToCartForm
         selectedStyle={selectedStyle}
-        price={overview.default_price}
-        setAd={setAd}
-      />
+        price={overview.default_price} />
 
     </InfoContainer>
   );

@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  text-decoration: underline;
+  font-weight: normal;
+`;
+
 function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
   const [helpfulToggle, setHelpfulToggle] = useState(false);
   const [reportToggle, setReportToggle] = useState(false);
@@ -31,27 +40,27 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
       ,
       {convertDate(answerDate)}
       &nbsp;Helpful?&nbsp;
-      <button
+      <Button
         className="answer-helpful-button"
         type="button"
         name="helpful"
         onClick={(event) => { handleEventPut(event); }}
       >
         Yes
-      </button>
-      &#40;
+      </Button>
+      {/* &#40; */}
       &nbsp;(
       {helpfulToggle ? answerHelfulness + 1 : answerHelfulness}
       ) | &nbsp;
-      {answerHelfulness}
-      &#41;
-      <button
+      {/* {answerHelfulness} */}
+      {/* &#41; */}
+      <Button
         className="answer-report"
         type="button"
         onClick={event => { handleEventPut(event);}}
       >
         Report
-      </button>
+      </Button>
     </div>
   );
 }
