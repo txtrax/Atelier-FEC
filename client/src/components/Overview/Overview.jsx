@@ -11,7 +11,7 @@ const MainContainer = styled.div`
   flex-direction: column;
 `;
 
-const OverviewHeader = styled.h3`
+const OverviewHeader = styled.h1`
   display: flex;
   font-style: italic;
   justify-content: center;
@@ -22,7 +22,6 @@ export default function Overview() {
   const { productId } = useContext(IdContext);
 
   const [overview, setOverview] = useState(null);
-  const [ad, setAd] = useState(undefined); // for fun
 
   useEffect(() => {
     axios.get(`/products/${productId}`)
@@ -37,7 +36,7 @@ export default function Overview() {
   return (
     <MainContainer>
 
-      <OverviewHeader>{ ad || 'Add Logo or Announcement Here'}</OverviewHeader>
+      <OverviewHeader>Atelier</OverviewHeader>
 
       {overview && <OverviewGallery overview={overview} />}
 
