@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
 import StarRatings from 'react-star-ratings';
-// import StarRating from './StarRating';
 import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
@@ -67,6 +66,7 @@ function ProductCard({ card }) {
     if (reviews.length !== 0) {
       return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
     }
+    return 0;
   }
 
   return (

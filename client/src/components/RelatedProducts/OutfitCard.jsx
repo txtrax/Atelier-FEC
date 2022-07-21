@@ -64,6 +64,7 @@ function OutfitCard({ card, deleteCard }) {
     if (reviews.length !== 0) {
       return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
     }
+    return 0;
   }
 
   return (
