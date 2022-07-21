@@ -7,7 +7,7 @@ const ThumbnailContainer = styled.div`
   width: 10%;
   padding: 30px 0px 30px 10px;
   position: relative;
-  background-color: rgb(248,248,248);
+  background-color: #BF8B85;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,8 @@ height: 2em;
 width: 2em;
 position: absolute;
 top: 5px;
-background: rgb(248,248,248);
+color: white;
+background: #BF8B85;
 border-radius: 50%;
 opacity: 0.5;
 &:hover {
@@ -31,7 +32,8 @@ height: 2em;
 width: 2em;
 position: absolute;
 bottom: 5px;
-background: rgb(248,248,248);
+color: white;
+background: #BF8B85;
 border-radius: 50%;
 opacity: 0.5;
 &:hover {

@@ -84,11 +84,11 @@ export default function ZoomModal(props) {
       <ExitIcon onClick={() => setZoomIn(false)} />
 
       <ZoomModalContent>
-      {currentIndex > 0 && <ZoomIconLeft onClick={() => setIndex(currentIndex - 1)} />}
+        {currentIndex > 0 && <ZoomIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
         <ModalImage src={image.thumbnail_url} />
 
-      {currentIndex < photos.length - 1 && <ZoomIconRight onClick={() => setIndex(currentIndex + 1)} />}
+        {currentIndex < photos.length - 1 && <ZoomIconRight onClick={() => setIndex(currentIndex + 1)} />}
       </ZoomModalContent>
 
     </Background>

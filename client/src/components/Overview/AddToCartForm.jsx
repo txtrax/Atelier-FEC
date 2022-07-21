@@ -22,6 +22,7 @@ const SizeDropdown = styled.select`
   width: 175px;
   height: 50px;
   border: 1px solid;
+  border-color: #5D5F71;
   text-align: center;
 `;
 
@@ -29,6 +30,7 @@ const QuantityDropdown = styled.select`
   width: 75px;
   height: 50px;
   border: 1px solid;
+  border-color: #5D5F71;
   text-align: center;
 `;
 
@@ -37,7 +39,7 @@ const AddToCartButton = styled.button`
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
-  background-color: black;
+  background-color: #5D5F71;
   color: white;
 `;
 
