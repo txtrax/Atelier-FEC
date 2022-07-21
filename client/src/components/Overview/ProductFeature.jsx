@@ -9,6 +9,14 @@ const FeaturesContainer = styled.li`
 export default function ProductFeature(props) {
   const { pair } = props;
 
+  if (pair.value === null) {
+    return (
+      <FeaturesContainer>
+        {pair.feature}
+      </FeaturesContainer>
+    );
+  }
+
   return (
     <FeaturesContainer>
       {pair.feature}
