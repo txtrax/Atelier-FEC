@@ -48,6 +48,12 @@ const AddToCartButton = styled.button`
   }
 `;
 
+const OutOfStockContainer = styled.div`
+  margin-bottom: 10px;
+  text-align: center;
+  color: #DABECA;
+`;
+
 export default function AddToCartForm(props) {
   const { selectedStyle, price, name } = props;
 
@@ -100,9 +106,13 @@ export default function AddToCartForm(props) {
         </QuantityDropdown>
       </SizeAndQuantity>
 
-      <AddToCartButton onClick={showModal}>
-        Add to Cart
-      </AddToCartButton>
+      {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
+        <AddToCartButton onClick={showModal}>
+          Add to Cart
+        </AddToCartButton>
+      ) : (
+        <OutOfStockContainer>-OUT OF STOCK-</OutOfStockContainer>
+      )}
 
       {isOpen && (
       <CartModal

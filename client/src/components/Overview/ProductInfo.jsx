@@ -101,9 +101,9 @@ export default function ProductInfo(props) {
         name={overview.name} />
 
       <ShareContainer>
-        <IconButton style={{backgroundColor: "#4267B2"}}><FacebookIcon /></IconButton>
-        <IconButton style={{backgroundColor: "#1DA1F2"}}><TwitterIcon /></IconButton>
-        <IconButton style={{backgroundColor: "#E60023"}}><PinterestIcon /></IconButton>
+        <IconButton style={{backgroundColor: '#4267B2'}}><FacebookIcon /></IconButton>
+        <IconButton style={{backgroundColor: '#1DA1F2'}}><TwitterIcon /></IconButton>
+        <IconButton style={{backgroundColor: '#E60023'}}><PinterestIcon /></IconButton>
       </ShareContainer>
 
     </InfoContainer>

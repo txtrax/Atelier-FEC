@@ -11,6 +11,12 @@ const MainImage = styled.img`
 function Image(props) {
   const { image } = props;
 
+  if (image.thumbnail_url === null) {
+    return (
+      <div style={{ color: '#5D5F71' }}>NOT AVAILABLE</div>
+    );
+  }
+
   return (
     <MainImage src={image.thumbnail_url} />
   );
