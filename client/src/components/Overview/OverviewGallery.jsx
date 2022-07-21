@@ -29,7 +29,7 @@ export default function OverviewGallery(props) {
       .catch((err) => {
         console.log('error getting styles', err);
       });
-  }, []);
+  }, [productId]);
 
   return (
     <ProductContainer>

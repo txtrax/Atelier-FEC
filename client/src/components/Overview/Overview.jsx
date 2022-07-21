@@ -31,7 +31,7 @@ export default function Overview() {
       .catch((err) => {
         console.log('error retrieving product', err);
       });
-  }, []);
+  }, [productId]);
 
   return (
     <MainContainer>
