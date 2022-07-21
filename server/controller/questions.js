@@ -28,6 +28,16 @@ module.exports.postQuestion = (params, cb) => {
     });
 };
 
+module.exports.postAnswer = (qid, body, cb) => {
+  axios.post(`${options.url}qa/questions/${qid}/answers`, body, { headers: options.headers })
+    .then((result) => {
+      cb(result);
+    })
+    .catch((err) => {
+      console.log('Error when posting answer: ', err);
+    });
+};
+
 module.exports.getAnswers = (qid, cb) => {
   axios.get(`${options.url}qa/questions/${qid}/answers`, { headers: options.headers })
     .then((result) => {
@@ -45,6 +55,26 @@ module.exports.putHelpfulAnswers = (answerId, cb) => {
     })
     .catch((err) => {
       console.log('Error when putting helpfulness: ', err);
+    });
+};
+
+module.exports.putReportAnswer = (answerId, cb) => {
+  axios.put(`${options.url}qa/answers/${answerId}/report`, {}, { headers: options.headers })
+    .then((result) => {
+      cb(result);
+    })
+    .catch((err) => {
+      console.log('Error when putting report: ', err);
+    });
+};
+
+module.exports.putHelpfulQuestion = (qid, cb) => {
+  axios.put(`${options.url}qa/questions/${qid}/helpful`, {}, { headers: options.headers })
+    .then((result) => {
+      cb(result);
+    })
+    .catch((err) => {
+      console.log('Error when putting question helpfulness: ', err);
     });
 };
 

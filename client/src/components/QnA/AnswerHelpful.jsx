@@ -9,6 +9,15 @@ const Button = styled.button`
   font-weight: normal;
 `;
 
+const AnswerHelpfulDiv = styled.div`
+  font-size: 16px;
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;
+
 function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
   const [helpfulToggle, setHelpfulToggle] = useState(false);
   const [reportToggle, setReportToggle] = useState(false);
@@ -20,20 +29,17 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
     // eslint-disable-next-line no-unused-expressions, no-nested-ternary
     !helpfulToggle && event.target.getAttribute('name') === 'helpful'
       ? (axios.put(`/qa/answers/${answerId}/helpful`)
-        .then((response) => console.log('added +1 helpful'), setHelpfulToggle(true))
+        .then(() => console.log('added +1 helpful'), setHelpfulToggle(true))
         .catch((err) => console.log(err))
       )
       : !reportToggle && event.target.getAttribute('name') === 'report'
-        ? (axios.put('/qa/questions/answer/helpful', {
-          answerId,
-          type: event.target.getAttribute('name'),
-        })
-          .then((response) => console.log('+1'))
+        ? (axios.put(`/qa/answers/${answerId}/report`)
+          .then(() => console.log('reported'))
           .catch((err) => console.log(err)), setReportToggle(true))
         : null;
   };
   return (
-    <div className="answer-helpful-div">
+    <AnswerHelpfulDiv className="answer-helpful-div">
       by
       {' '}
       {answerName}
@@ -48,20 +54,18 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
       >
         Yes
       </Button>
-      {/* &#40; */}
       &nbsp;(
       {helpfulToggle ? answerHelfulness + 1 : answerHelfulness}
       ) | &nbsp;
-      {/* {answerHelfulness} */}
-      {/* &#41; */}
       <Button
         className="answer-report"
         type="button"
-        onClick={event => { handleEventPut(event);}}
+        name="report"
+        onClick={(event) => { handleEventPut(event); }}
       >
         Report
       </Button>
-    </div>
+    </AnswerHelpfulDiv>
   );
 }
 

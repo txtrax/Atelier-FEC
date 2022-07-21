@@ -47,13 +47,13 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
           // />)
         })
         : questions.filter((question) => {
-          if (question && question.question && question.question_body.toLowerCase()
+          if (question.question_body.toLowerCase()
             .includes(searchInput.toLowerCase())) {
             return question;
           }
         })
-          .slice(0, 5).map((question, count) => (
-            count >= 2
+          .slice(0, 4).map((question, count) => (
+            count >= 3
               ? (
                 <MoreQuestions
                   questions={questions}
@@ -63,7 +63,7 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
               : (
                 <Question
                   question={question}
-                  questionId={productId}
+                  productId={productId}
                   key={question.question_id}
                 />
               )
