@@ -1,24 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import { TiDeleteOutline } from 'react-icons/ti';
-import StarRating from './StarRating';
+import { MdOutlineClose } from 'react-icons/md';
+import StarRatings from 'react-star-ratings';
 
 const Card = styled.div`
   width: 260px;
   height: 100%;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #F8F8F8;
+  border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #1d3557;
+  background: #BF8B85;
   object-fit: cover;
 `;
 
@@ -39,10 +40,9 @@ const Name = styled.p`
 const Price = styled.p`
   margin:0;
   font-weight: 600;
-  color: #43aa8b;
 `;
 
-const DeleteButton = styled(TiDeleteOutline)`
+const DeleteButton = styled(MdOutlineClose)`
   position: relative;
   background: rgb(248,248,248);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -55,11 +55,18 @@ const DeleteButton = styled(TiDeleteOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #e63946;
+    background: #BF8B85;
   }
 `;
 
 function OutfitCard({ card, deleteCard }) {
+  function getAvgRating(reviews) {
+    if (reviews.length !== 0) {
+      return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
+    }
+    return 0;
+  }
+
   return (
     <Card>
       {(card.style.results[0].photos[0].thumbnail_url !== null)
@@ -86,7 +93,7 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRating />
+        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#5D5F71" />
       </CardInfo>
     </Card>
   );

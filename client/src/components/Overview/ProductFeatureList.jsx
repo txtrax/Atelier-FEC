@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 import ProductFeature from './ProductFeature';
 
 const DescriptionContainer = styled.div`
@@ -24,7 +25,19 @@ export default function ProductFeatureList(props) {
         <b>Product Details</b>
       </FeaturesSlogan>
 
-      {features.map((feature) => <ProductFeature feature={feature} key={feature.feature} />)}
+      {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
+
     </DescriptionContainer>
   );
 }
+
+ProductFeatureList.propTypes = {
+  features: PropTypes.arrayOf(PropTypes.shape({
+    feature: PropTypes.string,
+    value: PropTypes.string,
+  })),
+};
+
+ProductFeatureList.defaultProps = {
+  features: [],
+};

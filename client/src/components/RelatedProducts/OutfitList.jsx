@@ -17,7 +17,7 @@ const ListContainer = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  color: #f1faee;
+  color: #5D5F71;
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -59,18 +59,18 @@ const SliderIconRight = styled(MdChevronRight)`
 const AddOutfit = styled.button`
   width: 266px;
   height: 394.75px;
-  font-size: 30px;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  font-size: 2em;
+  color: #5D5F71;
+  background: #F8F8F8;
+  border: 3px solid #BF8B85;
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  background: #a8dadc;
-  color: #f1faee;
+  color: #BF8B85;
+  font-size: 3em;
   }
 `;
 
@@ -96,6 +96,10 @@ function OutfitList() {
     return axios.get(`/products/${id}/styles`);
   }
 
+  function getRatings(id) {
+    return axios.get(`/reviews/?product_id=${id}&sort=relevant`);
+  }
+
   const allOutfits = [];
 
   function saveToLocalStorage(currId) {
@@ -112,11 +116,12 @@ function OutfitList() {
 
   function saveToOutfitState(currId) {
     if (!allOutfits.some((element) => element.info.id === currId)) {
-      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId)])
+      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId), getRatings(currId)])
         .then((result) => {
           const product = {};
           product.info = result[0].data;
           product.style = result[1].data;
+          product.ratings = result[2].data;
           allOutfits.unshift(product);
           setOutfitInfo((prevState) => ([...prevState, product]));
         })

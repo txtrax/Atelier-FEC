@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
-import StarRating from './StarRating';
+import StarRatings from 'react-star-ratings';
 import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
 const Card = styled.div`
   width: 260px;
   height: 100%;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #F8F8F8;
+  border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -21,7 +21,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #1d3557;
+  background: #5D5F71;
   object-fit: cover;
 `;
 
@@ -39,10 +39,8 @@ const Name = styled.p`
   margin: 0;
 `;
 
-const Price = styled.p`
-  margin:0;
+const Price = styled.span`
   font-weight: 600;
-  color: #43aa8b;
 `;
 
 const StarButton = styled(MdOutlineStarOutline)`
@@ -58,12 +56,18 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #ffbe0b;
   }
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
   const { setIsOpen, setRelatedId } = useContext(ModalContext);
+
+  function getAvgRating(reviews) {
+    if (reviews.length !== 0) {
+      return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
+    }
+    return 0;
+  }
 
   return (
     <Card>
@@ -94,12 +98,18 @@ function ProductCard({ card }) {
             </Price>
           )
           : (
-            <Price style={{ color: 'red' }}>
-              $
-              {card.style.results[0].sale_price}
-            </Price>
+            <p style={{ padding: 0, margin: 0 }}>
+              <del>
+                $
+                {card.style.results[0].original_price}
+              </del>
+              <Price style={{ color: 'red' }}>
+                {'  $'}
+                {card.style.results[0].sale_price}
+              </Price>
+            </p>
           )}
-        <StarRating />
+        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#5D5F71" />
       </CardInfo>
     </Card>
   );

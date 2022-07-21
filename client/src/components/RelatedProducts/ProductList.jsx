@@ -16,7 +16,7 @@ const ListContainer = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  color: #f1faee;
+  color: #5D5F71;
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -77,6 +77,10 @@ function ProductList() {
     return axios.get(`/products/${id}/styles`);
   }
 
+  function getRatings(id) {
+    return axios.get(`/reviews/?product_id=${id}&sort=relevant`);
+  }
+
   const allPromises = [];
   const allProducts = [];
 
@@ -85,7 +89,7 @@ function ProductList() {
       .then((res) => {
         const allRelatedIds = res.data;
         allRelatedIds.forEach((id) => {
-          const promise = Promise.all([getRelatedInfo(id), getRelatedStyle(id)]);
+          const promise = Promise.all([getRelatedInfo(id), getRelatedStyle(id), getRatings(id)]);
           allPromises.push(promise);
         });
 
@@ -95,7 +99,7 @@ function ProductList() {
               const product = {};
               product.info = element[0].data;
               product.style = element[1].data;
-              product.favorite = false;
+              product.ratings = element[2].data;
               allProducts.push(product);
             });
             setRelatedInfo(allProducts);

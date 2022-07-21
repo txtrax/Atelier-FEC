@@ -11,6 +11,7 @@ const AppContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
 `;
 
 function App() {
@@ -20,18 +21,13 @@ function App() {
 
   return (
     <AppContainer>
-      <header>This is App</header>
-      {/* <h4>
-        We use product:
-        { productId }
-      </h4> */}
       <IdContext.Provider value={providerIdValue}>
         <Overview />
         <RelatedProducts />
-        <QnA
+        {/* <QnA
           productId={productId}
           setProductId={setProductId}
-        />
+        /> */}
         <Ratings />
       </IdContext.Provider>
     </AppContainer>

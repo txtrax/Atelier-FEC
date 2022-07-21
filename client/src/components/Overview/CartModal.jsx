@@ -12,7 +12,7 @@ const Background = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.7);
 `;
 
 const ModalContent = styled.div`
@@ -20,15 +20,18 @@ const ModalContent = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
   border: 1px solid #888;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 455px;
+  height: 380px;
 `;
 
 const ExitIcon = styled(MdClose)`
   position: absolute;
   padding: 2px;
   object-fit: cover;
+  color: black;
   top: 10px;
   right: 10px;
   width: 27px;
@@ -41,24 +44,33 @@ const ExitIcon = styled(MdClose)`
 
 const CheckoutContainer = styled.div`
   display: flex;
+  object-fit: cover;
+  color: black;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(248,248,248);
+  background-color: #DABECA;
   padding: 20px 12px 20px 12px;
   height: 75px;
 `;
 
 const CheckOutButton = styled.button`
   display: flex;
+  position: absolute;
+  top: 62px;
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 50px;
+  height: 43px;
   border: 1px solid;
   border-radius: 26px;
-  background-color: black;
+  border-color: #5D5F71;
+  background-color: #5D5F71;
   color: white;
+  &:hover {
+    border-color: black;
+    background-color: black;
+  }
 `;
 
 const ProductDetails = styled.div`
@@ -68,6 +80,8 @@ const ProductDetails = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
   width: 40%;
   padding: 20px 0px 0px 0px;
 `;
@@ -78,38 +92,49 @@ const CartContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 60%;
 `;
 
 export default function CartModal(props) {
   const {
-    name, photo, price, quantity, size, style, setIsOpen
+    name, photo, price, quantity, size, style, setIsOpen,
   } = props;
 
   return (
     <Background>
       <ModalContent>
         <CheckoutContainer>
+
           <ExitIcon onClick={() => setIsOpen(false)} />
 
-          Subtotal :
-          {' '}
-          {price * quantity}
+          <p>
+            Subtotal: $
+            {price * quantity}
+          </p>
+
           <CheckOutButton>
             Checkout
           </CheckOutButton>
+
         </CheckoutContainer>
-
         <ProductDetails>
+
           <ImageContainer>
+
             <img style={{ width: '90%', height: 'auto' }} src={photo.thumbnail_url} />
+
           </ImageContainer>
-
           <CartContainer>
-            <div>{`${name} - ${style} (${size})`}</div>
-            <div>{`${quantity} x ${price}`}</div>
-          </CartContainer>
-        </ProductDetails>
 
+            <p>{`${name} - ${style} (${size})`}</p>
+
+            <p>
+              {`${quantity}\u00A0\u00A0\u00A0\u00A0x\u00A0\u00A0\u00A0\u00A0$${price}`}
+            </p>
+
+          </CartContainer>
+
+        </ProductDetails>
       </ModalContent>
     </Background>
   );
