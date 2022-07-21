@@ -13,6 +13,7 @@ const Card = styled.div`
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const CardImg = styled.img`
