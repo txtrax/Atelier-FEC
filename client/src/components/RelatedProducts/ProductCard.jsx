@@ -10,7 +10,7 @@ const Card = styled.div`
   width: 260px;
   height: 100%;
   color: #5D5F71;
-  background: #DABECA;
+  background: #F8F8F8;
   border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
@@ -56,7 +56,6 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
   }
 `;
 function ProductCard({ card }) {

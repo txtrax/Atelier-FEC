@@ -59,9 +59,9 @@ const SliderIconRight = styled(MdChevronRight)`
 const AddOutfit = styled.button`
   width: 266px;
   height: 394.75px;
-  font-size: 30px;
+  font-size: 2em;
   color: #5D5F71;
-  background: #DABECA;
+  background: #F8F8F8;
   border: 3px solid #BF8B85;
   display: inline-block;
   vertical-align: top;
@@ -69,8 +69,8 @@ const AddOutfit = styled.button`
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  background: #5D5F71;
-  color: #DABECA;
+  color: #BF8B85;
+  font-size: 3em;
   }
 `;
 
