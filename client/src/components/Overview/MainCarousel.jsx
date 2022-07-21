@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdChevronLeft, MdChevronRight, MdFullscreen, MdFullscreenExit } from 'react-icons/md';
+import {
+  MdChevronLeft, MdChevronRight, MdFullscreen,
+} from 'react-icons/md';
 import Image from './Image';
+import ZoomModal from './ZoomModal';
 
 const GalleryContainer = styled.div`
   border: 10px;
@@ -60,18 +63,34 @@ const SliderIconRight = styled(MdChevronRight)`
 export default function MainCarousel(props) {
   const { currentIndex, setIndex, photos } = props;
 
-  let display = photos[currentIndex];
+  const [zoomIn, setZoomIn] = useState(false);
+
+  const display = photos[currentIndex];
 
   return (
     <GalleryContainer>
 
-      <FullscreenIcon />
+      <FullscreenIcon onClick={() => setZoomIn(true)} />
 
       {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
-      <Image image={display} key={display.thumbnail_url} />
+      <Image
+        image={display}
+        key={display.thumbnail_url}
+      />
 
       {currentIndex < photos.length - 1 && <SliderIconRight onClick={() => setIndex(currentIndex + 1)} />}
+
+      {zoomIn && (
+        <ZoomModal
+          setZoomIn={setZoomIn}
+          image={display}
+          key={display.url}
+          currentIndex={currentIndex}
+          setIndex={setIndex}
+          photos={photos}
+        />
+      )}
 
     </GalleryContainer>
   );

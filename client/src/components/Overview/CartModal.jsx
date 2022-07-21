@@ -12,7 +12,7 @@ const Background = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.7);
 `;
 
 const ModalContent = styled.div`
@@ -43,10 +43,11 @@ const ExitIcon = styled(MdClose)`
 const CheckoutContainer = styled.div`
   display: flex;
   object-fit: cover;
+  color: white;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(248,248,248);
+  background-color: #BF8B85;
   padding: 20px 12px 20px 12px;
   height: 75px;
 `;
