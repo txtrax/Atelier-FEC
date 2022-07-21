@@ -17,7 +17,7 @@ const TableWrapper = styled.div`
   overflow: hidden;
   border-radius: 15px;
   border: 4px solid #DABECA;
-  padding: 20px;
+  padding: 2em;
   background-color: #5D5F71;
 `;
 
@@ -42,7 +42,7 @@ const TableRow = styled.tr`
 `;
 
 const TableHeader = styled.th`
-  font-size: 20px;
+  font-size: 1.5em;
   text-align: center;
   color: #DABECA;
 `;

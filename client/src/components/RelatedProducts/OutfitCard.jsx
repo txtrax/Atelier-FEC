@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import { TiDeleteOutline } from 'react-icons/ti';
+import { MdOutlineClose } from 'react-icons/md';
 import StarRating from './StarRating';
 
 const Card = styled.div`
@@ -41,7 +41,7 @@ const Price = styled.p`
   font-weight: 600;
 `;
 
-const DeleteButton = styled(TiDeleteOutline)`
+const DeleteButton = styled(MdOutlineClose)`
   position: relative;
   background: rgb(248,248,248);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
