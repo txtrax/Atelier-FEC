@@ -28,7 +28,10 @@ function ThumbnailImage(props) {
   const { index, image, currentIndex, setIndex } = props;
 
   let display;
-  if (currentIndex === index) {
+
+  if (image.thumbnail_url === null) {
+    display = null;
+  } else if (currentIndex === index) {
     display = <CurrentImage src={image.thumbnail_url} />;
   } else {
     display = <MiniImage src={image.thumbnail_url} onClick={() => setIndex(index)} />;
