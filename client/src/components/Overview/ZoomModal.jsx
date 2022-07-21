@@ -18,14 +18,14 @@ const Background = styled.div`
 
 const ZoomModalContent = styled.div`
   position: relative;
-  margin: 10% auto;
+  margin: auto;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 55%;
-  height: 600px;
+  height: 100%;
 `;
 
 const ExitIcon = styled(MdFullscreenExit)`

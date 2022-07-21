@@ -8,6 +8,7 @@ const DescriptionContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 60%;
 `;
 
 const OverviewSlogan = styled.p`
@@ -23,7 +24,7 @@ export default function ProductDescription(props) {
       <OverviewSlogan>
         <b>{ slogan }</b>
       </OverviewSlogan>
-      <p>{ description }</p>
+      <p><center>{ description }</center></p>
     </DescriptionContainer>
   );
 }

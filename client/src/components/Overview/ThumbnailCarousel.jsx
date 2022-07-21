@@ -5,12 +5,20 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
+  height: 500px;
   padding: 30px 0px 30px 10px;
   position: relative;
   background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none;
   align-items: center;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SliderIconUp = styled(MdExpandLess)`

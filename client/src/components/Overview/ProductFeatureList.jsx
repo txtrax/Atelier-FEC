@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import ProductFeature from './ProductFeature';
 
-const DescriptionContainer = styled.div`
+const ProductFeatureContainer = styled.div`
   border: 2px;
   border-left-color: black;
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 25%;
 `;
 
 const FeaturesSlogan = styled.p`
@@ -19,7 +20,7 @@ export default function ProductFeatureList(props) {
   const { features } = props;
 
   return (
-    <DescriptionContainer>
+    <ProductFeatureContainer>
 
       <FeaturesSlogan>
         <b>Product Details</b>
@@ -27,7 +28,7 @@ export default function ProductFeatureList(props) {
 
       {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
 
-    </DescriptionContainer>
+    </ProductFeatureContainer>
   );
 }
 
