@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import { TiDeleteOutline } from 'react-icons/ti';
+import { MdOutlineClose } from 'react-icons/md';
 import StarRating from './StarRating';
 
 const Card = styled.div`
   width: 260px;
   height: 100%;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #DABECA;
+  border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -18,7 +18,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #1d3557;
+  background: #BF8B85;
   object-fit: cover;
 `;
 
@@ -39,10 +39,9 @@ const Name = styled.p`
 const Price = styled.p`
   margin:0;
   font-weight: 600;
-  color: #43aa8b;
 `;
 
-const DeleteButton = styled(TiDeleteOutline)`
+const DeleteButton = styled(MdOutlineClose)`
   position: relative;
   background: rgb(248,248,248);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -55,7 +54,7 @@ const DeleteButton = styled(TiDeleteOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #e63946;
+    background: #DABECA;
   }
 `;
 
@@ -86,7 +85,7 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRating />
+        <StarRating id={card.info.id} />
       </CardInfo>
     </Card>
   );

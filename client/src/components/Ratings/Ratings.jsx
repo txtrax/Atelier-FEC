@@ -98,7 +98,7 @@ function Ratings() {
         // setDisplayedReviews(res.slice(0, 2));
       })
       .catch((err) => {
-        console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
+        // console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
       });
   }, [sort]);
 

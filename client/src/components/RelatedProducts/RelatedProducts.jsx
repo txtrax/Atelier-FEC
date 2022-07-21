@@ -18,7 +18,11 @@ const MainContainer = styled.div`
 
 function RelatedProducts() {
   const [isOpen, setIsOpen] = useState(false);
-  const providerModalValue = useMemo(() => ({ isOpen, setIsOpen }), [isOpen, setIsOpen]);
+  const [relatedId, setRelatedId] = useState(0);
+
+  const providerModalValue = useMemo(() => ({
+    isOpen, setIsOpen, relatedId, setRelatedId,
+  }), [isOpen, setIsOpen, relatedId, setRelatedId]);
 
   return (
     <MainContainer>

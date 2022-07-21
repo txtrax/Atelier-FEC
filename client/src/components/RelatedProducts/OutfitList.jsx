@@ -17,7 +17,7 @@ const ListContainer = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  color: #f1faee;
+  color: #5D5F71;
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -60,17 +60,17 @@ const AddOutfit = styled.button`
   width: 266px;
   height: 394.75px;
   font-size: 30px;
-  color: #1d3557;
-  background: #f1faee;
-  border: 3px solid #1d3557;
+  color: #5D5F71;
+  background: #DABECA;
+  border: 3px solid #BF8B85;
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  background: #a8dadc;
-  color: #f1faee;
+  background: #5D5F71;
+  color: #DABECA;
   }
 `;
 
@@ -97,7 +97,6 @@ function OutfitList() {
   }
 
   const allOutfits = [];
-  const allPromises = [];
 
   function saveToLocalStorage(currId) {
     if (localStorage.getItem('outfitIds') === null) {
@@ -113,16 +112,13 @@ function OutfitList() {
 
   function saveToOutfitState(currId) {
     if (!allOutfits.some((element) => element.info.id === currId)) {
-      const promise = Promise.all([getOutfitInfo(currId),
-        getOutfitStyle(currId)]);
-      allPromises.push(promise);
-      Promise.all(allPromises)
+      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId)])
         .then((result) => {
           const product = {};
-          product.info = result[0][0].data;
-          product.style = result[0][1].data;
-          allOutfits.push(product);
-          setOutfitInfo([...outfitInfo, product]);
+          product.info = result[0].data;
+          product.style = result[1].data;
+          allOutfits.unshift(product);
+          setOutfitInfo((prevState) => ([...prevState, product]));
         })
         .catch((err) => {
           console.error('Error when retrieving outfit data: ', err);
@@ -141,14 +137,8 @@ function OutfitList() {
   }
 
   function deleteFromOutfitState(currId) {
-    let index;
-    const outfitCopy = outfitInfo.slice();
-    for (let i = 0; i < outfitCopy.length; i += 1) {
-      if (outfitCopy[i].info.id === currId) {
-        index = i;
-        break;
-      }
-    }
+    const outfitCopy = [...outfitInfo];
+    const index = outfitCopy.findIndex((ele) => ele.info.id === currId);
     outfitCopy.splice(index, 1);
     setOutfitInfo([...outfitCopy]);
   }
