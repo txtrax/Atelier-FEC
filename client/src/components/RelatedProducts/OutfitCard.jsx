@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineClose } from 'react-icons/md';
-import StarRating from './StarRating';
+import StarRatings from 'react-star-ratings';
 
 const Card = styled.div`
   width: 260px;
   height: 100%;
   color: #5D5F71;
-  background: #DABECA;
+  background: #F8F8F8;
   border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const CardImg = styled.img`
@@ -54,11 +55,18 @@ const DeleteButton = styled(MdOutlineClose)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
+    background: #BF8B85;
   }
 `;
 
 function OutfitCard({ card, deleteCard }) {
+  function getAvgRating(reviews) {
+    if (reviews.length !== 0) {
+      return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
+    }
+    return 0;
+  }
+
   return (
     <Card>
       {(card.style.results[0].photos[0].thumbnail_url !== null)
@@ -85,7 +93,7 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRating id={card.info.id} />
+        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#5D5F71" />
       </CardInfo>
     </Card>
   );

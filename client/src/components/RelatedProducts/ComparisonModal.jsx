@@ -16,15 +16,16 @@ const TableWrapper = styled.div`
   position: fixed;
   overflow: hidden;
   border-radius: 15px;
-  border: 4px solid #DABECA;
+  border: 4px solid #5D5F71;
   padding: 2em;
-  background-color: #5D5F71;
+  background-color: #F8F8F8;
 `;
 
 const MainTable = styled.table`
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+  color: #5D5F71;
 `;
 
 const CloseButton = styled(AiFillCloseCircle)`
@@ -33,22 +34,25 @@ const CloseButton = styled(AiFillCloseCircle)`
   height: 25px;
   top: 10px;
   right: 10px;
-  color: #DABECA;
+  color: #BF8B85;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const TableRow = styled.tr`
   padding: 20px;
-  color: #DABECA;
 `;
 
 const TableHeader = styled.th`
   font-size: 1.5em;
   text-align: center;
-  color: #DABECA;
 `;
 
 const Check = styled(FaCheck)`
-  color: #DABECA;
+  color: #BF8B85;
 `;
 
 function ComparisonModal() {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
-import StarRating from './StarRating';
+import StarRatings from 'react-star-ratings';
 import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
@@ -10,7 +10,7 @@ const Card = styled.div`
   width: 260px;
   height: 100%;
   color: #5D5F71;
-  background: #DABECA;
+  background: #F8F8F8;
   border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
@@ -56,12 +56,18 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
   }
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
   const { setIsOpen, setRelatedId } = useContext(ModalContext);
+
+  function getAvgRating(reviews) {
+    if (reviews.length !== 0) {
+      return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
+    }
+    return 0;
+  }
 
   return (
     <Card>
@@ -103,7 +109,7 @@ function ProductCard({ card }) {
               </Price>
             </p>
           )}
-        <StarRating id={card.info.id} />
+        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#5D5F71" />
       </CardInfo>
     </Card>
   );

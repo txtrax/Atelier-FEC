@@ -11,6 +11,7 @@ const AppContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
 `;
 
 function App() {

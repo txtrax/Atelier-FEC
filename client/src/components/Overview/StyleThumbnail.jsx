@@ -11,8 +11,7 @@ const ThumbnailContainer = styled.div`
 
 const ThumbnailImage = styled.img`
   display: block;
-  border: solid 1px;
-  border-color: black;
+  border: solid 1px #5D5F71;
   object-fit: cover;
   height: 52px;
   width: 52px;
@@ -23,8 +22,8 @@ const CheckIcon = styled(MdCheck)`
   position: absolute;
   padding: 2px;
   object-fit: cover;
-  border: solid 1px;
-  border-color: black;
+  color: #5D5F71;
+  border: solid 1px #5D5F71;
   top: 0;
   right: 0;
   width: 10px;

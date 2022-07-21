@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
 const DescriptionContainer = styled.div`
   border: 2px;
@@ -26,3 +27,13 @@ export default function ProductDescription(props) {
     </DescriptionContainer>
   );
 }
+
+ProductDescription.propTypes = {
+  slogan: PropTypes.string,
+  description: PropTypes.string,
+};
+
+ProductDescription.defaultProps = {
+  slogan: '',
+  description: '',
+};
