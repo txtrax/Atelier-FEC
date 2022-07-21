@@ -23,7 +23,8 @@ const ModalContent = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 455px;
+  height: 380px;
 `;
 
 const ExitIcon = styled(MdClose)`
@@ -54,11 +55,14 @@ const CheckoutContainer = styled.div`
 
 const CheckOutButton = styled.button`
   display: flex;
+  position: absolute;
+  top: 62px;
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 50px;
+  height: 43px;
   border: 1px solid;
+  border-color: black;
   border-radius: 26px;
   background-color: black;
   color: white;
@@ -71,6 +75,8 @@ const ProductDetails = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
   width: 40%;
   padding: 20px 0px 0px 0px;
 `;
