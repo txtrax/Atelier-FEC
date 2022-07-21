@@ -8,7 +8,11 @@ module.exports = {
       sort,
     },
   })
-    .then((res) => res.data.results),
+    // eslint-disable-next-line arrow-body-style
+    .then((res) => {
+      // console.log('getAllReviews = ', res);
+      return res.data.results;
+    }),
 
   getReviewMeta: (productId) => axios.get('reviews/meta', {
     params: {
@@ -17,17 +21,7 @@ module.exports = {
   })
     .then((res) => res.data.characteristics),
 
-  markReviewHelpful: (id) => {
-    console.log('IN SERVICE, helpful, id = ', id);
-    axios.put(`reviews/${id}/helpful`)
-      .then(() => {
-        console.log('markHelpful SUCCESS!!!');
-      })
-      .catch((err) => {
-        console.log('markHelpful FAILED err = ', err);
-        console.log(err);
-      });
-  },
+  markReviewHelpful: (id) => axios.put(`reviews/${id}/helpful`),
 
   reportReview: (id) => {
     console.log('IN SERVICE, report, id = ', id);
@@ -39,5 +33,11 @@ module.exports = {
         console.log('reportReview FAILED err = ', err);
         console.log(err);
       });
+  },
+
+  // eslint-disable-next-line arrow-body-style
+  getProductInfo: (id) => {
+    return axios.get(`products/${id}`)
+      .then((res) => res.data.name);
   },
 };
