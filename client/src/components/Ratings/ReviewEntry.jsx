@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StarRating from 'react-star-ratings';
@@ -40,10 +40,12 @@ const BottomBar = styled.div`
   margin-bottom: 1em;
 `;
 
-function ReviewEntry({ review }) {
+function ReviewEntry({ review, showPhoto, setShowPhoto, setPhotoURL }) {
   const {
     summary, body, photos, recommend, date, helpfulness, rating, review_id, reviewer_name,
   } = review;
+
+  const [displayHelpful, setDisplayHelpful] = useState(helpfulness);
 
   return (
     <EntryContainer>
@@ -60,13 +62,22 @@ function ReviewEntry({ review }) {
       </Header>
       <Body>
         <ReviewEntryBody body={body} />
-        <ReviewEntryPhoto photos={photos} />
+        <ReviewEntryPhoto
+          photos={photos}
+          setShowPhoto={setShowPhoto}
+          showPhoto={showPhoto}
+          setPhotoURL={setPhotoURL}
+        />
       </Body>
       <Recommendation>
         <ReviewEntryRecommend recommend={recommend} />
       </Recommendation>
       <BottomBar>
-        <ReviewEntryHelpful review_id={review_id} helpfulness={helpfulness} />
+        <ReviewEntryHelpful
+          review_id={review_id}
+          displayHelpful={displayHelpful}
+          setDisplayHelpful={setDisplayHelpful}
+        />
       </BottomBar>
     </EntryContainer>
   );
@@ -74,10 +85,14 @@ function ReviewEntry({ review }) {
 
 ReviewEntry.propTypes = {
   review: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])),
+  setShowPhoto: PropTypes.func,
+  showPhoto: PropTypes.bool,
 };
 
 ReviewEntry.defaultProps = {
   review: [],
+  setShowPhoto: (e) => e,
+  showPhoto: false,
 };
 
 export default ReviewEntry;

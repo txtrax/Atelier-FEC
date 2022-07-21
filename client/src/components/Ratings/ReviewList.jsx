@@ -16,7 +16,7 @@ const SortBy = styled(Select)`
 
 `;
 function ReviewList({
-  reviews, displayedReviews, setSort,
+  reviews, displayedReviews, setSort, showPhoto, setShowPhoto, setPhotoURL,
 }) {
   return (
     <ReviewContainer>
@@ -33,7 +33,14 @@ function ReviewList({
       </Header>
       <div>
         {displayedReviews.map(
-          (review) => <ReviewEntry review={review} key={review.review_id} />,
+          (review) => (
+            <ReviewEntry
+              review={review}
+              setShowPhoto={setShowPhoto}
+              setPhotoURL={setPhotoURL}
+              key={review.review_id}
+            />
+          ),
         )}
       </div>
     </ReviewContainer>

@@ -21,3 +21,9 @@ export const Button = styled.button`
   font-weight: bold;
   background: white;
 `;
+
+export const AddReviewHeader = styled.div`
+  font-weight: bolder;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+`;

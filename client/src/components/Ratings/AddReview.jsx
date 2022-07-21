@@ -1,10 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from './styles';
 
-function AddReview() {
+function AddReview({ setShowModal }) {
   return (
-    <Button type="submit">ADD A REVIEW +</Button>
+    <div>
+      <Button
+        type="button"
+        onClick={() => setShowModal(true)}
+      >
+        ADD A REVIEW +
+      </Button>
+    </div>
   );
 }
+
+AddReview.propTypes = {
+  setShowModal: PropTypes.func,
+};
+
+AddReview.defaultProps = {
+  setShowModal: (e) => e,
+};
 
 export default AddReview;
