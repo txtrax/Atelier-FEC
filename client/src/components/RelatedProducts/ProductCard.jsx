@@ -56,7 +56,6 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
   }
 `;
 function ProductCard({ card }) {

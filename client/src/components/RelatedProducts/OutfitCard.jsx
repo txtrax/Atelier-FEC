@@ -55,7 +55,7 @@ const DeleteButton = styled(MdOutlineClose)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
+    background: #BF8B85;
   }
 `;
 
