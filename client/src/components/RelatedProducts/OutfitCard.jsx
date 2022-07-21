@@ -9,7 +9,7 @@ const Card = styled.div`
   height: 100%;
   color: #5D5F71;
   background: #F8F8F8;
-  border: 3px solid #BF8B85;
+  border: 3px solid #5D5F71;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -19,7 +19,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: 100%;
   height: 280px;
-  background: #BF8B85;
+  background: #5D5F71;
   object-fit: cover;
 `;
 
@@ -44,7 +44,7 @@ const Price = styled.p`
 
 const DeleteButton = styled(MdOutlineClose)`
   position: relative;
-  background: rgb(248,248,248);
+  background: #F8F8F8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 50%;
   right: 15px;
@@ -55,7 +55,8 @@ const DeleteButton = styled(MdOutlineClose)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #BF8B85;
+    color: #F8F8F8;
+    background: #5D5F71;
   }
 `;
 
@@ -93,7 +94,9 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#5D5F71" />
+        {(card.ratings.results.length)
+          ? (<StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />)
+          : ('')}
       </CardInfo>
     </Card>
   );
