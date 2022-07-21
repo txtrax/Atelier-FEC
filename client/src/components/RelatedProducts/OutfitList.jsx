@@ -62,14 +62,14 @@ const AddOutfit = styled.button`
   font-size: 2em;
   color: #5D5F71;
   background: #F8F8F8;
-  border: 3px solid #BF8B85;
+  border: 3px solid #5D5F71;
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  color: #BF8B85;
+  color: #5D5F71;
   font-size: 3em;
   }
 `;
