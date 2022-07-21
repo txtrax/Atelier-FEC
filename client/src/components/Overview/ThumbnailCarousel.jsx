@@ -5,14 +5,14 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
-  height: 500px;
+  height: 440px;
   padding: 30px 0px 30px 10px;
   position: relative;
   background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow: hidden;
   scrollbar-width: none;
   align-items: center;
   scroll-behavior: smooth;

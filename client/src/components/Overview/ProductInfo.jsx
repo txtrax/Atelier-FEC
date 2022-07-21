@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa';
+import IdContext from '../Context';
 import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
+import StarRating from '../RelatedProducts/StarRating';
 
 const InfoContainer = styled.div`
   position: relative;
@@ -49,7 +51,7 @@ export default function ProductInfo(props) {
   const {
     overview, styles, selectedStyle, setSelectedStyle, setIndex
   } = props;
-
+  const { productId } = useContext(IdContext);
   //check selected style for sale_price
   //if sale, render the sale price and the original price
   //else render original price
@@ -57,8 +59,12 @@ export default function ProductInfo(props) {
     if (selectedStyle.sale_price) {
       return (
         <div>
-          <span style={{ color: "#DABECA" }}><b>{`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0\u00A0`}</b></span>
-          <span style={{ textDecoration: "line-through" }}>{`$${selectedStyle.original_price}`}</span>
+          <span style={{ color: "#DABECA" }}>
+            <b>{`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0\u00A0`}</b>
+          </span>
+          <span style={{ textDecoration: "line-through" }}>
+            {`$${selectedStyle.original_price}`}
+          </span>
         </div>
       )
     }
@@ -72,7 +78,7 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      <div>Stars go here. Remember to add</div>
+      <div><StarRating id={productId}/></div>
 
       <div>{overview.category.toUpperCase()}</div>
 

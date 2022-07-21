@@ -31,7 +31,7 @@ export default function OverviewGallery(props) {
         console.log('error getting styles', err);
       });
   }, [productId]);
-  console.log(selectedStyle)
+
   return (
     <ProductContainer>
 
