@@ -50,6 +50,25 @@ export default function ProductInfo(props) {
     overview, styles, selectedStyle, setSelectedStyle, setIndex
   } = props;
 
+  //check selected style for sale_price
+  //if sale, render the sale price and the original price
+  //else render original price
+  const renderPrice = () => {
+    if (selectedStyle.sale_price) {
+      return (
+        <div>
+          <span style={{ color: "#DABECA" }}><b>{`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0\u00A0`}</b></span>
+          <span style={{ textDecoration: "line-through" }}>{`$${selectedStyle.original_price}`}</span>
+        </div>
+      )
+    }
+    return (
+      <div>
+        <span><b>${selectedStyle.original_price}</b></span>
+      </div>
+    )
+  }
+
   return (
     <InfoContainer>
 
@@ -59,7 +78,7 @@ export default function ProductInfo(props) {
 
       <h2>{overview.name}</h2>
 
-      <div>${overview.default_price}</div>
+      <div>{renderPrice()}</div>
 
       <div>
         <b>STYLE > </b>
