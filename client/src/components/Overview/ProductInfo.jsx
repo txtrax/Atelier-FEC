@@ -52,9 +52,7 @@ export default function ProductInfo(props) {
     overview, styles, selectedStyle, setSelectedStyle, setIndex
   } = props;
   const { productId } = useContext(IdContext);
-  //check selected style for sale_price
-  //if sale, render the sale price and the original price
-  //else render original price
+
   const renderPrice = () => {
     if (selectedStyle.sale_price) {
       return (
@@ -99,7 +97,7 @@ export default function ProductInfo(props) {
 
       <AddToCartForm
         selectedStyle={selectedStyle}
-        price={overview.default_price}
+        price={selectedStyle.sale_price ? selectedStyle.sale_price : selectedStyle.original_price}
         name={overview.name} />
 
       <ShareContainer>

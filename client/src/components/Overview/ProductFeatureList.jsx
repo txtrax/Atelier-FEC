@@ -12,8 +12,14 @@ const ProductFeatureContainer = styled.div`
   width: 25%;
 `;
 
+const FeaturesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0px;
+`;
+
 const FeaturesSlogan = styled.p`
-  padding-bottom: 2px;
+font-weight: bold;
 `;
 
 export default function ProductFeatureList(props) {
@@ -23,10 +29,12 @@ export default function ProductFeatureList(props) {
     <ProductFeatureContainer>
 
       <FeaturesSlogan>
-        <b>Product Details</b>
+        Product Details
       </FeaturesSlogan>
 
-      {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
+      <FeaturesContainer>
+        {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
+      </FeaturesContainer>
 
     </ProductFeatureContainer>
   );

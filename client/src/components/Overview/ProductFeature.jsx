@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
-const FeaturesContainer = styled.li`
+const FeatureContainer = styled.li`
   padding: 1px;
 `;
 
@@ -11,19 +11,19 @@ export default function ProductFeature(props) {
 
   if (pair.value === null) {
     return (
-      <FeaturesContainer>
+      <FeatureContainer>
         {pair.feature}
-      </FeaturesContainer>
+      </FeatureContainer>
     );
   }
 
   return (
-    <FeaturesContainer>
+    <FeatureContainer>
       {pair.feature}
       :
       {' '}
       {pair.value}
-    </FeaturesContainer>
+    </FeatureContainer>
   );
 }
 
