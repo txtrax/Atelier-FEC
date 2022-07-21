@@ -22,6 +22,7 @@ const SizeDropdown = styled.select`
   width: 175px;
   height: 50px;
   border: 1px solid;
+  border-color: #5D5F71;
   text-align: center;
 `;
 
@@ -29,6 +30,7 @@ const QuantityDropdown = styled.select`
   width: 75px;
   height: 50px;
   border: 1px solid;
+  border-color: #5D5F71;
   text-align: center;
 `;
 
@@ -37,8 +39,13 @@ const AddToCartButton = styled.button`
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
-  background-color: black;
+  border-color: #5D5F71;
+  background-color: #5D5F71;
   color: white;
+  &:hover {
+    border-color: black;
+    background-color: black;
+  }
 `;
 
 export default function AddToCartForm(props) {
@@ -80,21 +87,17 @@ export default function AddToCartForm(props) {
 
   return (
     <AddToCartContainer>
-
       <SizeAndQuantity>
-
-        <SizeDropdown id="size" onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
-
+        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
-
-          {sizeQuantArr.map((sizeQuan) => <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>)}
+          {sizeQuantArr.map((sizeQuan) => (
+            <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>
+          ))}
         </SizeDropdown>
-
-        <QuantityDropdown id="quantity" onChange={(e) => { onQuantitySelect(e); }}>
+        <QuantityDropdown id="quantity" style={{ color: '#5D5F71' }} onChange={(e) => { onQuantitySelect(e); }}>
           {size ? null : <option value="-">-</option>}
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
-
       </SizeAndQuantity>
 
       <AddToCartButton onClick={showModal}>
