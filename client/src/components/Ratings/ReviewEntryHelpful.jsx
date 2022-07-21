@@ -20,7 +20,7 @@ const Voted = styled.div`
 `;
 
 // eslint-disable-next-line camelcase
-function ReviewEntryHelpful({ review_id, helpfulness }) {
+function ReviewEntryHelpful({ review_id, displayHelpful, setDisplayHelpful }) {
   const [voted, setVoted] = useState(false);
   const [displayVoted, setDisplayVoted] = useState(undefined);
 
@@ -29,14 +29,22 @@ function ReviewEntryHelpful({ review_id, helpfulness }) {
       setDisplayVoted('You have voted');
       return;
     }
-    console.log('handleClick, e.target.value = ', e.target.value);
-    console.log('handleClick, e.target.name = ', e.target.name);
+    // console.log('handleClick, e.target.value = ', e.target.value);
+    // console.log('handleClick, e.target.name = ', e.target.name);
     if (e.target.value === 'yes') {
-      markReviewHelpful(e.target.name);
+      markReviewHelpful(e.target.name)
+        .then(() => {
+          console.log('markHelpful SUCCESS!!!');
+          setDisplayHelpful((pre) => pre + 1);
+          setVoted(true);
+        })
+        .catch((err) => {
+          console.log('markHelpful FAILED err = ', err);
+          console.log(err);
+        });
     } else {
       reportReview(e.target.name);
     }
-    setVoted(true);
   }
 
   return (
@@ -44,7 +52,7 @@ function ReviewEntryHelpful({ review_id, helpfulness }) {
       Helpful?&nbsp;
       <Button type="submit" value="yes" name={review_id} onClick={(e) => handleClick(e)}>Yes</Button>
       &#40;
-      {helpfulness}
+      {displayHelpful}
       &#41; |&nbsp;
       <Button type="submit" value="report" name={review_id} onClick={(e) => handleClick(e)}>Report</Button>
       <Voted>
@@ -56,12 +64,14 @@ function ReviewEntryHelpful({ review_id, helpfulness }) {
 
 ReviewEntryHelpful.propTypes = {
   review_id: PropTypes.number,
-  helpfulness: PropTypes.number,
+  displayHelpful: PropTypes.number,
+  setDisplayHelpful: PropTypes.func,
 };
 
 ReviewEntryHelpful.defaultProps = {
   review_id: 0,
-  helpfulness: 0,
+  displayHelpful: 0,
+  setDisplayHelpful: (e) => e,
 };
 
 export default ReviewEntryHelpful;

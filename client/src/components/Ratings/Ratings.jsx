@@ -1,15 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import IdContext from '../Context';
-import Stars from './Stars';
+import RatingBreakdown from './RatingBreakdown';
 import ProductBreakdown from './ProductBreakdown';
 import ReviewList from './ReviewList';
+import PhotoModal from './PhotoModal';
 import MoreReview from './MoreReview';
 import AddReview from './AddReview';
+import AddReviewModal from './AddReviewModal';
 import { RowContainer } from './styles';
 import { useIsFirstRender, usePrevious } from './services/customHooks';
 
-const { getAllReviews, getReviewMeta } = require('./services/reviews');
+const { getAllReviews, getReviewMeta, getProductInfo } = require('./services/reviews');
 
 // require('dotenv').config();
 const MainContainer = styled.div`
@@ -18,6 +20,7 @@ const MainContainer = styled.div`
   gap: 40px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.8em;
+  margin-top: 2em;
 `;
 const RatingProductContainer = styled.div`
   display: flex;
@@ -30,6 +33,7 @@ const ReviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
+  height: 100%;
   gap: 20px;
   padding-left: 20px;
 `;
@@ -38,6 +42,7 @@ function Ratings() {
   // WORK: const productId = useContext(IdContext);
   // ERROR: const contextType = IdContext;
   const { productId, setProductId } = useContext(IdContext);
+  const [productName, setProductName] = useState('');
   // reviews: array of objects
   const [reviews, setReviews] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
@@ -45,6 +50,9 @@ function Ratings() {
   const [starFilter, setStarFilter] = useState([]);
   const [sort, setSort] = useState('relevant');
   const [product, setProduct] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [showPhoto, setShowPhoto] = useState(false);
+  const [photoURL, setPhotoURL] = useState('');
   const isFirstRender = useIsFirstRender();
   const prev = usePrevious({ productId, sort });
 
@@ -56,7 +64,7 @@ function Ratings() {
     // console.log('useEffect [productId] isFirstRender:', isFirstRender, ' prev: ', prev);
     getAllReviews(productId, sort)
       .then((res) => {
-        // console.log('GET ALL REVIEWS SUCCESS!', res);
+        console.log('GET ALL REVIEWS SUCCESS!', res);
         setReviews(res);
         // setDisplayedReviews(res.slice(0, 2));
       })
@@ -65,11 +73,19 @@ function Ratings() {
       });
     getReviewMeta(productId)
       .then((res) => {
-        // console.log('GET META SUCCESS!', res);
+        console.log('GET META SUCCESS!', res);
         setProduct(res);
       })
       .catch((err) => {
         console.log('GET META FAILED', err);
+      });
+    getProductInfo(productId)
+      .then((res) => {
+        console.log('GET PRODUCT INFO SUCCESS!', res);
+        setProductName(res);
+      })
+      .catch((err) => {
+        console.log('GET PRODUCT INFO FAILED err = ', err);
       });
   }, [productId]);
 
@@ -110,7 +126,7 @@ function Ratings() {
   return (
     <MainContainer>
       <RatingProductContainer>
-        <Stars
+        <RatingBreakdown
           reviews={reviews}
           starFilter={starFilter}
           setStarFilter={setStarFilter}
@@ -124,16 +140,24 @@ function Ratings() {
           displayedReviews={displayedReviews}
           sort={sort}
           setSort={setSort}
+          setShowPhoto={setShowPhoto}
+          setPhotoURL={setPhotoURL}
         />
+        <PhotoModal showPhoto={showPhoto} setShowPhoto={setShowPhoto} photoURL={photoURL} />
         <RowContainer>
           <MoreReview
             filteredReviews={filteredReviews}
             displayedReviews={displayedReviews}
             setDisplayedReviews={setDisplayedReviews}
           />
-          <AddReview />
+          <AddReview setShowModal={setShowModal} />
         </RowContainer>
       </ReviewContainer>
+      <AddReviewModal
+        productName={productName}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </MainContainer>
   );
 }

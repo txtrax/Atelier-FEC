@@ -20,11 +20,22 @@ const BarRating = styled.u`
   padding-right: 0.5em;
 `;
 const BarProgress = styled.progress`
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
   flex-grow: 8;
+  ::-webkit-progress-value {
+    background-color: #575b54;
+    border-radius: 2px;
+  }
+  ::-webkit-progress-bar {
+    background-color: #d3d3d3;
+    border-radius: 2px;
+  }
 `;
 
 function StarBarEntry({
-  reviews, count, stars, starFilter, setStarFilter,
+  reviews, count, stars, starFilter, setStarFilter, setShowPhoto
 }) {
   // const starBreakdown = buildRatingBreakDown(reviews);
 
@@ -32,14 +43,14 @@ function StarBarEntry({
     let tempStarFilter;
     if (starFilter.indexOf(filter) !== -1) {
       // if exist => remove from starFilter
-      console.log('Filter ', filter, ' exist!');
+      // console.log('Filter ', filter, ' exist!');
       tempStarFilter = starFilter.filter((ele) => ele !== filter);
     } else {
       // if not exist => add to starFilter
-      console.log('Filter not exist, ', filter);
+      // console.log('Filter not exist, ', filter);
       tempStarFilter = [...starFilter, filter];
     }
-    console.log('tempStarFilter = ', tempStarFilter);
+    // console.log('tempStarFilter = ', tempStarFilter);
     setStarFilter(tempStarFilter);
   }
 
@@ -73,6 +84,7 @@ StarBarEntry.propTypes = {
     PropTypes.string,
   ),
   setStarFilter: PropTypes.func,
+  setShowPhoto: PropTypes.func,
 };
 
 StarBarEntry.defaultProps = {
@@ -81,6 +93,7 @@ StarBarEntry.defaultProps = {
   count: 0,
   starFilter: [],
   setStarFilter: (e) => e,
+  setShowPhoto: (e) => e,
 };
 
 export default StarBarEntry;
