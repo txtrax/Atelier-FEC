@@ -6,6 +6,7 @@ import ReviewEntry from './ReviewEntry';
 
 const ReviewContainer = styled.div`
   padding-top: 3.1em;
+  height: 100%;
 `;
 const Header = styled.div`
   font-size: 1.5em;
@@ -14,6 +15,10 @@ const Header = styled.div`
 `;
 const SortBy = styled(Select)`
 
+`;
+const ReviewListContainer = styled.div`
+  overflow-y: scroll;
+  height: 500px;
 `;
 function ReviewList({
   reviews, displayedReviews, setSort, showPhoto, setShowPhoto, setPhotoURL,
@@ -31,7 +36,7 @@ function ReviewList({
           <option value="helpful">helpful</option>
         </SortBy>
       </Header>
-      <div>
+      <ReviewListContainer>
         {displayedReviews.map(
           (review) => (
             <ReviewEntry
@@ -42,7 +47,7 @@ function ReviewList({
             />
           ),
         )}
-      </div>
+      </ReviewListContainer>
     </ReviewContainer>
   );
 }

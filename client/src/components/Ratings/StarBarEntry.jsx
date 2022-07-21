@@ -20,7 +20,18 @@ const BarRating = styled.u`
   padding-right: 0.5em;
 `;
 const BarProgress = styled.progress`
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
   flex-grow: 8;
+  ::-webkit-progress-value {
+    background-color: #575b54;
+    border-radius: 2px;
+  }
+  ::-webkit-progress-bar {
+    background-color: #d3d3d3;
+    border-radius: 2px;
+  }
 `;
 
 function StarBarEntry({

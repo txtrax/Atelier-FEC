@@ -50,7 +50,15 @@ function ReviewEntry({ review, showPhoto, setShowPhoto, setPhotoURL }) {
   return (
     <EntryContainer>
       <TopBar>
-        <StarRating numberOfStars={5} rating={rating} starRatedColor="#ffd700" starSpacing="1px" starDimension="20px" isSelectable={false} />
+        <StarRating
+          numberOfStars={5}
+          rating={rating}
+          starEmptyColor="#d3d3d3"
+          starRatedColor="#ffcc33"
+          starSpacing="1px"
+          starDimension="20px"
+          isSelectable={false}
+        />
         <span>
           {reviewer_name}
           ,&nbsp;

@@ -13,6 +13,8 @@ import AddReviewEmail from './AddReviewEmail';
 import AddReviewSubmit from './AddReviewSubmit';
 
 const Modal = styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -26,15 +28,13 @@ const Modal = styled.div`
   padding-bottom: 2em;
   border: 3px solid black;
   border-radius: 15px;
-  overflow: auto;
 `;
 
-// const Title = styled.div`
-//   position: fixed;
-// `;
-// const Content = styled.div`
-//   margin-top: 50px;
-// `;
+const Title = styled.div`
+`;
+const Content = styled.div`
+  overflow: auto;
+`;
 
 const CloseButton = styled.button`
   position: absolute;
@@ -63,13 +63,13 @@ const SubHeader = styled(Header)`
   font-size: 1.2em;
   font-style: italic;
   font-weight: normal;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 `;
 
 const Warning = styled.div`
   font-style: italic;
-  color: #00ff00;
-  padding-bottom: 2em;
+  color: #A11A2E;
+  padding-bottom: 1em;
 `;
 
 function AddReviewModal({ productName, setShowModal, showModal }) {
@@ -88,20 +88,23 @@ function AddReviewModal({ productName, setShowModal, showModal }) {
     // console.log('In AddReviewModal');
     return (
       <Modal>
-        <div>
+        <Title>
           <CloseButton
             type="button"
-            onClick={() => setShowModal(false)}
+            onClick={() => {
+              document.documentElement.style.overflow = 'auto';
+              setShowModal(false);
+            }}
           >
             <CloseSymbol />
           </CloseButton>
           <Header>Write Your Review</Header>
           <SubHeader>{`About the ${productName}`}</SubHeader>
-        </div>
-        <Warning>
-          {warning}
-        </Warning>
-        <div>
+          <Warning>
+            {warning}
+          </Warning>
+        </Title>
+        <Content>
           <AddReviewOverall displayRating={displayRating} setDisplayRating={setDisplayRating} />
           <AddReviewRecommend setRecommend={setRecommend} />
           <AddReviewChar setCharacteristics={setCharacteristics} />
@@ -110,15 +113,15 @@ function AddReviewModal({ productName, setShowModal, showModal }) {
           <AddReviewPhotos />
           <AddReviewNickname setName={setName} />
           <AddReviewEmail setEmail={setEmail} />
-        </div>
-        <AddReviewSubmit
-          setWarning={setWarning}
-          recommend={recommend}
-          summary={summary}
-          body={body}
-          name={name}
-          email={email}
-        />
+          <AddReviewSubmit
+            setWarning={setWarning}
+            recommend={recommend}
+            summary={summary}
+            body={body}
+            name={name}
+            email={email}
+          />
+        </Content>
       </Modal>
     );
   }

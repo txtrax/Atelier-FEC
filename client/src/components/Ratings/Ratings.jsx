@@ -20,6 +20,7 @@ const MainContainer = styled.div`
   gap: 40px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.8em;
+  margin-top: 2em;
 `;
 const RatingProductContainer = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const ReviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
+  height: 100%;
   gap: 20px;
   padding-left: 20px;
 `;

@@ -7,7 +7,10 @@ function AddReview({ setShowModal }) {
     <div>
       <Button
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          document.documentElement.style.overflow = 'hidden';
+          setShowModal(true);
+        }}
       >
         ADD A REVIEW +
       </Button>
