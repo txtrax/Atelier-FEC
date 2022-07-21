@@ -88,7 +88,7 @@ function ProductCard({ card }) {
             onClick={() => { setProductId(card.info.id); }}
           />
         )}
-      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); }} />
+      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); document.documentElement.style.overflow = 'hidden'; }} />
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>

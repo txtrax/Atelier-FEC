@@ -101,7 +101,7 @@ function ComparisonModal() {
   return (
     <TableWrapper>
       <MainTable>
-        <CloseButton onClick={() => { setIsOpen(false); }} />
+        <CloseButton onClick={() => { setIsOpen(false); document.documentElement.style.overflow = 'auto'; }} />
         <thead>
           <TableRow>
             <TableHeader>{comparedItemsName[0]}</TableHeader>
