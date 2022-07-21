@@ -95,7 +95,6 @@ function ProductList() {
               const product = {};
               product.info = element[0].data;
               product.style = element[1].data;
-              product.favorite = false;
               allProducts.push(product);
             });
             setRelatedInfo(allProducts);

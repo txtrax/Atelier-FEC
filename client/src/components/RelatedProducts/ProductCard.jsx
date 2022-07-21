@@ -103,7 +103,7 @@ function ProductCard({ card }) {
               </Price>
             </p>
           )}
-        <StarRating />
+        <StarRating id={card.info.id} />
       </CardInfo>
     </Card>
   );
