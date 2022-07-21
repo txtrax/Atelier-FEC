@@ -8,11 +8,12 @@ const Card = styled.div`
   width: 260px;
   height: 100%;
   color: #5D5F71;
-  background: #DABECA;
+  background: #F8F8F8;
   border: 3px solid #BF8B85;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const CardImg = styled.img`
@@ -54,7 +55,7 @@ const DeleteButton = styled(MdOutlineClose)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
-    background: #DABECA;
+    background: #BF8B85;
   }
 `;
 
