@@ -74,11 +74,13 @@ const ModalImage = styled.img`
   display flex;
   border: 10px solid white;
   border-radius: 15px;
-  width: 80%;
+  width: 75%;
 `;
 
 export default function ZoomModal(props) {
-  const { setZoomIn, image, currentIndex, setIndex, photos } = props;
+  const {
+    setZoomIn, image, currentIndex, setIndex, photos,
+  } = props;
 
   return (
     <Background>

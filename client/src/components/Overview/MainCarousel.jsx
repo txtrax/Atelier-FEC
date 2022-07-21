@@ -80,6 +80,7 @@ export default function MainCarousel(props) {
       {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
       <Image
+        setZoomIn={setZoomIn}
         image={display}
         key={display.thumbnail_url}
       />

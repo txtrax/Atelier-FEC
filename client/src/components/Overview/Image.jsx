@@ -9,7 +9,7 @@ const MainImage = styled.img`
 `;
 
 function Image(props) {
-  const { image } = props;
+  const { image, setZoomIn } = props;
 
   if (image.thumbnail_url === null) {
     return (
@@ -18,7 +18,7 @@ function Image(props) {
   }
 
   return (
-    <MainImage src={image.thumbnail_url} />
+    <MainImage src={image.thumbnail_url} onClick={() => setZoomIn(true)} />
   );
 }
 
