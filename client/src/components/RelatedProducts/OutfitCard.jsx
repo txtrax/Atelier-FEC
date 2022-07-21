@@ -94,7 +94,9 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />
+        {(card.ratings.results.length)
+          ? (<StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />)
+          : ('')}
       </CardInfo>
     </Card>
   );

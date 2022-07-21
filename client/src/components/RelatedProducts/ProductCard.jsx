@@ -111,7 +111,9 @@ function ProductCard({ card }) {
               </Price>
             </p>
           )}
-        <StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />
+        {(card.ratings.results.length)
+          ? (<StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />)
+          : ('')}
       </CardInfo>
     </Card>
   );
