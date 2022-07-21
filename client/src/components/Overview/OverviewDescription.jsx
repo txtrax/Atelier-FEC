@@ -5,12 +5,15 @@ import ProductDescription from './ProductDescription';
 import ProductFeatureList from './ProductFeatureList';
 
 const DescriptionAndFeatures = styled.div`
-  padding: 20px;
+  margin: 20px;
+  padding: 20px 20px 30px 20px;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   color: #5D5F71;
+  border: 3px;
+  border-radius: 15px;
 `;
 
 export default function OverviewDescription(props) {

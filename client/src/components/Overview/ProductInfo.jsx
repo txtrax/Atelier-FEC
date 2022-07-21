@@ -8,7 +8,6 @@ const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 3px solid #BF8B85;
   padding: 15px;
   width: 35%;
   justify-content: space-between;

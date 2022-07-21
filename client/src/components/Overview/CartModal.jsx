@@ -67,6 +67,10 @@ const CheckOutButton = styled.button`
   border-color: #5D5F71;
   background-color: #5D5F71;
   color: white;
+  &:hover {
+    border-color: black;
+    background-color: black;
+  }
 `;
 
 const ProductDetails = styled.div`

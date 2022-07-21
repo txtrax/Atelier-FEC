@@ -73,7 +73,7 @@ border-radius: 50%;
 const ModalImage = styled.img`
   display flex;
   border: 10px solid white;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 80%;
 `;
 

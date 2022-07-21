@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 const MiniImage = styled.img`
   margin: 1px;
   border: solid 2px;
-  border-color: #BF8B85;
+  border-color: #FAFAFA;
   object-fit: contain;
   height: 52px;
   width: 52px;
@@ -16,7 +16,7 @@ const MiniImage = styled.img`
 const CurrentImage = styled.img`
   margin: 1px;
   border: solid 2px;
-  border-color: white;
+  border-color: #5D5F71;
   height: 52px;
   width: 52px;
   border-radius: 5px;

@@ -11,7 +11,7 @@ const GalleryContainer = styled.div`
   padding: 15px;
   width: 70%;
   height: 500px;
-  background: #BF8B85;
+  background: #FAFAFA;
   position: relative;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@ const FullscreenIcon = styled(MdFullscreen)`
   position: absolute;
   padding: 2px;
   object-fit: cover;
-  color: white;
+  color: #5D5F71;
   top: 10px;
   right: 10px;
   width: 27px;
@@ -38,8 +38,8 @@ const SliderIconLeft = styled(MdChevronLeft)`
   width: 2em;
   position: absolute;
   left: 10px;
-  color: white;
-  background: #BF8B85;
+  color: #5D5F71;
+  background: white;
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
@@ -53,8 +53,8 @@ const SliderIconRight = styled(MdChevronRight)`
   width: 2em;
   position: absolute;
   right: 10px;
-  color: white;
-  background: #BF8B85;
+  color: #5D5F71;
+  background: white;
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.5;
