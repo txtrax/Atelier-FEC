@@ -1,16 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
 const FeaturesContainer = styled.li`
   padding: 1px;
 `;
 
 export default function ProductFeature(props) {
-  const { feature } = props;
+  const { pair } = props;
 
   return (
     <FeaturesContainer>
-      {feature.feature}: {feature.value}
+      {pair.feature}
+      :
+      {' '}
+      {pair.value}
     </FeaturesContainer>
   );
 }
+
+ProductFeature.propTypes = {
+  pair: PropTypes.shape({
+    feature: PropTypes.string,
+    value: PropTypes.string,
+  }),
+};
+
+ProductFeature.defaultProps = {
+  pair: {},
+};

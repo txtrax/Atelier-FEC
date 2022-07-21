@@ -11,10 +11,10 @@ const MainContainer = styled.div`
   flex-direction: column;
 `;
 
-const OverviewHeader = styled.h3`
-  text-transform: uppercase;
-  padding-left: 10px;
-  padding-bottom: 10px;
+const OverviewHeader = styled.h1`
+  display: flex;
+  font-style: italic;
+  justify-content: center;
 `;
 
 // make a get overview function but this works
@@ -29,23 +29,18 @@ export default function Overview() {
         setOverview(results.data);
       })
       .catch((err) => {
-        ('error retrieving overview', err);
+        console.log('error retrieving product', err);
       });
   }, []);
-
-  if (overview === null) {
-    return <div>┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻</div>;
-  }
 
   return (
     <MainContainer>
 
-      {/* <OverviewHeader>{ ad || 'Add Announcement Here'}</OverviewHeader> */}
-      <OverviewHeader>{'Add Logo or Announcement Here'}</OverviewHeader>
+      <OverviewHeader>Atelier</OverviewHeader>
 
-      <OverviewGallery overview={overview} />
+      {overview && <OverviewGallery overview={overview} />}
 
-      <OverviewDescription overview={overview} />
+      {overview && <OverviewDescription overview={overview} />}
 
     </MainContainer>
   );
