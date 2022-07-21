@@ -12,7 +12,7 @@ const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: column;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: scroll;
   scrollbar-width: none;
   align-items: center;
   scroll-behavior: smooth;
@@ -55,7 +55,7 @@ export default function ThumbnailCarousel(props) {
   return (
     <ThumbnailContainer>
 
-      {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />}
+      {/* {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />} */}
 
       {photos.map((image, index) => {
         return <ThumbnailImage
@@ -66,7 +66,7 @@ export default function ThumbnailCarousel(props) {
           setIndex={setIndex} />;
       })}
 
-      {currentIndex + 7 < photos.length - 1 && <SliderIconDown onClick={() => setIndex(currentIndex + 1)} />}
+      {/* {currentIndex + 7 < photos.length - 1 && <SliderIconDown onClick={() => setIndex(currentIndex + 1)} />} */}
 
     </ThumbnailContainer>
   );
