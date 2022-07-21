@@ -10,6 +10,7 @@ const DescriptionAndFeatures = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  color: #5D5F71;
 `;
 
 export default function OverviewDescription(props) {

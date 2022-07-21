@@ -39,7 +39,8 @@ const AddToCartButton = styled.button`
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
-  background-color: black;
+  border-color: #5D5F71;
+  background-color: #5D5F71;
   color: white;
 `;
 

@@ -5,13 +5,14 @@ import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
 
 const InfoContainer = styled.div`
-  border: 10px;
-  padding: 0px 0px 0px 25px;
-  width: 35%;
   position: relative;
   display: flex;
   flex-direction: column;
+  border: 10px;
+  padding: 15px;;
+  width: 35%;
   justify-content: space-between;
+  background-color: #DABECA;
 `;
 
 const ShareContainer = styled.div`

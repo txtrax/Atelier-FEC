@@ -31,6 +31,7 @@ const ExitIcon = styled(MdClose)`
   position: absolute;
   padding: 2px;
   object-fit: cover;
+  color: black;
   top: 10px;
   right: 10px;
   width: 27px;
@@ -44,11 +45,11 @@ const ExitIcon = styled(MdClose)`
 const CheckoutContainer = styled.div`
   display: flex;
   object-fit: cover;
-  color: white;
+  color: black;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #BF8B85;
+  background-color: #DABECA;
   padding: 20px 12px 20px 12px;
   height: 75px;
 `;
@@ -62,9 +63,9 @@ const CheckOutButton = styled.button`
   width: 50%;
   height: 43px;
   border: 1px solid;
-  border-color: black;
   border-radius: 26px;
-  background-color: black;
+  border-color: #5D5F71;
+  background-color: #5D5F71;
   color: white;
 `;
 

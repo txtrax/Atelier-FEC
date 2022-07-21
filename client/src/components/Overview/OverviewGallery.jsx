@@ -9,6 +9,7 @@ import ThumbnailCarousel from './ThumbnailCarousel';
 const ProductContainer = styled.div`
   display: flex;
   flex-direction: row;
+  border-radius: 15px;
 `;
 
 export default function OverviewGallery(props) {
