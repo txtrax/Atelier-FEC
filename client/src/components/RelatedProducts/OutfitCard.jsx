@@ -85,7 +85,7 @@ function OutfitCard({ card, deleteCard }) {
               {card.style.results[0].sale_price}
             </Price>
           )}
-        <StarRating />
+        <StarRating id={card.info.id} />
       </CardInfo>
     </Card>
   );
