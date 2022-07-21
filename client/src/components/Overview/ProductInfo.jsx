@@ -8,11 +8,11 @@ const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 10px;
-  padding: 15px;;
+  border: 3px solid #BF8B85;
+  padding: 15px;
   width: 35%;
   justify-content: space-between;
-  background-color: #DABECA;
+  color: #5D5F71;
 `;
 
 const ShareContainer = styled.div`

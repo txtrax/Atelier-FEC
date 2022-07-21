@@ -24,7 +24,7 @@ const ZoomModalContent = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 55%;
   height: 600px;
 `;
 
@@ -33,12 +33,12 @@ const ExitIcon = styled(MdFullscreenExit)`
   border-radius: 50%;
   padding: 2px;
   object-fit: cover;
-  color: grey;
+  color: #5D5F71;
   background-color: white;
   top: 25px;
   right: 25px;
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.2em;
+  height: 2.2em;
   &:hover {
     color: black;
   }
@@ -49,7 +49,7 @@ height: 2.5em;
 width: 2.5em;
 position: absolute;
 left: 5px;
-color: grey;
+color: #5D5F71;
 background-color: white;
 border-radius: 50%;
 &:hover {
@@ -62,7 +62,7 @@ height: 2.5em;
 width: 2.5em;
 position: absolute;
 right: 5px;
-color: grey;
+color: #5D5F71;
 background-color: white;
 border-radius: 50%;
 &:hover {
@@ -72,6 +72,7 @@ border-radius: 50%;
 
 const ModalImage = styled.img`
   display flex;
+  border: 10px solid white;
   border-radius: 5px;
   width: 80%;
 `;
