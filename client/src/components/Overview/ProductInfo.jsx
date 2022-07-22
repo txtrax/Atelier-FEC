@@ -79,7 +79,7 @@ export default function ProductInfo(props) {
           <span style={{ color: '#DABECA', fontSize: '2.5em' }}>
             {`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0`}
           </span>
-          <span style={{ textDecoration: 'line-through', fontSize: '1.25em' }}>
+          <span style={{ textDecoration: 'line-through', fontSize: '1.5em' }}>
             {`$${selectedStyle.original_price}`}
           </span>
         </div>
