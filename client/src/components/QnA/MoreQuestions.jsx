@@ -24,6 +24,11 @@ const CollapsoeQuestionButton = styled.button`
   float: left;
 `;
 
+// const QuestionListContainer = styled.div`
+//   overflow-y: scroll;
+//   height: 500px;
+// `;
+
 function MoreQuestions({ questions, displayQuestions, setDisplayQuestions }) {
   const [collapseQuestions, setCollapseQuestions] = useState(true);
   // let button;

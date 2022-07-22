@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const Button = styled.button`
   border: none;
@@ -10,7 +11,7 @@ const Button = styled.button`
 `;
 
 const AnswerHelpfulDiv = styled.div`
-  font-size: 16px;
+  font-size: 0.75em;
   display: inline-flex;
   flex-direction: row;
   margin-left: 40px;
@@ -18,7 +19,9 @@ const AnswerHelpfulDiv = styled.div`
   margin-bottom: 10px;
 `;
 
-function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
+function AnswerHelpful({
+  answerHelfulness, answerId, answerName, answerDate,
+}) {
   const [helpfulToggle, setHelpfulToggle] = useState(false);
   const [reportToggle, setReportToggle] = useState(false);
 
@@ -40,10 +43,10 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
   };
   return (
     <AnswerHelpfulDiv className="answer-helpful-div">
-      by
+      by&nbsp;
       {' '}
       {answerName}
-      ,
+      ,&nbsp;
       {convertDate(answerDate)}
       &nbsp;Helpful?&nbsp;
       <Button
@@ -68,5 +71,19 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
     </AnswerHelpfulDiv>
   );
 }
+
+AnswerHelpful.propTypes = {
+  answerHelfulness: propTypes.number,
+  answerId: propTypes.number,
+  answerName: propTypes.string,
+  answerDate: propTypes.number,
+};
+
+AnswerHelpful.defaultProps = {
+  answerHelfulness: 0,
+  answerId: 0,
+  answerName: '',
+  answerDate: 0,
+};
 
 export default AnswerHelpful;

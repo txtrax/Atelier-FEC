@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const QuestionHelpfulDiv = styled.div`
+  font-size: 16px;
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  text-decoration: underline;
+  font-weight: normal;
+`;
 
 function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
   const [helpfulToggle, setHelpfulToggle] = useState(false);
@@ -141,14 +158,9 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
   );
 
   return (
-    <div style={{
-      display: 'inline-flex',
-      flexDirection: 'row',
-      fontSize: 15,
-    }}
-    >
+    <QuestionHelpfulDiv>
       &nbsp;Helpful?&nbsp;
-      <p
+      <Button
         className="helpful-button"
         disabled={helpfulToggle}
         onClick={() => toggleHelpfulQuestion()}
@@ -158,12 +170,12 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
         }}
       >
         Yes
-      </p>
+      </Button>
       &nbsp;(
       {helpfulToggle ? helpfulness + 1 : helpfulness}
       ) | &nbsp;
 
-      <div
+      <Button
         className="add-answer"
         onClick={() => setAddAnswerModal(true)}
         style={{
@@ -172,9 +184,9 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
         }}
       >
         Add Answer
-      </div>
+      </Button>
       <div>{addAnswerModal ? addAnswerModalBody : null}</div>
-    </div>
+    </QuestionHelpfulDiv>
   );
 }
 
