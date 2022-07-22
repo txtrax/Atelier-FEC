@@ -113,7 +113,7 @@ function QnA() {
 
   return (
     <Container>
-      <h1>Questions and Answers</h1>
+      <h1 className="questions-and-answers">Questions and Answers</h1>
       <form onSubmit={(event) => { event.preventDefault(); }}>
         <SearchDiv classname="searchBar">
           {/* <SearchBar

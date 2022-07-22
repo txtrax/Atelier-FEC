@@ -29,10 +29,10 @@ function RelatedProducts() {
   return (
     <MainContainer>
       <ModalContext.Provider value={providerModalValue}>
-        <RelatedHeader>Related Products</RelatedHeader>
+        <RelatedHeader className="related-products">Related Products</RelatedHeader>
         <ProductList />
         {isOpen ? <ComparisonModal /> : ''}
-        <RelatedHeader>Your Outfit</RelatedHeader>
+        <RelatedHeader className="outfit-list">Your Outfit</RelatedHeader>
         <OutfitList />
       </ModalContext.Provider>
     </MainContainer>
