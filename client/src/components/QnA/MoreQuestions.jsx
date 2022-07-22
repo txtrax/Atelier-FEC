@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
-import Question from './Question';
 import styled from 'styled-components';
+import Question from './Question';
 
 const MoreQuestionButton = styled.button`
-  font-size: medium;
-  height: 60px;
-  width: 235px;
-  padding: 10px;
-  margin: 25px;
-  cursor: pointer;
-  transition: all ease 0.3s;
-  float: left;
+  margin-right: 1em;
+  padding: 1em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: white;
 `;
 
-const CollapsoeQuestionButton = styled.button`
-  font-size: medium;
-  height: 60px;
-  width: 235px;
-  padding: 10px;
-  margin: 25px;
-  cursor: pointer;
-  transition: all ease 0.3s;
-  float: left;
+const CollapseQuestionButton = styled.button`
+  margin-right: 1em;
+  padding: 1em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: white;
 `;
 
 // const QuestionListContainer = styled.div`
@@ -65,13 +59,13 @@ function MoreQuestions({ questions, displayQuestions, setDisplayQuestions }) {
               {questions.slice(0, 4).map((question) => (
                 <Question question={question} key={question.question_id} />
               ))}
-              <CollapsoeQuestionButton
+              <CollapseQuestionButton
                 onClick={() => {
                   setCollapseQuestions(!collapseQuestions);
                 }}
               >
                 Collapse Questions
-              </CollapsoeQuestionButton>
+              </CollapseQuestionButton>
             </>
           )
       }

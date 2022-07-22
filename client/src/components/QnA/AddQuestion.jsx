@@ -3,15 +3,19 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const QuestionModalDiv = styled.div`
-background-color: rgba(0, 0, 0, 0.4);
-z-index: 150;
-width: 100%;
-height: 100%;
-position: fixed;
-top: 0;
-left: 0;
-overflow: auto;
-padding-top: 275px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border: 3px solid black;
+  border-radius: 15px;
 `;
 
 function AddQuestion({ productId, handleModalClose, openModal }) {

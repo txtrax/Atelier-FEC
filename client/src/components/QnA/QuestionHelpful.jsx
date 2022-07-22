@@ -3,12 +3,26 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const QuestionHelpfulDiv = styled.div`
-  font-size: 16px;
+  font-size: 1em;
   display: inline-flex;
   flex-direction: row;
-  margin-left: 40px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  right: 0;
+  top: 0;
+`;
+const AnswerModalDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border: 3px solid black;
+  border-radius: 15px;
 `;
 
 const Button = styled.button`
@@ -81,7 +95,7 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
   };
 
   const addAnswerModalBody = (
-    <div className="answer-modal" onClick={(event) => handleCloseModal(event)}>
+    <AnswerModalDiv className="answer-modal" onClick={(event) => handleCloseModal(event)}>
       <div className="answer-modal-control" onClick={(event) => event.stopPropagation()}>
         <span
           className="answer-modal-close-x"
@@ -154,7 +168,7 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
 
       </div>
 
-    </div>
+    </AnswerModalDiv>
   );
 
   return (
