@@ -65,15 +65,9 @@ export default function AddToCartForm(props) {
 
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
-  const [clicked, setClicked] = useState(false);
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  const onSizeSelect = (e) => {
-    setClicked(false);
-    setSize(e.target.value);
-  };
 
   const onQuantitySelect = (e) => {
     setQuantity(e.target.value);
@@ -102,15 +96,15 @@ export default function AddToCartForm(props) {
 
       <SizeAndQuantity>
 
-        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
-          {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
+        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onChange={(e) => { setSize(e.target.value); }}>
+          <option value="default">Select Size</option>
           {sizeQuantArr.map((sizeQuan) => (
             <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>
           ))}
         </SizeDropdown>
 
         <QuantityDropdown id="quantity" style={{ color: '#5D5F71' }} onChange={(e) => { onQuantitySelect(e); }}>
-          {size ? null : <option value="-">-</option>}
+          <option value="-">-</option>
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
 

@@ -15,13 +15,11 @@ const OverviewSlogan = styled.p`
   text-align: center;
   padding-bottom: 2px;
   font-weight: bold;
-  font-size: 2em;
 `;
 
 const OverviewDescriptionContainer = styled.p`
   text-align: center;
   padding-bottom: 2px;
-  font-size: 1.5em;
 `;
 
 export default function ProductDescription(props) {

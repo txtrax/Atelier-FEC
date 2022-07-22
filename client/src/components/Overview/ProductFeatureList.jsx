@@ -21,7 +21,6 @@ const FeaturesContainer = styled.div`
 
 const FeaturesSlogan = styled.p`
   font-weight: bold;
-  font-size: 2em;
 `;
 
 export default function ProductFeatureList(props) {
