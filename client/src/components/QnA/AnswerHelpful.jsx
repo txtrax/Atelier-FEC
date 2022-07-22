@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const Button = styled.button`
   border: none;
@@ -9,7 +10,18 @@ const Button = styled.button`
   font-weight: normal;
 `;
 
-function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
+const AnswerHelpfulDiv = styled.div`
+  font-size: 0.75em;
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;
+
+function AnswerHelpful({
+  answerHelfulness, answerId, answerName, answerDate,
+}) {
   const [helpfulToggle, setHelpfulToggle] = useState(false);
   const [reportToggle, setReportToggle] = useState(false);
 
@@ -20,24 +32,21 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
     // eslint-disable-next-line no-unused-expressions, no-nested-ternary
     !helpfulToggle && event.target.getAttribute('name') === 'helpful'
       ? (axios.put(`/qa/answers/${answerId}/helpful`)
-        .then((response) => console.log('added +1 helpful'), setHelpfulToggle(true))
+        .then(() => console.log('added +1 helpful'), setHelpfulToggle(true))
         .catch((err) => console.log(err))
       )
       : !reportToggle && event.target.getAttribute('name') === 'report'
-        ? (axios.put('/qa/questions/answer/helpful', {
-          answerId,
-          type: event.target.getAttribute('name'),
-        })
-          .then((response) => console.log('+1'))
+        ? (axios.put(`/qa/answers/${answerId}/report`)
+          .then(() => console.log('reported'))
           .catch((err) => console.log(err)), setReportToggle(true))
         : null;
   };
   return (
-    <div className="answer-helpful-div">
-      by
+    <AnswerHelpfulDiv className="answer-helpful-div">
+      by&nbsp;
       {' '}
       {answerName}
-      ,
+      ,&nbsp;
       {convertDate(answerDate)}
       &nbsp;Helpful?&nbsp;
       <Button
@@ -48,21 +57,33 @@ function AnswerHelpful({ answerHelfulness, answerId, answerName, answerDate }) {
       >
         Yes
       </Button>
-      {/* &#40; */}
       &nbsp;(
       {helpfulToggle ? answerHelfulness + 1 : answerHelfulness}
       ) | &nbsp;
-      {/* {answerHelfulness} */}
-      {/* &#41; */}
       <Button
         className="answer-report"
         type="button"
-        onClick={event => { handleEventPut(event);}}
+        name="report"
+        onClick={(event) => { handleEventPut(event); }}
       >
         Report
       </Button>
-    </div>
+    </AnswerHelpfulDiv>
   );
 }
+
+AnswerHelpful.propTypes = {
+  answerHelfulness: propTypes.number,
+  answerId: propTypes.number,
+  answerName: propTypes.string,
+  answerDate: propTypes.number,
+};
+
+AnswerHelpful.defaultProps = {
+  answerHelfulness: 0,
+  answerId: 0,
+  answerName: '',
+  answerDate: 0,
+};
 
 export default AnswerHelpful;
