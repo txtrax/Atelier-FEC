@@ -16,10 +16,11 @@ const FeaturesContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 16px 0px;
+  padding-bottom: 16px;
 `;
 
 const FeaturesSlogan = styled.p`
-font-weight: bold;
+  font-weight: bold;
 `;
 
 export default function ProductFeatureList(props) {

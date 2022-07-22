@@ -64,7 +64,7 @@ function RatingBreakdown({
 
   return (
     <StarContainer>
-      <Header>RATINGS &amp; REVIEWS</Header>
+      <Header className="ratings-and-reviews">RATINGS &amp; REVIEWS</Header>
       <Rating>
         <RatingNum>
           {averageRating}

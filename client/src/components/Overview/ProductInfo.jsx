@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { scroller } from 'react-scroll';
 import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa';
 import IdContext from '../Context';
 import StyleSelector from './StyleSelector';
@@ -23,8 +24,16 @@ const ShareContainer = styled.div`
   padding: 0px 3px 0px 3px;
 `;
 
-const StarContainer = styled.div`
+const RatingsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   height: 1em;
+`;
+
+const ReviewsContainer = styled.div`
+  &:hover {
+    color: #BF8B85;
+  }
 `;
 
 const IconButton = styled.div`
@@ -37,17 +46,17 @@ const IconButton = styled.div`
 `;
 
 const FacebookIcon = styled(FaFacebookF)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
 const TwitterIcon = styled(FaTwitter)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
 const PinterestIcon = styled(FaPinterestP)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
@@ -57,11 +66,17 @@ export default function ProductInfo(props) {
   } = props;
   const { productId } = useContext(IdContext);
 
+  const handleReviewClick = () => {
+    scroller.scrollTo('ratings-and-reviews', {
+      smooth: true,
+    });
+  };
+
   const renderPrice = () => {
     if (selectedStyle.sale_price) {
       return (
         <div>
-          <span style={{ color: '#DABECA', fontSize: '2em' }}>
+          <span style={{ color: '#DABECA', fontSize: '2.5em' }}>
             {`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0`}
           </span>
           <span style={{ textDecoration: 'line-through', fontSize: '1.5em' }}>
@@ -71,27 +86,37 @@ export default function ProductInfo(props) {
       );
     }
     return (
-      <div style={{ fontSize: '2em' }}>
+      <div style={{ fontSize: '2.5em' }}>
         $
         {selectedStyle.original_price}
       </div>
     );
   };
-  console.log(styles);
+
   return (
     <InfoContainer>
 
-      <StarContainer>
+      <RatingsContainer>
+
         <Stars id={productId} />
-      </StarContainer>
 
-      <div style={{ fontSize: '1em' }}>{overview.category.toUpperCase()}</div>
+        {'\u00A0\u00A0\u00A0('}
 
-      <div style={{ fontSize: '2.5em' }}>{overview.name}</div>
+        <ReviewsContainer onClick={handleReviewClick}>
+        {'Read all reviews'}
+        </ReviewsContainer>
+
+        {')'}
+
+      </RatingsContainer>
+
+      <div style={{ fontSize: '2em' }}>{overview.category.toUpperCase()}</div>
+
+      <div style={{ fontSize: '3em' }}>{overview.name}</div>
 
       {renderPrice()}
 
-      <div style={{ fontSize: '1em' }}>
+      <div style={{ margin: '25px 0px', fontSize: '1em' }}>
         <b>
           {'STYLE\u00A0\u00A0>\u00A0\u00A0\u00A0\u00A0'}
         </b>

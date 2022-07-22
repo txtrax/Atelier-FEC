@@ -28,7 +28,7 @@ export default function ProductDescription(props) {
   return (
     <DescriptionContainer>
       <OverviewSlogan>
-        { slogan }
+        <em>{ slogan }</em>
       </OverviewSlogan>
       <OverviewDescriptionContainer>
         { description }

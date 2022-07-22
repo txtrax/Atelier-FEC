@@ -10,7 +10,7 @@ const GalleryContainer = styled.div`
   border: 10px;
   padding: 15px;
   width: 70%;
-  height: 500px;
+  height: 645px;
   background: #FAFAFA;
   position: relative;
   display: flex;
@@ -23,10 +23,10 @@ const FullscreenIcon = styled(MdFullscreen)`
   padding: 2px;
   object-fit: cover;
   color: #5D5F71;
-  top: 10px;
-  right: 10px;
-  width: 27px;
-  height: 27px;
+  top: 15px;
+  right: 15px;
+  width: 2em;
+  height: 2em;
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -34,8 +34,8 @@ const FullscreenIcon = styled(MdFullscreen)`
 `;
 
 const SliderIconLeft = styled(MdChevronLeft)`
-  height: 2em;
-  width: 2em;
+  height: 2.5em;
+  width: 2.5em;
   position: absolute;
   left: 10px;
   color: #5D5F71;
@@ -49,8 +49,8 @@ const SliderIconLeft = styled(MdChevronLeft)`
  `;
 
 const SliderIconRight = styled(MdChevronRight)`
-  height: 2em;
-  width: 2em;
+  height: 2.5em;
+  width: 2.5em;
   position: absolute;
   right: 10px;
   color: #5D5F71;

@@ -3,22 +3,28 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 const MiniImage = styled.img`
-  margin: 1px;
+  margin: 2px;
+  background-color: #FAFAFA;
   border: solid 2px;
   border-color: #FAFAFA;
   object-fit: contain;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
+  border-radius: 5px;
   opacity: 0.5;
-  justify-content: space-between
+  justify-content: space-between;
+  &:hover {
+    border-color: #BF8B85;
+  }
 `;
 
 const CurrentImage = styled.img`
   margin: 1px;
-  border: solid 2px;
+  border: solid 3px;
   border-color: #5D5F71;
-  height: 52px;
-  width: 52px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 4.65em;
+  width: 4.65em;
   border-radius: 5px;
   object-fit: contain;
   justify-content: space-between

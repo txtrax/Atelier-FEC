@@ -5,7 +5,7 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
-  height: 470px;
+  height: 615px;
   padding: 30px 0px 30px 10px;
   position: relative;
   background-color: #FAFAFA;

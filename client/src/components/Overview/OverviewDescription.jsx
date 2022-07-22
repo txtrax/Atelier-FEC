@@ -14,6 +14,7 @@ const DescriptionAndFeatures = styled.div`
   color: #5D5F71;
   border: 3px;
   border-radius: 15px;
+  font-size: 1em;
 `;
 
 export default function OverviewDescription(props) {
@@ -25,7 +26,7 @@ export default function OverviewDescription(props) {
         slogan={overview.slogan}
         description={overview.description}
       />
-      <hr></hr>
+      <hr />
       <ProductFeatureList
         features={overview.features}
       />
