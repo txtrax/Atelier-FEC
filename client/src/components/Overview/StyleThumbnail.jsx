@@ -29,6 +29,7 @@ const ThumbnailImage = styled.img`
   border-radius: 50%;
   &:hover {
     border-color: #BF8B85;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   }
 `;
 
