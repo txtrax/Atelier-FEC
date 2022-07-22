@@ -24,7 +24,7 @@ const ZoomModalContent = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 55%;
+  width: 65%;
   height: 100%;
 `;
 
@@ -72,9 +72,10 @@ border-radius: 50%;
 
 const ModalImage = styled.img`
   display flex;
-  border: 10px solid white;
   border-radius: 15px;
-  width: 75%;
+  object-fit: cover;
+  height: 690px;
+  width: 690px;
 `;
 
 export default function ZoomModal(props) {
@@ -89,7 +90,7 @@ export default function ZoomModal(props) {
       <ZoomModalContent>
         {currentIndex > 0 && <ZoomIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
-        <ModalImage src={image.thumbnail_url} />
+        <ModalImage src={image.url} />
 
         {currentIndex < photos.length - 1 && <ZoomIconRight onClick={() => setIndex(currentIndex + 1)} />}
       </ZoomModalContent>
