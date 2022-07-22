@@ -14,12 +14,10 @@ export default function StyleSelector(props) {
     styles, setSelectedStyle, setIndex, selectedStyle,
   } = props;
 
-  const photoCheck = selectedStyle.photos[0].thumbnail_url;
-
   return (
     <StylesContainer>
 
-      {photoCheck && styles.map((style) => {
+      {styles.map((style) => {
         return <StyleThumbnail
           style={style}
           key={style.style_id}

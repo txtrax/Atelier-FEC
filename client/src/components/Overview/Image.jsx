@@ -15,7 +15,7 @@ function Image(props) {
 
   if (image.thumbnail_url === null) {
     return (
-      <div style={{ color: '#5D5F71' }}>NOT AVAILABLE</div>
+      <div style={{ color: '#5D5F71', fontSize: '2em', left: '40%' }}>NOT AVAILABLE</div>
     );
   }
 

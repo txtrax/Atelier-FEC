@@ -37,17 +37,17 @@ const IconButton = styled.div`
 `;
 
 const FacebookIcon = styled(FaFacebookF)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
 const TwitterIcon = styled(FaTwitter)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
 const PinterestIcon = styled(FaPinterestP)`
-  height: 10px;
+  height: 1em;
   color: white;
 `;
 
