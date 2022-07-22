@@ -7,9 +7,9 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const BoldContainer = styled(Container)`
-  font-color: lightgrey;
-`;
+// const BoldContainer = styled(Container)`
+//   font-color: lightgrey;
+// `;
 
 const Characteristics = styled.div`
   // font-weight: bolder;
@@ -35,7 +35,13 @@ const SingleDes = styled.div`
   // justify-content: flex-start;
 `;
 
-function AddReviewCharEntry({ char, description,index, setCharacteristics }) {
+/*
+<Button name="recommend" type="radio" value="yes" onClick={(e) => updateRecommend(e)} />
+*/
+
+function AddReviewCharEntry({
+  product, char, description, characteristics, setCharacteristics,
+}) {
   // if (index % 2 === 0) {
   //   return (
   //     <BoldContainer>
@@ -53,15 +59,23 @@ function AddReviewCharEntry({ char, description,index, setCharacteristics }) {
   //     </BoldContainer>
   //   );
   // }
+  const handleClick = (e) => {
+    // console.log('name', e.target.name);
+    // console.log('value', e.target.value);
+    const temp = { ...characteristics };
+    temp[product[e.target.name].id] = Number.parseInt(e.target.value, 10);
+    // console.log('temp = ', temp);
+    setCharacteristics(temp);
+  };
   return (
     <Container>
       <Characteristics>
         {char}
       </Characteristics>
       <Descriptions>
-        {description.map((des) => (
+        {description.map((des, index) => (
           <SingleDes key={des}>
-            <input type="radio" name={char} />
+            <input type="radio" name={char} value={index + 1} onClick={(e) => (handleClick(e))} />
             <div>{des}</div>
           </SingleDes>
         ))}
@@ -73,15 +87,17 @@ function AddReviewCharEntry({ char, description,index, setCharacteristics }) {
 AddReviewCharEntry.propTypes = {
   char: PropTypes.string,
   description: PropTypes.arrayOf(PropTypes.string),
-  index: PropTypes.number,
-  setCharacteristics: PropTypes.objectOf(PropTypes.number),
+  product: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])),
+  setCharacteristics: PropTypes.func,
+  characteristics: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])),
 };
 
 AddReviewCharEntry.defaultProps = {
   char: '',
   description: '',
-  index: 0,
-  setCharacteristics: {},
+  product: {},
+  setCharacteristics: (e) => e,
+  characteristics: {},
 };
 
 export default AddReviewCharEntry;

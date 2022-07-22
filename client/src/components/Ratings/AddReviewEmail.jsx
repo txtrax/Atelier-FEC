@@ -10,6 +10,7 @@ const Container = styled.div`
 const InputBar = styled.input`
   width: 70%;
   border-radius: 4px;
+  border-color: #BF8B85;
 `;
 
 const InputNote = styled.div`
@@ -20,9 +21,6 @@ const InputNote = styled.div`
 `;
 
 function AddReviewEmail({ setEmail }) {
-  function checkEmail(e) {
-    console.log('onfocusOut', e.target.value);
-  }
   return (
     <Container>
       <AddReviewHeader>Your email&#42;</AddReviewHeader>

@@ -9,7 +9,9 @@ const Photos = styled.div`
   margin-top: 1em;
 `;
 
-function ReviewEntryPhoto({ photos, showPhoto, setShowPhoto, setPhotoURL }) {
+function ReviewEntryPhoto({
+  photos, setShowPhoto,
+}) {
   if (photos.length > 0) {
     return (
       <Photos>
@@ -18,7 +20,6 @@ function ReviewEntryPhoto({ photos, showPhoto, setShowPhoto, setPhotoURL }) {
             key={photo.id}
             photo={photo}
             setShowPhoto={setShowPhoto}
-            setPhotoURL={setPhotoURL}
           />
         ))}
       </Photos>
@@ -31,13 +32,13 @@ ReviewEntryPhoto.propTypes = {
     PropTypes.objectOf(PropTypes.any),
   ),
   setShowPhoto: PropTypes.func,
-  showPhoto: PropTypes.bool,
+  // showPhoto: PropTypes.bool,
 };
 
 ReviewEntryPhoto.defaultProps = {
   photos: [],
   setShowPhoto: (e) => e,
-  showPhoto: false,
+  // showPhoto: false,
 };
 
 export default ReviewEntryPhoto;

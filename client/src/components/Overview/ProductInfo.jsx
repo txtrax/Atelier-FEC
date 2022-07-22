@@ -11,7 +11,7 @@ const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 5px 15px;
+  padding: 5px 25px;
   width: 35%;
   justify-content: space-between;
   color: #5D5F71;

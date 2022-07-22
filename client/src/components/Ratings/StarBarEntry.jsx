@@ -11,8 +11,12 @@ const Bar = styled.div`
   width: 100%;
   align-items: center;
   :hover {
-    background-color:LightGray;
-    opacity: 0.5;
+    background-color:#ffcc33;
+    // opacity: 0.5;
+    border-radius: 6px;
+    // padding-right: 0.5em;
+    // padding-left: 0.5em;
+    color: white;
   }
 `;
 const BarRating = styled.u`
@@ -35,7 +39,7 @@ const BarProgress = styled.progress`
 `;
 
 function StarBarEntry({
-  reviews, count, stars, starFilter, setStarFilter, setShowPhoto
+  reviews, count, stars, starFilter, setStarFilter,
 }) {
   // const starBreakdown = buildRatingBreakDown(reviews);
 
