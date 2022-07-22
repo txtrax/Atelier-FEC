@@ -15,6 +15,7 @@ const MainContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 2em 0 2em 0;
 `;
 
 function RelatedProducts() {
