@@ -9,7 +9,7 @@ import ModalContext from '../ModalContext';
 const TableWrapper = styled.div`
   width: 30%;
   height: 30%;
-  top: auto;
+  top: 60%;
   left: 50%;
   z-index: 10;
   transform: translate(-50%, -100%);
