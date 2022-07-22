@@ -40,7 +40,7 @@ const Filter = styled.div`
   padding-top: 1em;
   padding-bottom: 0.5em;
 `;
-function Stars({
+function RatingBreakdown({
   reviews, starFilter, setStarFilter, setDisplayedReviews,
 }) {
   useEffect(() => {
@@ -70,7 +70,15 @@ function Stars({
           {averageRating}
         </RatingNum>
         <RatingStar>
-          <StarRating numberOfStars={5} rating={averageRating} starRatedColor="#ffd700" starSpacing="1px" starDimension="20px" isSelectable={false} />
+          <StarRating
+            numberOfStars={5}
+            rating={averageRating}
+            starEmptyColor="#d3d3d3"
+            starRatedColor="#ffcc33"
+            starSpacing="1px"
+            starDimension="20px"
+            isSelectable={false}
+          />
         </RatingStar>
       </Rating>
       <Recommendation>
@@ -96,7 +104,7 @@ function Stars({
   );
 }
 
-Stars.propTypes = {
+RatingBreakdown.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.any]),
   ),
@@ -110,7 +118,7 @@ Stars.propTypes = {
   setDisplayedReviews: PropTypes.func,
 };
 
-Stars.defaultProps = {
+RatingBreakdown.defaultProps = {
   reviews: [],
   starFilter: [],
   setStarFilter: (e) => e,
@@ -118,4 +126,4 @@ Stars.defaultProps = {
   setDisplayedReviews: (e) => e,
 };
 
-export default Stars;
+export default RatingBreakdown;

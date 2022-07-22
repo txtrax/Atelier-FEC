@@ -8,12 +8,14 @@ import ModalContext from '../ModalContext';
 const RelatedHeader = styled.h3`
   text-transform: uppercase;
   padding: 10px 0 10px 10px;
+  color: #5D5F71;
 `;
 
 const MainContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 2em 0 2em 0;
 `;
 
 function RelatedProducts() {

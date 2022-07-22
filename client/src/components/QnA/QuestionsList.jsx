@@ -1,7 +1,13 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import styled from 'styled-components';
 import Question from './Question';
 import MoreQuestions from './MoreQuestions';
+
+const QuestionListContainer = styled.div`
+  overflow-y: scroll;
+  height: 500px;
+`;
 
 function QuestionsList({ questions, productId, searchInput, displayQuestions, setDisplayQuestions
 }) {
@@ -10,7 +16,7 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
   // console.log(displayQuestions, 'display questionsss');
   // console.log(questions, 'here is questionsss');
   return (
-    <div className="question-list">
+    <QuestionListContainer className="question-list">
       {/* {console.log('SEARCH INPUT = ', searchInput)}
       {console.log('QUESTIONS = ', questions)} */}
       {searchInput === null
@@ -47,13 +53,13 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
           // />)
         })
         : questions.filter((question) => {
-          if (question && question.question && question.question_body.toLowerCase()
+          if (question.question_body.toLowerCase()
             .includes(searchInput.toLowerCase())) {
             return question;
           }
         })
-          .slice(0, 5).map((question, count) => (
-            count >= 2
+          .slice(0, 4).map((question, count) => (
+            count >= 3
               ? (
                 <MoreQuestions
                   questions={questions}
@@ -63,12 +69,12 @@ function QuestionsList({ questions, productId, searchInput, displayQuestions, se
               : (
                 <Question
                   question={question}
-                  questionId={productId}
+                  productId={productId}
                   key={question.question_id}
                 />
               )
           ))}
-    </div>
+    </QuestionListContainer>
   )
 }
 

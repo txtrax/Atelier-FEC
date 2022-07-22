@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { MdOutlineStarOutline } from 'react-icons/md';
-import StarRating from './StarRating';
+import StarRatings from 'react-star-ratings';
 import IdContext from '../Context';
 import ModalContext from '../ModalContext';
 
@@ -11,7 +11,7 @@ const Card = styled.div`
   height: 100%;
   color: #5D5F71;
   background: #F8F8F8;
-  border: 3px solid #BF8B85;
+  border: 3px solid #5D5F71;
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
@@ -45,7 +45,7 @@ const Price = styled.span`
 
 const StarButton = styled(MdOutlineStarOutline)`
   position: relative;
-  background: rgb(248,248,248);
+  background: #F8F8F8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 50%;
   right: 15px;
@@ -56,11 +56,20 @@ const StarButton = styled(MdOutlineStarOutline)`
   opacity: 0.8;
   &:hover {
     opacity: 1;
+    color: #F8F8F8;
+    background-color: #5D5F71;
   }
 `;
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
   const { setIsOpen, setRelatedId } = useContext(ModalContext);
+
+  function getAvgRating(reviews) {
+    if (reviews.length !== 0) {
+      return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
+    }
+    return 0;
+  }
 
   return (
     <Card>
@@ -79,7 +88,7 @@ function ProductCard({ card }) {
             onClick={() => { setProductId(card.info.id); }}
           />
         )}
-      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); }} />
+      <StarButton onClick={() => { setIsOpen(true); setRelatedId(card.info.id); document.documentElement.style.overflow = 'hidden'; }} />
       <CardInfo>
         <p style={{ margin: 0 }}>{card.info.category}</p>
         <Name>{card.info.name}</Name>
@@ -96,13 +105,15 @@ function ProductCard({ card }) {
                 $
                 {card.style.results[0].original_price}
               </del>
-              <Price style={{ color: 'red' }}>
+              <Price style={{ color: '#BF8B85' }}>
                 {'  $'}
                 {card.style.results[0].sale_price}
               </Price>
             </p>
           )}
-        <StarRating id={card.info.id} />
+        {(card.ratings.results.length)
+          ? (<StarRatings rating={getAvgRating(card.ratings.results)} starDimension="16px" starSpacing="1px" starRatedColor="#FFCC33" />)
+          : ('')}
       </CardInfo>
     </Card>
   );

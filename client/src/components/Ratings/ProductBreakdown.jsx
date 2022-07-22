@@ -13,7 +13,7 @@ function ProductBreakdown({ product }) {
   const ProductChar = {
     Size: ['Too small', 'Too large'],
     Width: ['Too narrow', 'Too wide'],
-    Comfort: ['Uncomforatble', 'Perfect'],
+    Comfort: ['Uncomfortable', 'Perfect'],
     Quality: ['Poor', 'Perfect'],
     Length: ['Too short', 'Too long'],
     Fit: ['Too tight', 'Too long'],

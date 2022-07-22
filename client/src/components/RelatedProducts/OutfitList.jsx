@@ -62,14 +62,14 @@ const AddOutfit = styled.button`
   font-size: 2em;
   color: #5D5F71;
   background: #F8F8F8;
-  border: 3px solid #BF8B85;
+  border: 3px solid #5D5F71;
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
   margin-right: 5px;
   cursor: pointer;
   &:hover {
-  color: #BF8B85;
+  color: #5D5F71;
   font-size: 3em;
   }
 `;
@@ -96,6 +96,10 @@ function OutfitList() {
     return axios.get(`/products/${id}/styles`);
   }
 
+  function getRatings(id) {
+    return axios.get(`/reviews/?product_id=${id}&sort=relevant`);
+  }
+
   const allOutfits = [];
 
   function saveToLocalStorage(currId) {
@@ -112,11 +116,12 @@ function OutfitList() {
 
   function saveToOutfitState(currId) {
     if (!allOutfits.some((element) => element.info.id === currId)) {
-      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId)])
+      Promise.all([getOutfitInfo(currId), getOutfitStyle(currId), getRatings(currId)])
         .then((result) => {
           const product = {};
           product.info = result[0].data;
           product.style = result[1].data;
+          product.ratings = result[2].data;
           allOutfits.unshift(product);
           setOutfitInfo((prevState) => ([...prevState, product]));
         })

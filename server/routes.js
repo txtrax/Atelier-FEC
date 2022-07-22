@@ -53,15 +53,43 @@ module.exports.postQuestion = (req, res) => {
   });
 };
 
+module.exports.postAnswer = (req, res) => {
+  const { qid } = req.params;
+  const body = {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+    photo: req.body.photo,
+  };
+  questions.postAnswer(qid, body, (result) => {
+    res.status(201).json(result.data);
+  });
+};
+
 module.exports.getAnswers = (req, res) => {
   const { qid } = req.params;
   questions.getAnswers(qid, (result) => {
     res.status(200).json(result.data);
   });
 };
+
 module.exports.putHelpfulAnswers = (req, res) => {
   const { answerId } = req.params;
   questions.putHelpfulAnswers(answerId, (result) => {
+    res.status(201).json(result.data);
+  });
+};
+
+module.exports.putReportAnswer = (req, res) => {
+  const { answerId } = req.params;
+  questions.putReportAnswer(answerId, (result) => {
+    res.status(201).json(result.data);
+  });
+};
+
+module.exports.putHelpfulQuestion = (req, res) => {
+  const { qid } = req.params;
+  questions.putHelpfulQuestion(qid, (result) => {
     res.status(201).json(result.data);
   });
 };
