@@ -7,7 +7,7 @@ import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
 
 const AppContainer = styled.div`
-  padding: 0px 80px 0px 80px;
+  padding: 0px 80px;
   position: relative;
   display: flex;
   flex-direction: column;

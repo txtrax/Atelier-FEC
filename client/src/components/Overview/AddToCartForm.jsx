@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import CartModal from './CartModal';
 
 const AddToCartContainer = styled.div`
-  height: 115px;
+  margin: 25px;
+  height: 125px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const SizeAndQuantity = styled.div`
@@ -26,7 +27,7 @@ const ButtonContainer = styled.div`
 
 const SizeDropdown = styled.select`
   width: 50%;
-  height: 50px;
+  height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
   text-align: center;
@@ -34,7 +35,7 @@ const SizeDropdown = styled.select`
 
 const QuantityDropdown = styled.select`
   width: 20%;
-  height: 50px;
+  height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
   text-align: center;
@@ -68,6 +69,7 @@ export default function AddToCartForm(props) {
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [request, setRequest] = useState(null);
 
   const onQuantitySelect = (e) => {
     setQuantity(e.target.value);
@@ -85,7 +87,11 @@ export default function AddToCartForm(props) {
     return quantityOptions;
   };
 
-  const showModal = () => {
+  const handleAddClick = () => {
+    if (!size) {
+      setRequest(<div style={{ fontSize: '1em' }}><center>Please select size</center></div>);
+    }
+
     if (quantity) {
       setIsOpen(true);
     }
@@ -95,8 +101,7 @@ export default function AddToCartForm(props) {
     <AddToCartContainer>
 
       <SizeAndQuantity>
-
-        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onChange={(e) => { setSize(e.target.value); }}>
+        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => setRequest(null)} onChange={(e) => { setSize(e.target.value); }}>
           <option value="default">Select Size</option>
           {sizeQuantArr.map((sizeQuan) => (
             <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>
@@ -107,12 +112,13 @@ export default function AddToCartForm(props) {
           <option value="-">-</option>
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
-
       </SizeAndQuantity>
+
+      { request }
 
       <ButtonContainer>
         {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
-          <AddToCartButton onClick={showModal}>
+          <AddToCartButton onClick={handleAddClick}>
             Add to Cart
           </AddToCartButton>
         ) : (
