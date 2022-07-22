@@ -37,7 +37,10 @@ app.get('/qa/questions', route.getQuestions);
 // this is how to handle path parameters. No need ':' in postman
 app.get('/qa/questions/:qid/answers', route.getAnswers);
 app.put('/qa/answers/:answerId/helpful', route.putHelpfulAnswers);
+app.put('/qa/questions/:qid/helpful', route.putHelpfulQuestion);
 app.post('/qa/questions', route.postQuestion);
+app.post('/qa/questions/:qid/answers', route.postAnswer);
+app.put('/qa/answers/:answerId/report', route.putReportAnswer);
 app.get('/reviews', route.getReviews);
 app.get('/reviews/meta', route.getReviewMeta);
 app.put('/reviews/:id/helpful', route.markReviewHelpful);

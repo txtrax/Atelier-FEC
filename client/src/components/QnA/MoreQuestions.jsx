@@ -1,5 +1,33 @@
 import React, { useState } from 'react';
 import Question from './Question';
+import styled from 'styled-components';
+
+const MoreQuestionButton = styled.button`
+  font-size: medium;
+  height: 60px;
+  width: 235px;
+  padding: 10px;
+  margin: 25px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  float: left;
+`;
+
+const CollapsoeQuestionButton = styled.button`
+  font-size: medium;
+  height: 60px;
+  width: 235px;
+  padding: 10px;
+  margin: 25px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  float: left;
+`;
+
+// const QuestionListContainer = styled.div`
+//   overflow-y: scroll;
+//   height: 500px;
+// `;
 
 function MoreQuestions({ questions, displayQuestions, setDisplayQuestions }) {
   const [collapseQuestions, setCollapseQuestions] = useState(true);
@@ -21,37 +49,29 @@ function MoreQuestions({ questions, displayQuestions, setDisplayQuestions }) {
   // }
   return (
     <div>
-      {/* { button } */}
       {
         collapseQuestions
           ? (
+            <MoreQuestionButton
+              onClick={() => {
+                setCollapseQuestions(!collapseQuestions);
+              }}
+            >
+              More Answered Questions
+            </MoreQuestionButton>
+          )
+          : (
             <>
-              (
-              <button
-                type="button"
-                className="more-questions"
+              {questions.slice(0, 4).map((question) => (
+                <Question question={question} key={question.question_id} />
+              ))}
+              <CollapsoeQuestionButton
                 onClick={() => {
                   setCollapseQuestions(!collapseQuestions);
                 }}
               >
-                More Answered Questions
-              </button>
-              )
-            </>
-          )
-          : (
-            <>
-              {questions.slice(4).map((question) => (
-                <Question question={question} key={question.question_id} />
-              ))}
-              <button
-                type="button"
-                className="more-questions"
-                onClick={() => {
-                  setCollapseQuestions(!collapseQuestions);
-                }}>
                 Collapse Questions
-              </button>
+              </CollapsoeQuestionButton>
             </>
           )
       }

@@ -16,7 +16,7 @@ const TableWrapper = styled.div`
   position: fixed;
   overflow: hidden;
   border-radius: 15px;
-  border: 4px solid #5D5F71;
+  border: 3px solid #BF8B85;
   padding: 2em;
   background-color: #F8F8F8;
 `;
@@ -43,7 +43,7 @@ const CloseButton = styled(AiFillCloseCircle)`
 `;
 
 const TableRow = styled.tr`
-  padding: 20px;
+  padding: 1em;
 `;
 
 const TableHeader = styled.th`
@@ -101,7 +101,7 @@ function ComparisonModal() {
   return (
     <TableWrapper>
       <MainTable>
-        <CloseButton onClick={() => { setIsOpen(false); }} />
+        <CloseButton onClick={() => { setIsOpen(false); document.documentElement.style.overflow = 'auto'; }} />
         <thead>
           <TableRow>
             <TableHeader>{comparedItemsName[0]}</TableHeader>

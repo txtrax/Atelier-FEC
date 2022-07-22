@@ -5,17 +5,32 @@ import { MdCheck } from 'react-icons/md';
 const ThumbnailContainer = styled.div`
   position: relative;
   display: flex;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
+`;
+
+const SelectedThumbnailImage = styled.img`
+  display: block;
+  border: solid 2px #5D5F71;
+  background-color: #FAFAFA;
+  object-fit: cover;
+  height: 4.65em;
+  width: 4.65em;
+  border-radius: 50%;
 `;
 
 const ThumbnailImage = styled.img`
   display: block;
-  border: solid 1px #5D5F71;
+  border: solid 2px #5D5F71;
+  background-color: #FAFAFA;
   object-fit: cover;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
   border-radius: 50%;
+  &:hover {
+    border-color: #BF8B85;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const CheckIcon = styled(MdCheck)`
@@ -23,11 +38,12 @@ const CheckIcon = styled(MdCheck)`
   padding: 2px;
   object-fit: cover;
   color: #5D5F71;
-  border: solid 1px #5D5F71;
+  border: solid 2px #5D5F71;
+  background-color: #FAFAFA;
   top: 0;
   right: 0;
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
   background-color: white;
   border-radius: 50%;
 `;
@@ -46,7 +62,7 @@ export default function StyleThumbnail(props) {
     return (
       <ThumbnailContainer>
         <CheckIcon />
-        <ThumbnailImage src={style.photos[0].thumbnail_url} />
+        <SelectedThumbnailImage src={style.photos[0].thumbnail_url} />
       </ThumbnailContainer>
     );
   }

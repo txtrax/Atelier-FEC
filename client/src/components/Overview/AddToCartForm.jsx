@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import CartModal from './CartModal';
 
 const AddToCartContainer = styled.div`
-  height: 115px;
+  margin: 25px;
+  height: 130px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15,27 +16,39 @@ const SizeAndQuantity = styled.div`
   padding: 0px 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SizeDropdown = styled.select`
-  width: 175px;
-  height: 50px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  width: 50%;
+  height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
   text-align: center;
 `;
 
 const QuantityDropdown = styled.select`
-  width: 75px;
-  height: 50px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  width: 20%;
+  height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
   text-align: center;
 `;
 
 const AddToCartButton = styled.button`
-  width: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  width: 80%;
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
@@ -48,20 +61,21 @@ const AddToCartButton = styled.button`
   }
 `;
 
+const OutOfStockContainer = styled.div`
+  font-size: 2em;
+  text-align: center;
+  color: #DABECA;
+`;
+
 export default function AddToCartForm(props) {
   const { selectedStyle, price, name } = props;
 
   const sizeQuantArr = Object.values(selectedStyle.skus);
 
-  const [clicked, setClicked] = useState(false);
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  const onSizeSelect = (e) => {
-    setClicked(false);
-    setSize(e.target.value);
-  };
+  const [request, setRequest] = useState(null);
 
   const onQuantitySelect = (e) => {
     setQuantity(e.target.value);
@@ -79,7 +93,11 @@ export default function AddToCartForm(props) {
     return quantityOptions;
   };
 
-  const showModal = () => {
+  const handleAddClick = () => {
+    if (!size) {
+      setRequest(<div style={{ fontSize: '1em' }}><center>Please select size</center></div>);
+    }
+
     if (quantity) {
       setIsOpen(true);
     }
@@ -87,22 +105,32 @@ export default function AddToCartForm(props) {
 
   return (
     <AddToCartContainer>
+
       <SizeAndQuantity>
-        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
-          {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
+        <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => setRequest(null)} onChange={(e) => { setSize(e.target.value); }}>
+          <option value="default">Select Size</option>
           {sizeQuantArr.map((sizeQuan) => (
             <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>
           ))}
         </SizeDropdown>
+
         <QuantityDropdown id="quantity" style={{ color: '#5D5F71' }} onChange={(e) => { onQuantitySelect(e); }}>
-          {size ? null : <option value="-">-</option>}
+          <option value="-">-</option>
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
       </SizeAndQuantity>
 
-      <AddToCartButton onClick={showModal}>
-        Add to Cart
-      </AddToCartButton>
+      { request }
+
+      <ButtonContainer>
+        {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
+          <AddToCartButton onClick={handleAddClick}>
+            Add to Cart
+          </AddToCartButton>
+        ) : (
+          <OutOfStockContainer>-OUT OF STOCK-</OutOfStockContainer>
+        )}
+      </ButtonContainer>
 
       {isOpen && (
       <CartModal

@@ -11,13 +11,6 @@ const MainContainer = styled.div`
   flex-direction: column;
 `;
 
-const OverviewHeader = styled.h1`
-  display: flex;
-  font-style: italic;
-  justify-content: center;
-`;
-
-// make a get overview function but this works
 export default function Overview() {
   const { productId } = useContext(IdContext);
 
@@ -31,12 +24,10 @@ export default function Overview() {
       .catch((err) => {
         console.log('error retrieving product', err);
       });
-  }, []);
+  }, [productId]);
 
   return (
-    <MainContainer>
-
-      <OverviewHeader>Atelier</OverviewHeader>
+    <MainContainer className="overview">
 
       {overview && <OverviewGallery overview={overview} />}
 

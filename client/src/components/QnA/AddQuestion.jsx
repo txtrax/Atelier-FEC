@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const QuestionModalDiv = styled.div`
+background-color: rgba(0, 0, 0, 0.4);
+z-index: 150;
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+overflow: auto;
+padding-top: 275px;
+`;
 
 function AddQuestion({ productId, handleModalClose, openModal }) {
   const [name, setName] = useState('');
@@ -53,13 +66,14 @@ function AddQuestion({ productId, handleModalClose, openModal }) {
   };
 
   const QuestionModal = (
-    <div
+    <QuestionModalDiv
       className="question-modal"
       onClick={(event) => selectModal(event)}
     >
       <div
         className="question-modal-control"
         onClick={(event) => event.stopPropagation()}
+        onKeyDown={(event) => event.stopPropagation()}
       >
         <span
           className="close-button"
@@ -121,7 +135,7 @@ function AddQuestion({ productId, handleModalClose, openModal }) {
         </form>
 
       </div>
-    </div>
+    </QuestionModalDiv>
   );
   // console.log(questionBody);
 

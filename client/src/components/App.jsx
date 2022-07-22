@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
+import NavBar from './NavBar';
 import Overview from './Overview/Overview';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import QnA from './QnA/QnA';
@@ -7,11 +8,20 @@ import Ratings from './Ratings/Ratings';
 import IdContext from './Context';
 
 const AppContainer = styled.div`
-  padding: 0px 80px 0px 80px;
-  position: relative;
+position: relative;
+display: flex;
+flex-direction: column;
+font-family: 'Lato', sans-serif;
+`;
+
+const ComponentsContainer = styled.div`
+  padding: 0px 80px;
   display: flex;
   flex-direction: column;
-  font-family: 'Lato', sans-serif;
+`;
+
+const AnnouncementContainer = styled.div`
+  height: 2em;
 `;
 
 function App() {
@@ -21,15 +31,19 @@ function App() {
 
   return (
     <AppContainer>
-      <IdContext.Provider value={providerIdValue}>
-        <Overview />
-        <RelatedProducts />
-        {/* <QnA
-          productId={productId}
-          setProductId={setProductId}
-        /> */}
-        <Ratings />
-      </IdContext.Provider>
+      <NavBar />
+      <AnnouncementContainer />
+      <ComponentsContainer>
+        <IdContext.Provider value={providerIdValue}>
+          <Overview />
+          <RelatedProducts />
+          <QnA
+            productId={productId}
+            setProductId={setProductId}
+          />
+          <Ratings />
+        </IdContext.Provider>
+      </ComponentsContainer>
     </AppContainer>
   );
 }
