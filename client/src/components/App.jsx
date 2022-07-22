@@ -23,8 +23,8 @@ function App() {
     <AppContainer>
       <IdContext.Provider value={providerIdValue}>
         <Overview />
-        {/* <RelatedProducts />
-        <QnA
+        <RelatedProducts />
+        {/* <QnA
           productId={productId}
           setProductId={setProductId}
         />

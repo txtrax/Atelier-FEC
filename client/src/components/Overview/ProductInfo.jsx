@@ -85,7 +85,7 @@ export default function ProductInfo(props) {
         <Stars id={productId} />
       </StarContainer>
 
-      <div style={{ fontSize: '1.5em' }}>{overview.category.toUpperCase()}</div>
+      <div style={{ fontSize: '2em' }}>{overview.category.toUpperCase()}</div>
 
       <div style={{ fontSize: '3em' }}>{overview.name}</div>
 

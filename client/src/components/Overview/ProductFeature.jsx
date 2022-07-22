@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 
 const FeatureContainer = styled.li`
   padding: 1px;
+  font-size: 1.5em;
 `;
 
 export default function ProductFeature(props) {

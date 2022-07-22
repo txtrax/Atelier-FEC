@@ -55,7 +55,7 @@ const AddToCartButton = styled.button`
 `;
 
 const OutOfStockContainer = styled.div`
-  margin-bottom: 10px;
+  font-size: 2em;
   text-align: center;
   color: #DABECA;
 `;
