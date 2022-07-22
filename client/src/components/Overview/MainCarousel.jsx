@@ -34,8 +34,8 @@ const FullscreenIcon = styled(MdFullscreen)`
 `;
 
 const SliderIconLeft = styled(MdChevronLeft)`
-  height: 2em;
-  width: 2em;
+  height: 2.5em;
+  width: 2.5em;
   position: absolute;
   left: 10px;
   color: #5D5F71;
@@ -49,8 +49,8 @@ const SliderIconLeft = styled(MdChevronLeft)`
  `;
 
 const SliderIconRight = styled(MdChevronRight)`
-  height: 2em;
-  width: 2em;
+  height: 2.5em;
+  width: 2.5em;
   position: absolute;
   right: 10px;
   color: #5D5F71;

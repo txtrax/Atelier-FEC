@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 const MainImage = styled.img`
+  display: block;
+  object-fit: cover;
   position: relative;
   border: 1px;
   border-radius: 5px;

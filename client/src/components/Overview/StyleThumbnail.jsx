@@ -5,16 +5,16 @@ import { MdCheck } from 'react-icons/md';
 const ThumbnailContainer = styled.div`
   position: relative;
   display: flex;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
 `;
 
 const ThumbnailImage = styled.img`
   display: block;
   border: solid 1px #5D5F71;
   object-fit: cover;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
   border-radius: 50%;
 `;
 
@@ -26,8 +26,8 @@ const CheckIcon = styled(MdCheck)`
   border: solid 1px #5D5F71;
   top: 0;
   right: 0;
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
   background-color: white;
   border-radius: 50%;
 `;

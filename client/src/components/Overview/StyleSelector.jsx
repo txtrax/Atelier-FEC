@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import StyleThumbnail from './StyleThumbnail';
 
 const StylesContainer = styled.div`
-  height: 140;
-  padding: 10px 0px 10px 0px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 1rem;

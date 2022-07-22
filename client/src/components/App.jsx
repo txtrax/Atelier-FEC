@@ -23,12 +23,12 @@ function App() {
     <AppContainer>
       <IdContext.Provider value={providerIdValue}>
         <Overview />
-        <RelatedProducts />
+        {/* <RelatedProducts />
         <QnA
           productId={productId}
           setProductId={setProductId}
         />
-        <Ratings />
+        <Ratings /> */}
       </IdContext.Provider>
     </AppContainer>
   );
