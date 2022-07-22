@@ -7,6 +7,7 @@ const AddToCartContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -15,7 +16,7 @@ const SizeAndQuantity = styled.div`
   padding: 0px 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const SizeDropdown = styled.select`
@@ -35,7 +36,7 @@ const QuantityDropdown = styled.select`
 `;
 
 const AddToCartButton = styled.button`
-  width: 100%;
+  width: 90%;
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
@@ -46,6 +47,12 @@ const AddToCartButton = styled.button`
     border-color: black;
     background-color: black;
   }
+`;
+
+const OutOfStockContainer = styled.div`
+  margin-bottom: 10px;
+  text-align: center;
+  color: #DABECA;
 `;
 
 export default function AddToCartForm(props) {
@@ -100,9 +107,13 @@ export default function AddToCartForm(props) {
         </QuantityDropdown>
       </SizeAndQuantity>
 
-      <AddToCartButton onClick={showModal}>
-        Add to Cart
-      </AddToCartButton>
+      {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
+        <AddToCartButton onClick={showModal}>
+          Add to Cart
+        </AddToCartButton>
+      ) : (
+        <OutOfStockContainer>-OUT OF STOCK-</OutOfStockContainer>
+      )}
 
       {isOpen && (
       <CartModal

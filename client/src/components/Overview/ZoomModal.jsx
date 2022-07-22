@@ -18,14 +18,14 @@ const Background = styled.div`
 
 const ZoomModalContent = styled.div`
   position: relative;
-  margin: 10% auto;
+  margin: auto;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 55%;
-  height: 600px;
+  height: 100%;
 `;
 
 const ExitIcon = styled(MdFullscreenExit)`
@@ -74,11 +74,13 @@ const ModalImage = styled.img`
   display flex;
   border: 10px solid white;
   border-radius: 15px;
-  width: 80%;
+  width: 75%;
 `;
 
 export default function ZoomModal(props) {
-  const { setZoomIn, image, currentIndex, setIndex, photos } = props;
+  const {
+    setZoomIn, image, currentIndex, setIndex, photos,
+  } = props;
 
   return (
     <Background>

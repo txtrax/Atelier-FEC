@@ -5,12 +5,20 @@ import ThumbnailImage from './ThumbnailImage';
 
 const ThumbnailContainer = styled.div`
   width: 10%;
+  height: 470px;
   padding: 30px 0px 30px 10px;
   position: relative;
   background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none;
   align-items: center;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SliderIconUp = styled(MdExpandLess)`
@@ -47,7 +55,7 @@ export default function ThumbnailCarousel(props) {
   return (
     <ThumbnailContainer>
 
-      {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />}
+      {/* {currentIndex > 0 && <SliderIconUp onClick={() => setIndex(currentIndex - 1)} />} */}
 
       {photos.map((image, index) => {
         return <ThumbnailImage
@@ -58,7 +66,7 @@ export default function ThumbnailCarousel(props) {
           setIndex={setIndex} />;
       })}
 
-      {currentIndex + 7 < photos.length - 1 && <SliderIconDown onClick={() => setIndex(currentIndex + 1)} />}
+      {/* {currentIndex + 7 < photos.length - 1 && <SliderIconDown onClick={() => setIndex(currentIndex + 1)} />} */}
 
     </ThumbnailContainer>
   );

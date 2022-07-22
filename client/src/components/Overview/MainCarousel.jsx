@@ -70,14 +70,17 @@ export default function MainCarousel(props) {
 
   const display = photos[currentIndex];
 
+  const photoCheck = photos[0].thumbnail_url;
+
   return (
     <GalleryContainer>
 
-      <FullscreenIcon onClick={() => setZoomIn(true)} />
+      {photoCheck && <FullscreenIcon onClick={() => setZoomIn(true)} />}
 
       {currentIndex > 0 && <SliderIconLeft onClick={() => setIndex(currentIndex - 1)} />}
 
       <Image
+        setZoomIn={setZoomIn}
         image={display}
         key={display.thumbnail_url}
       />

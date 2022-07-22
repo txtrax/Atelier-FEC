@@ -3,31 +3,40 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import ProductFeature from './ProductFeature';
 
-const DescriptionContainer = styled.div`
+const ProductFeatureContainer = styled.div`
   border: 2px;
   border-left-color: black;
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 25%;
+`;
+
+const FeaturesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0px;
 `;
 
 const FeaturesSlogan = styled.p`
-  padding-bottom: 2px;
+font-weight: bold;
 `;
 
 export default function ProductFeatureList(props) {
   const { features } = props;
 
   return (
-    <DescriptionContainer>
+    <ProductFeatureContainer>
 
       <FeaturesSlogan>
-        <b>Product Details</b>
+        Product Details
       </FeaturesSlogan>
 
-      {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
+      <FeaturesContainer>
+        {features.map((pair) => <ProductFeature pair={pair} key={pair.feature} />)}
+      </FeaturesContainer>
 
-    </DescriptionContainer>
+    </ProductFeatureContainer>
   );
 }
 

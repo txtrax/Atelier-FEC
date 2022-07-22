@@ -8,9 +8,16 @@ const DescriptionContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 60%;
 `;
 
 const OverviewSlogan = styled.p`
+  text-align: center;
+  padding-bottom: 2px;
+  font-weight: bold;
+`;
+
+const OverviewDescriptionContainer = styled.p`
   text-align: center;
   padding-bottom: 2px;
 `;
@@ -21,9 +28,11 @@ export default function ProductDescription(props) {
   return (
     <DescriptionContainer>
       <OverviewSlogan>
-        <b>{ slogan }</b>
+        { slogan }
       </OverviewSlogan>
-      <p>{ description }</p>
+      <OverviewDescriptionContainer>
+        { description }
+      </OverviewDescriptionContainer>
     </DescriptionContainer>
   );
 }

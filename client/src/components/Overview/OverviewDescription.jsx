@@ -10,7 +10,7 @@ const DescriptionAndFeatures = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #5D5F71;
   border: 3px;
   border-radius: 15px;
@@ -25,6 +25,7 @@ export default function OverviewDescription(props) {
         slogan={overview.slogan}
         description={overview.description}
       />
+      <hr></hr>
       <ProductFeatureList
         features={overview.features}
       />
