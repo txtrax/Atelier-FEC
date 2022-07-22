@@ -24,7 +24,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 430px;
+  height: 350px;
 `;
 
 const ExitIcon = styled(MdClose)`
@@ -122,7 +122,7 @@ export default function CartModal(props) {
 
           <ImageContainer>
 
-            <img style={{ width: '90%', height: 'auto' }} src={photo.thumbnail_url} />
+            <img style={{ width: '165px', height: '165px', objectFit: "cover" }} src={photo.thumbnail_url} />
 
           </ImageContainer>
           <CartContainer>
