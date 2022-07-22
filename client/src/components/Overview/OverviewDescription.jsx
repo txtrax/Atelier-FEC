@@ -14,7 +14,7 @@ const DescriptionAndFeatures = styled.div`
   color: #5D5F71;
   border: 3px;
   border-radius: 15px;
-  font-size: 1.5em;
+  font-size: 1em;
 `;
 
 export default function OverviewDescription(props) {

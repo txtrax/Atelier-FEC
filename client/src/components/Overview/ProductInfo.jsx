@@ -76,17 +76,17 @@ export default function ProductInfo(props) {
     if (selectedStyle.sale_price) {
       return (
         <div>
-          <span style={{ color: '#DABECA', fontSize: '3em' }}>
+          <span style={{ color: '#DABECA', fontSize: '2.5em' }}>
             {`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0`}
           </span>
-          <span style={{ textDecoration: 'line-through', fontSize: '1.5em' }}>
+          <span style={{ textDecoration: 'line-through', fontSize: '1.25em' }}>
             {`$${selectedStyle.original_price}`}
           </span>
         </div>
       );
     }
     return (
-      <div style={{ fontSize: '3em' }}>
+      <div style={{ fontSize: '2.5em' }}>
         $
         {selectedStyle.original_price}
       </div>
@@ -100,11 +100,13 @@ export default function ProductInfo(props) {
 
         <Stars id={productId} />
 
-        {'\u00A0\u00A0\u00A0'}
+        {'\u00A0\u00A0\u00A0('}
 
         <ReviewsContainer onClick={handleReviewClick}>
-        {'(Read all reviews)'}
+        {'Read all reviews'}
         </ReviewsContainer>
+
+        {')'}
 
       </RatingsContainer>
 
@@ -114,7 +116,7 @@ export default function ProductInfo(props) {
 
       {renderPrice()}
 
-      <div style={{ margin: '25px 0px', fontSize: '1.5em' }}>
+      <div style={{ margin: '25px 0px', fontSize: '1em' }}>
         <b>
           {'STYLE\u00A0\u00A0>\u00A0\u00A0\u00A0\u00A0'}
         </b>

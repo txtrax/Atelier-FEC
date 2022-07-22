@@ -4,7 +4,7 @@ import CartModal from './CartModal';
 
 const AddToCartContainer = styled.div`
   margin: 25px;
-  height: 125px;
+  height: 130px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,8 @@ const ButtonContainer = styled.div`
 `;
 
 const SizeDropdown = styled.select`
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
   width: 50%;
   height: 3em;
   border: 1px solid;
@@ -34,6 +36,8 @@ const SizeDropdown = styled.select`
 `;
 
 const QuantityDropdown = styled.select`
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
   width: 20%;
   height: 3em;
   border: 1px solid;
@@ -42,6 +46,8 @@ const QuantityDropdown = styled.select`
 `;
 
 const AddToCartButton = styled.button`
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
   width: 80%;
   height: 50px;
   border: 1px solid;
