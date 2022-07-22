@@ -109,13 +109,8 @@ function QnA() {
   };
 
   return (
-<<<<<<< HEAD
     <MainContainer>
       <Header>Questions and Answers</Header>
-=======
-    <Container>
-      <h1 className="questions-and-answers">Questions and Answers</h1>
->>>>>>> main
       <form onSubmit={(event) => { event.preventDefault(); }}>
         <SearchDiv classname="searchBar">
           {/* <SearchBar
