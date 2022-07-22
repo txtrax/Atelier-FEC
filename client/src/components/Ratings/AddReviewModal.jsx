@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { CgCloseO } from 'react-icons/cg';
+// import { CgCloseO } from 'react-icons/cg';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import AddReviewOverall from './AddReviewOverall';
 import AddReviewRecommend from './AddReviewRecommend';
 import AddReviewChar from './AddReviewChar';
@@ -26,8 +27,21 @@ const Modal = styled.div`
   padding-right: 2em;
   padding-top: 2em;
   padding-bottom: 2em;
-  border: 3px solid black;
+  border: 3px solid  #BF8B85;
   border-radius: 15px;
+`;
+const CloseSymbol = styled(AiFillCloseCircle)`
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 10px;
+  right: 10px;
+  color: #BF8B85;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Title = styled.div`
@@ -40,20 +54,21 @@ const CloseButton = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   padding: 0;
   border: 0;
 `;
 
-const CloseSymbol = styled(CgCloseO)`
-  display:flex;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
-`;
+// const CloseSymbol = styled(CgCloseO)`
+//   display:flex;
+//   align-items: center;
+//   align-content: center;
+//   width: 100%;
+//   height: 100%;
+//   color: #BF8B85;
+// `;
 
 const Header = styled.div`
   font-weight: bolder;
@@ -72,17 +87,18 @@ const Warning = styled.div`
   padding-bottom: 1em;
 `;
 
-function AddReviewModal({ productName, setShowModal, showModal }) {
+function AddReviewModal({
+  productId, productName, setShowModal, showModal, product,
+}) {
   const [displayRating, setDisplayRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
   const [characteristics, setCharacteristics] = useState({});
   const [body, setBody] = useState('');
   const [summary, setSummary] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [previewPhoto, setPreviewPhoto] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [warning, setWarning] = useState('');
-  const [rating, setRating] = useState(0);
 
   if (showModal) {
     // console.log('In AddReviewModal');
@@ -107,17 +123,26 @@ function AddReviewModal({ productName, setShowModal, showModal }) {
         <Content>
           <AddReviewOverall displayRating={displayRating} setDisplayRating={setDisplayRating} />
           <AddReviewRecommend setRecommend={setRecommend} />
-          <AddReviewChar setCharacteristics={setCharacteristics} />
+          <AddReviewChar
+            product={product}
+            setCharacteristics={setCharacteristics}
+            characteristics={characteristics}
+          />
           <AddReviewSummary setSummary={setSummary} />
           <AddReviewBody setBody={setBody} />
-          <AddReviewPhotos />
+          <AddReviewPhotos previewPhoto={previewPhoto} setPreviewPhoto={setPreviewPhoto} />
           <AddReviewNickname setName={setName} />
           <AddReviewEmail setEmail={setEmail} />
           <AddReviewSubmit
+            productId={productId}
+            product={product}
             setWarning={setWarning}
+            displayRating={displayRating}
             recommend={recommend}
+            characteristics={characteristics}
             summary={summary}
             body={body}
+            previewPhoto={previewPhoto}
             name={name}
             email={email}
           />
@@ -128,12 +153,16 @@ function AddReviewModal({ productName, setShowModal, showModal }) {
 }
 
 AddReviewModal.propTypes = {
+  productId: PropTypes.number,
+  product: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.any])),
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func,
   productName: PropTypes.string,
 };
 
 AddReviewModal.defaultProps = {
+  productId: 0,
+  product: {},
   showModal: true,
   setShowModal: (e) => e,
   productName: '',
