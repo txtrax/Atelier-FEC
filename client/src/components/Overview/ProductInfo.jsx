@@ -91,7 +91,7 @@ export default function ProductInfo(props) {
 
       {renderPrice()}
 
-      <div style={{ fontSize: '1.5em' }}>
+      <div style={{ margin: '25px 0px', fontSize: '1.5em' }}>
         <b>
           {'STYLE\u00A0\u00A0>\u00A0\u00A0\u00A0\u00A0'}
         </b>

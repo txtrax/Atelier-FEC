@@ -9,8 +9,12 @@ const MiniImage = styled.img`
   object-fit: contain;
   height: 4.65em;
   width: 4.65em;
+  border-radius: 5px;
   opacity: 0.5;
-  justify-content: space-between
+  justify-content: space-between;
+  &:hover {
+    border-color: #BF8B85;
+  }
 `;
 
 const CurrentImage = styled.img`
