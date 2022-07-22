@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 const MiniImage = styled.img`
-  margin: 1px;
-  border: solid 3px;
+  margin: 2px;
+  background-color: #FAFAFA;
+  border: solid 2px;
   border-color: #FAFAFA;
   object-fit: contain;
   height: 4.65em;
