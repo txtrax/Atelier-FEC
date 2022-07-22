@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PhotoModal from './PhotoModal';
 
 const Thumbnail = styled.div`
   width: 20%;
@@ -21,7 +20,8 @@ function ReviewEntryPhotoEntry({
         src={photo.url}
         alt="review"
         onClick={(e) => {
-          console.log('In Photo Entry, photoURL = ', e.target.src);
+          // console.log('In Photo Entry, photoURL = ', e.target.src);
+          document.documentElement.style.overflow = 'hidden';
           setPhotoURL(e.target.src);
           setShowPhoto(true);
         }}

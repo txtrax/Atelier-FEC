@@ -34,15 +34,15 @@ function App() {
       <NavBar />
       <AnnouncementContainer />
       <ComponentsContainer>
-          <IdContext.Provider value={providerIdValue}>
-            <Overview />
-            <RelatedProducts />
-            <QnA
-              productId={productId}
-              setProductId={setProductId}
-            />
-            <Ratings />
-          </IdContext.Provider>
+        <IdContext.Provider value={providerIdValue}>
+          <Overview />
+          <RelatedProducts />
+          <QnA
+            productId={productId}
+            setProductId={setProductId}
+          />
+          <Ratings />
+        </IdContext.Provider>
       </ComponentsContainer>
     </AppContainer>
   );

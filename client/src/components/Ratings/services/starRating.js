@@ -32,10 +32,10 @@ module.exports = {
     // reviews: an array of objects
     let count = 0;
     if (reviews.length !== 0) {
-      return reviews.reduce((partialSum, cur) => {
+      return ((reviews.reduce((partialSum, cur) => {
         count += 1;
         return partialSum + cur.rating;
-      }, 0) / count;
+      }, 0) / count));
     }
     return count;
   },

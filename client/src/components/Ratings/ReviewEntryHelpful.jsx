@@ -34,13 +34,12 @@ function ReviewEntryHelpful({ review_id, displayHelpful, setDisplayHelpful }) {
     if (e.target.value === 'yes') {
       markReviewHelpful(e.target.name)
         .then(() => {
-          console.log('markHelpful SUCCESS!!!');
+          // console.log('markHelpful SUCCESS!!!');
           setDisplayHelpful((pre) => pre + 1);
           setVoted(true);
         })
         .catch((err) => {
           console.log('markHelpful FAILED err = ', err);
-          console.log(err);
         });
     } else {
       reportReview(e.target.name);

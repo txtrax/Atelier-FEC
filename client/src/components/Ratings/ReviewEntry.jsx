@@ -40,7 +40,9 @@ const BottomBar = styled.div`
   margin-bottom: 1em;
 `;
 
-function ReviewEntry({ review, showPhoto, setShowPhoto, setPhotoURL }) {
+function ReviewEntry({
+  review, showPhoto, setShowPhoto,
+}) {
   const {
     summary, body, photos, recommend, date, helpfulness, rating, review_id, reviewer_name,
   } = review;
@@ -74,7 +76,6 @@ function ReviewEntry({ review, showPhoto, setShowPhoto, setPhotoURL }) {
           photos={photos}
           setShowPhoto={setShowPhoto}
           showPhoto={showPhoto}
-          setPhotoURL={setPhotoURL}
         />
       </Body>
       <Recommendation>
