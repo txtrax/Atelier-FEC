@@ -23,10 +23,10 @@ const FullscreenIcon = styled(MdFullscreen)`
   padding: 2px;
   object-fit: cover;
   color: #5D5F71;
-  top: 10px;
-  right: 10px;
-  width: 27px;
-  height: 27px;
+  top: 15px;
+  right: 15px;
+  width: 2em;
+  height: 2em;
   opacity: 0.5;
   &:hover {
     opacity: 1;
