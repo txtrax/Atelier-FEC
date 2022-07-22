@@ -4,13 +4,13 @@ import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa';
 import IdContext from '../Context';
 import StyleSelector from './StyleSelector';
 import AddToCartForm from './AddToCartForm';
-import StarRating from '../RelatedProducts/StarRating';
+import Stars from './Stars';
 
 const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 5px 15px;
   width: 35%;
   justify-content: space-between;
   color: #5D5F71;
@@ -23,6 +23,10 @@ const ShareContainer = styled.div`
   padding: 0px 3px 0px 3px;
 `;
 
+const StarContainer = styled.div`
+  height: 1em;
+`;
+
 const IconButton = styled.div`
   height: 40px;
   width: 80px;
@@ -33,23 +37,23 @@ const IconButton = styled.div`
 `;
 
 const FacebookIcon = styled(FaFacebookF)`
-  height: 15px;
+  height: 10px;
   color: white;
 `;
 
 const TwitterIcon = styled(FaTwitter)`
-  height: 15px;
+  height: 10px;
   color: white;
 `;
 
 const PinterestIcon = styled(FaPinterestP)`
-  height: 15px;
+  height: 10px;
   color: white;
 `;
 
 export default function ProductInfo(props) {
   const {
-    overview, styles, selectedStyle, setSelectedStyle, setIndex
+    overview, styles, selectedStyle, setSelectedStyle, setIndex,
   } = props;
   const { productId } = useContext(IdContext);
 
@@ -57,35 +61,40 @@ export default function ProductInfo(props) {
     if (selectedStyle.sale_price) {
       return (
         <div>
-          <span style={{ color: "#DABECA" }}>
-            <b>{`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0\u00A0`}</b>
+          <span style={{ color: '#DABECA', fontSize: '2em' }}>
+            {`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0`}
           </span>
-          <span style={{ textDecoration: "line-through" }}>
+          <span style={{ textDecoration: 'line-through', fontSize: '1.5em' }}>
             {`$${selectedStyle.original_price}`}
           </span>
         </div>
-      )
+      );
     }
     return (
-      <div>
-        <span><b>${selectedStyle.original_price}</b></span>
+      <div style={{ fontSize: '2em' }}>
+        $
+        {selectedStyle.original_price}
       </div>
-    )
-  }
-
+    );
+  };
+  console.log(styles);
   return (
     <InfoContainer>
 
-      <div><StarRating id={productId}/></div>
+      <StarContainer>
+        <Stars id={productId} />
+      </StarContainer>
 
-      <div>{overview.category.toUpperCase()}</div>
+      <div style={{ fontSize: '1em' }}>{overview.category.toUpperCase()}</div>
 
-      <h2>{overview.name}</h2>
+      <div style={{ fontSize: '2.5em' }}>{overview.name}</div>
 
-      <div>{renderPrice()}</div>
+      {renderPrice()}
 
-      <div>
-        <b>STYLE > </b>
+      <div style={{ fontSize: '1em' }}>
+        <b>
+          {'STYLE\u00A0\u00A0>\u00A0\u00A0\u00A0\u00A0'}
+        </b>
         {selectedStyle.name.toUpperCase()}
       </div>
 
@@ -93,17 +102,19 @@ export default function ProductInfo(props) {
         styles={styles}
         selectedStyle={selectedStyle}
         setSelectedStyle={setSelectedStyle}
-        setIndex={setIndex} />
+        setIndex={setIndex}
+      />
 
       <AddToCartForm
         selectedStyle={selectedStyle}
         price={selectedStyle.sale_price ? selectedStyle.sale_price : selectedStyle.original_price}
-        name={overview.name} />
+        name={overview.name}
+      />
 
       <ShareContainer>
-        <IconButton style={{backgroundColor: '#4267B2'}}><FacebookIcon /></IconButton>
-        <IconButton style={{backgroundColor: '#1DA1F2'}}><TwitterIcon /></IconButton>
-        <IconButton style={{backgroundColor: '#E60023'}}><PinterestIcon /></IconButton>
+        <IconButton style={{ backgroundColor: '#4267B2' }}><FacebookIcon /></IconButton>
+        <IconButton style={{ backgroundColor: '#1DA1F2' }}><TwitterIcon /></IconButton>
+        <IconButton style={{ backgroundColor: '#E60023' }}><PinterestIcon /></IconButton>
       </ShareContainer>
 
     </InfoContainer>

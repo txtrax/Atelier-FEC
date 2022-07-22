@@ -7,6 +7,7 @@ const AddToCartContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -15,7 +16,7 @@ const SizeAndQuantity = styled.div`
   padding: 0px 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const SizeDropdown = styled.select`
@@ -35,7 +36,7 @@ const QuantityDropdown = styled.select`
 `;
 
 const AddToCartButton = styled.button`
-  width: 100%;
+  width: 90%;
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
