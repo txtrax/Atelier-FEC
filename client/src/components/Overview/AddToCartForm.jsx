@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import CartModal from './CartModal';
 
 const AddToCartContainer = styled.div`
-  margin: 25px;
+  margin: 8% 10%;
+  padding: 0 10%;
   height: 130px;
   position: relative;
   display: flex;
@@ -13,10 +14,9 @@ const AddToCartContainer = styled.div`
 
 const SizeAndQuantity = styled.div`
   position: relative;
-  padding: 0px 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const ButtonContainer = styled.div`
@@ -28,7 +28,7 @@ const ButtonContainer = styled.div`
 const SizeDropdown = styled.select`
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  width: 50%;
+  width: 60%;
   height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
@@ -38,7 +38,7 @@ const SizeDropdown = styled.select`
 const QuantityDropdown = styled.select`
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  width: 20%;
+  width: 30%;
   height: 3em;
   border: 1px solid;
   border-color: #5D5F71;
@@ -48,7 +48,7 @@ const QuantityDropdown = styled.select`
 const AddToCartButton = styled.button`
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  width: 80%;
+  width: 100%;
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
