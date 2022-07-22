@@ -28,15 +28,25 @@ const SearchDiv = styled.div`
 const SearchBar = styled.input`
   width: 100%;
   box-sizing: border-box;
-  border: none;
   border-bottom: 1px solid #ccc;
   font-size: 16px;
+  margin: 10px;
   background-color: none;
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
   outline: none;
 
+`;
+const AddButton = styled.button`
+  font-size: medium;
+  height: 60px;
+  width: 235px;
+  padding: 10px;
+  margin: 25px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  float: left;
 `;
 
 const SearchBtn = styled.button`
@@ -58,7 +68,7 @@ const SearchBtn = styled.button`
   }
 `;
 
-function QnA(props) {
+function QnA() {
   // console.log(props, 'this is propssss');
   // super(props);
   // this.state = {
@@ -83,9 +93,8 @@ function QnA(props) {
     axios.get(`/qa/questions?product_id=${productId}`)
       .then((response) => {
         setQuestions(response.data.results.sort((a, b) => a.helpfulness - b.helpfulness));
+        // eslint-disable-next-line max-len
         setDisplayQuestions(response.data.results.slice(0, 4).sort((a, b) => a.helpfulness - b.helpfulness));
-        // console.log(response.data.results.slice(0, 4), 'this is what displayed');
-        // console.log(response.data.results, 'this is questions');
       })
       .catch((err) => {
         console.log('error getting data', err);
@@ -103,46 +112,42 @@ function QnA(props) {
   };
 
   return (
-    <FlexContainer>
-      <Container>
-        <h1>Questions and Answers</h1>
-        <form onSubmit={(event) => { event.preventDefault(); }}>
-          <SearchDiv classname="searchBar">
-            {/* <SearchBar
+    <Container>
+      <h1>Questions and Answers</h1>
+      <form onSubmit={(event) => { event.preventDefault(); }}>
+        <SearchDiv classname="searchBar">
+          {/* <SearchBar
               type="text"
               placeholder="Type in your question"
               value={searchInput}
               onChange={handleSearch}
             /> */}
-            <Search
-              handleSearch={handleSearch}
-              searchInput={searchInput}
-            />
-            {/* <SearchBtn /> */}
-          </SearchDiv>
-        </form>
-      </Container>
-      <Container>
-        {questions !== undefined && Object.keys(questions).length !== 0 ? (
-          <QuestionsList
-            productId={productId}
-            questions={questions}
+          <Search
+            handleSearch={handleSearch}
             searchInput={searchInput}
-            displayQuestions={displayQuestions}
-            setDisplayQuestions={setDisplayQuestions}
           />
-        )
-          : null}
-        <button onClick={handleModalOpen}>
-          Add a Question
-        </button>
-        <AddQuestion
+          {/* <SearchBtn /> */}
+        </SearchDiv>
+      </form>
+      {questions !== undefined && Object.keys(questions).length !== 0 ? (
+        <QuestionsList
           productId={productId}
-          openModal={openModal}
-          handleModalClose={handleModalClose}
+          questions={questions}
+          searchInput={searchInput}
+          displayQuestions={displayQuestions}
+          setDisplayQuestions={setDisplayQuestions}
         />
-      </Container>
-    </FlexContainer>
+      )
+        : null}
+      <AddButton onClick={handleModalOpen}>
+        Add a Question
+      </AddButton>
+      <AddQuestion
+        productId={productId}
+        openModal={openModal}
+        handleModalClose={handleModalClose}
+      />
+    </Container>
   );
 }
 
