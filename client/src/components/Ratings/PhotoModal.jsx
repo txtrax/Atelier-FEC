@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { CgCloseO } from 'react-icons/cg';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 
 // const ModalBackground = styled.div`
@@ -18,60 +18,90 @@ import PropTypes from 'prop-types';
 // `;
 
 const Modal = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  height:
-  background: white;
+  background-color: white;
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 2em;
   padding-bottom: 2em;
-  border: 3px solid black;
+  border: 3px solid  #BF8B85;
   border-radius: 15px;
   overflow: auto;
 `;
 
+const CloseSymbol = styled(AiFillCloseCircle)`
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0px;
+  right: 0px;
+  color: #BF8B85;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   padding: 0;
   border: 0;
 `;
 
-const CloseSymbol = styled(CgCloseO)`
-  display:flex;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
-`;
+// const CloseButton = styled.button`
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+//   width: 30px;
+//   height: 30px;
+//   background: transparent;
+//   padding: 0;
+//   border: 0;
+// `;
+
+// const CloseSymbol = styled(CgCloseO)`
+//   display:flex;
+//   align-items: center;
+//   align-content: center;
+//   width: 100%;
+//   height: 100%;
+// `;
 
 const Image = styled.img`
-  width: 70%;
-  hieght: auto;
+  max-width:600px;
+  max-height:400px;
+}
 `;
 
 function PhotoModal({ showPhoto, setShowPhoto, photoURL }) {
   if (showPhoto) {
-    console.log('In PhotoModal, photoURL = ', photoURL);
+    // console.log('In PhotoModal, photoURL = ', photoURL);
     return (
       <Modal>
         <div>
           <CloseButton
             type="button"
-            onClick={() => setShowPhoto(false)}
+            onClick={() => {
+              document.documentElement.style.overflow = 'auto';
+              setShowPhoto(false);
+            }}
           >
             <CloseSymbol />
           </CloseButton>
         </div>
-        <img src={photoURL} alt="modal" />
+        <Image src={photoURL} alt="modal" />
       </Modal>
     );
   }

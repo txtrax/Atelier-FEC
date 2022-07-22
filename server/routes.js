@@ -78,46 +78,68 @@ module.exports.getReviews = (req, res) => {
       console.log('IN ROUTES, getReviews FAILED');
       res.status(500).send();
     }
-    console.log('IN ROUTES, getReviews SUCCESS!!!');
+    // console.log('IN ROUTES, getReviews SUCCESS!!!');
     res.status(200).json(result.data);
   }, page, count, sort, id);
 };
 
 module.exports.getReviewMeta = (req, res) => {
   const id = req.query.product_id;
-  console.log('IN ROUTES getReviewMeta id = ', id);
   reviews.getReviewMeta(id, (err, result) => {
     if (err) {
       console.log('IN ROUTES, getReviewMeta FAILED');
       res.status(500).send();
     }
-    console.log('IN ROUTES, getReviewMeta SUCCESS!!!');
+    // console.log('IN ROUTES, getReviewMeta SUCCESS!!!');
     res.status(200).json(result.data);
   });
 };
 
 module.exports.markReviewHelpful = (req, res) => {
   const { id } = req.params;
-  console.log('IN ROUTES markReviewHelpful id = ', id);
   reviews.markReviewHelpful(id, (err) => {
     if (err) {
       console.log('IN ROUTES, markReviewHelpful FAILED');
       res.status(500).send();
     }
-    console.log('IN ROUTES, markReviewHelpful SUCCESS!!!');
+    // console.log('IN ROUTES, markReviewHelpful SUCCESS!!!');
     res.status(204).send();
   });
 };
 
 module.exports.reportReview = (req, res) => {
   const { id } = req.params;
-  console.log('IN ROUTES reportReview id = ', id);
   reviews.reportReview(id, (err) => {
     if (err) {
       console.log('IN ROUTES, reportReview FAILED');
       res.status(500).send();
     }
-    console.log('IN ROUTES, reportReview SUCCESS!!!');
+    // console.log('IN ROUTES, reportReview SUCCESS!!!');
     res.status(204).send();
+  });
+};
+
+module.exports.postReview = (req, res) => {
+  const {
+    product_id, rating, summary, body, recommend, name, email, photos, characteristics,
+  } = req.body;
+  const params = {
+    product_id,
+    rating,
+    summary,
+    body,
+    recommend,
+    name,
+    email,
+    photos,
+    characteristics,
+  };
+  reviews.postReview(params, (err) => {
+    if (err) {
+      console.log('IN ROUTES, postReview FAILED');
+      res.status(500).send();
+    }
+    // console.log('IN ROUTES, postReview SUCCESS!!!');
+    res.status(201).send();
   });
 };

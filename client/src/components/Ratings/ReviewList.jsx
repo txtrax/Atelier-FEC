@@ -21,7 +21,7 @@ const ReviewListContainer = styled.div`
   height: 500px;
 `;
 function ReviewList({
-  reviews, displayedReviews, setSort, showPhoto, setShowPhoto, setPhotoURL,
+  reviews, displayedReviews, setSort, showPhoto, setShowPhoto,
 }) {
   return (
     <ReviewContainer>
@@ -42,7 +42,6 @@ function ReviewList({
             <ReviewEntry
               review={review}
               setShowPhoto={setShowPhoto}
-              setPhotoURL={setPhotoURL}
               key={review.review_id}
             />
           ),
@@ -59,14 +58,12 @@ ReviewList.propTypes = {
   displayedReviews: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.any),
   ),
-  // sort: PropTypes.string,
   setSort: PropTypes.func,
 };
 
 ReviewList.defaultProps = {
   reviews: [],
   displayedReviews: [],
-  // sort: 'relevant',
   setSort: (e) => e,
 };
 

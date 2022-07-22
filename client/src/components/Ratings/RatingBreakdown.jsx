@@ -40,6 +40,12 @@ const Filter = styled.div`
   padding-top: 1em;
   padding-bottom: 0.5em;
 `;
+const Button = styled.button`
+  margin-top: 1em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  font-size: 1em;
+  background: white;
+`;
 function RatingBreakdown({
   reviews, starFilter, setStarFilter, setDisplayedReviews,
 }) {
@@ -62,12 +68,16 @@ function RatingBreakdown({
     displayFilter = `Filter for ${filter} stars applyed`;
   }
 
+  const handleClick = () => {
+    setStarFilter([]);
+  };
+
   return (
     <StarContainer>
       <Header>RATINGS &amp; REVIEWS</Header>
       <Rating>
         <RatingNum>
-          {averageRating}
+          {averageRating.toFixed(1)}
         </RatingNum>
         <RatingStar>
           <StarRating
@@ -99,7 +109,8 @@ function RatingBreakdown({
           ),
         )}
       </div>
-      <Filter>{displayFilter}</Filter>
+      {displayFilter && <Filter>{displayFilter}</Filter>}
+      {displayFilter && <Button type="button" onClick={handleClick}>Remove Filter</Button>}
     </StarContainer>
   );
 }

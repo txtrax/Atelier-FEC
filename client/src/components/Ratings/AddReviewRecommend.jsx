@@ -24,7 +24,7 @@ const Answer = styled.div`
 
 function AddReviewRecommend({ setRecommend }) {
   function updateRecommend(e) {
-    console.log('IN RECOMMEND', e.target.value);
+    // console.log('IN RECOMMEND', e.target.value);
     if (e.target.value === 'no') {
       setRecommend(false);
     } else {
