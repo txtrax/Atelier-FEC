@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { scroller } from 'react-scroll';
 import { FaFacebookF, FaTwitter, FaPinterestP } from 'react-icons/fa';
 import IdContext from '../Context';
 import StyleSelector from './StyleSelector';
@@ -23,8 +24,16 @@ const ShareContainer = styled.div`
   padding: 0px 3px 0px 3px;
 `;
 
-const StarContainer = styled.div`
+const RatingsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   height: 1em;
+`;
+
+const ReviewsContainer = styled.div`
+  &:hover {
+    color: #BF8B85;
+  }
 `;
 
 const IconButton = styled.div`
@@ -57,6 +66,12 @@ export default function ProductInfo(props) {
   } = props;
   const { productId } = useContext(IdContext);
 
+  const handleReviewClick = () => {
+    scroller.scrollTo('ratings-and-reviews', {
+      smooth: true,
+    });
+  };
+
   const renderPrice = () => {
     if (selectedStyle.sale_price) {
       return (
@@ -81,9 +96,17 @@ export default function ProductInfo(props) {
   return (
     <InfoContainer>
 
-      <StarContainer>
+      <RatingsContainer>
+
         <Stars id={productId} />
-      </StarContainer>
+
+        {'\u00A0\u00A0\u00A0'}
+
+        <ReviewsContainer onClick={handleReviewClick}>
+        {'(Read all reviews)'}
+        </ReviewsContainer>
+
+      </RatingsContainer>
 
       <div style={{ fontSize: '2em' }}>{overview.category.toUpperCase()}</div>
 

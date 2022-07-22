@@ -27,8 +27,8 @@ function App() {
         {/* <QnA
           productId={productId}
           setProductId={setProductId}
-        />
-        <Ratings /> */}
+        /> */}
+        <Ratings />
       </IdContext.Provider>
     </AppContainer>
   );
