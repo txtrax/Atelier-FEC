@@ -6,6 +6,7 @@ module.exports = {
     params: {
       product_id: productId,
       sort,
+      count: 20,
     },
   })
     // eslint-disable-next-line arrow-body-style
@@ -24,14 +25,13 @@ module.exports = {
   markReviewHelpful: (id) => axios.put(`reviews/${id}/helpful`),
 
   reportReview: (id) => {
-    console.log('IN SERVICE, report, id = ', id);
+    // console.log('IN SERVICE, report, id = ', id);
     axios.put(`reviews/${id}/report`)
       .then(() => {
-        console.log('reportReview SUCCESS!!!');
+        // console.log('reportReview SUCCESS!!!');
       })
       .catch((err) => {
         console.log('reportReview FAILED err = ', err);
-        console.log(err);
       });
   },
 

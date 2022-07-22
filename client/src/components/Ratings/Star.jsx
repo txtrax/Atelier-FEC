@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { RiStarSLine, RiStarSFill } from 'react-icons/ri';
+import { RiStarSFill } from 'react-icons/ri';
 
 const UnfilledStar = styled(RiStarSFill)`
   width: 20px;
   height: 20px;
   border: 2px;
-  color: #dabeca
+  color: #BF8B85
 `;
 const FilledStar = styled(UnfilledStar)`
   color: #5d5f71

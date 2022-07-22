@@ -7,6 +7,7 @@ const InputBar = styled.input`
   width: 70%;
   border-radius: 4px;
   padding-bottom: 2em;
+  border-color: #BF8B85;
 `;
 
 const InputNote = styled.div`

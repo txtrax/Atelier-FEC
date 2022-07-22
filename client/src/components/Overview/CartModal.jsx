@@ -23,8 +23,8 @@ const ModalContent = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 455px;
-  height: 380px;
+  width: 500px;
+  height: 350px;
 `;
 
 const ExitIcon = styled(MdClose)`
@@ -50,15 +50,15 @@ const CheckoutContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: #DABECA;
-  padding: 20px 12px 20px 12px;
-  height: 75px;
+  height: 300px;
 `;
 
 const CheckOutButton = styled.button`
   display: flex;
   position: absolute;
-  top: 62px;
+  top: 65px;
   justify-content: center;
+  font-family: 'Lato', sans-serif;
   align-items: center;
   width: 50%;
   height: 43px;
@@ -76,6 +76,7 @@ const CheckOutButton = styled.button`
 const ProductDetails = styled.div`
   display: flex;
   flex-direction: row;
+  font-size: 1em;
   padding: 0px 20px 20px 20px;
 `;
 
@@ -107,12 +108,12 @@ export default function CartModal(props) {
 
           <ExitIcon onClick={() => setIsOpen(false)} />
 
-          <p>
+          <p style={{ fontSize: '1.5em' }}>
             Subtotal: $
             {price * quantity}
           </p>
 
-          <CheckOutButton>
+          <CheckOutButton style={{ fontSize: '1em' }}>
             Checkout
           </CheckOutButton>
 
@@ -121,7 +122,7 @@ export default function CartModal(props) {
 
           <ImageContainer>
 
-            <img style={{ width: '90%', height: 'auto' }} src={photo.thumbnail_url} />
+            <img style={{ width: '165px', height: '165px', objectFit: "cover" }} src={photo.thumbnail_url} />
 
           </ImageContainer>
           <CartContainer>

@@ -10,6 +10,7 @@ const ProductContainer = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 15px;
+  height: 675px;
 `;
 
 export default function OverviewGallery(props) {
@@ -29,7 +30,7 @@ export default function OverviewGallery(props) {
       .catch((err) => {
         console.log('error getting styles', err);
       });
-  }, []);
+  }, [productId]);
 
   return (
     <ProductContainer>

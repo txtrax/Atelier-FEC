@@ -9,14 +9,14 @@ import ModalContext from '../ModalContext';
 const TableWrapper = styled.div`
   width: 30%;
   height: 30%;
-  top: auto;
+  top: 60%;
   left: 50%;
   z-index: 10;
   transform: translate(-50%, -100%);
   position: fixed;
   overflow: hidden;
   border-radius: 15px;
-  border: 4px solid #5D5F71;
+  border: 3px solid #BF8B85;
   padding: 2em;
   background-color: #F8F8F8;
 `;
@@ -43,7 +43,7 @@ const CloseButton = styled(AiFillCloseCircle)`
 `;
 
 const TableRow = styled.tr`
-  padding: 20px;
+  padding: 1em;
 `;
 
 const TableHeader = styled.th`

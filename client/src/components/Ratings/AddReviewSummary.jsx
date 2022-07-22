@@ -10,6 +10,7 @@ const Container = styled.div`
 const InputBar = styled.input`
   width: 70%;
   border-radius: 4px;
+  border-color: #BF8B85;
 `;
 
 function AddReviewSummary({ setSummary }) {

@@ -21,12 +21,13 @@ const MainContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   font-size: 0.8em;
   margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: 0.5em;
 `;
 const RatingProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  padding-left: 20px;
   gap: 20px;
 `;
 const ReviewContainer = styled.div`
@@ -64,7 +65,7 @@ function Ratings() {
     // console.log('useEffect [productId] isFirstRender:', isFirstRender, ' prev: ', prev);
     getAllReviews(productId, sort)
       .then((res) => {
-        console.log('GET ALL REVIEWS SUCCESS!', res);
+        // console.log('GET ALL REVIEWS SUCCESS!', res);
         setReviews(res);
         // setDisplayedReviews(res.slice(0, 2));
       })
@@ -73,7 +74,7 @@ function Ratings() {
       });
     getReviewMeta(productId)
       .then((res) => {
-        console.log('GET META SUCCESS!', res);
+        // console.log('GET META SUCCESS!', res);
         setProduct(res);
       })
       .catch((err) => {
@@ -81,7 +82,7 @@ function Ratings() {
       });
     getProductInfo(productId)
       .then((res) => {
-        console.log('GET PRODUCT INFO SUCCESS!', res);
+        // console.log('GET PRODUCT INFO SUCCESS!', res);
         setProductName(res);
       })
       .catch((err) => {
@@ -92,15 +93,15 @@ function Ratings() {
   // When sort is updated, setReviews
   useEffect(() => {
     if (isFirstRender || prev.sort === sort) return;
-    console.log('useEffect [sort] isFirstRender: ', isFirstRender, ' prev: ', prev);
+    // console.log('useEffect [sort] isFirstRender: ', isFirstRender, ' prev: ', prev);
     getAllReviews(productId, sort)
       .then((res) => {
-        console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!');
+        // console.log('SORT CHANGE, GET ALL REVIEWS SUCCESS!');
         setReviews(res);
         // setDisplayedReviews(res.slice(0, 2));
       })
       .catch((err) => {
-        // console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
+        console.log('SORT CHANGE, GET ALL REVIEWS FAILED', err);
       });
   }, [sort]);
 
@@ -130,7 +131,6 @@ function Ratings() {
           reviews={reviews}
           starFilter={starFilter}
           setStarFilter={setStarFilter}
-          // setDisplayedReviews={setDisplayedReviews}
         />
         <ProductBreakdown product={product} />
       </RatingProductContainer>
@@ -155,8 +155,10 @@ function Ratings() {
       </ReviewContainer>
       <AddReviewModal
         productName={productName}
+        product={product}
         showModal={showModal}
         setShowModal={setShowModal}
+        productId={productId}
       />
     </MainContainer>
   );
