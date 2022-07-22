@@ -5,8 +5,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, cleanup } from '@testing-library/react';
-import RelatedProducts from '../components/RelatedProducts/RelatedProducts';
-import IdContext from '../components/Context';
+import RelatedProducts from '../../components/RelatedProducts/RelatedProducts';
+import IdContext from '../../components/Context';
 
 afterEach(() => {
   cleanup();
