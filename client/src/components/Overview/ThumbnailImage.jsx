@@ -7,8 +7,8 @@ const MiniImage = styled.img`
   border: solid 2px;
   border-color: #FAFAFA;
   object-fit: contain;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
   opacity: 0.5;
   justify-content: space-between
 `;
@@ -17,8 +17,8 @@ const CurrentImage = styled.img`
   margin: 1px;
   border: solid 2px;
   border-color: #5D5F71;
-  height: 52px;
-  width: 52px;
+  height: 4.65em;
+  width: 4.65em;
   border-radius: 5px;
   object-fit: contain;
   justify-content: space-between

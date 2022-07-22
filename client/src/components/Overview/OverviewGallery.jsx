@@ -10,7 +10,7 @@ const ProductContainer = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 15px;
-  height: 530px;
+  height: 650px;
 `;
 
 export default function OverviewGallery(props) {

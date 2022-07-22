@@ -10,7 +10,7 @@ const GalleryContainer = styled.div`
   border: 10px;
   padding: 15px;
   width: 70%;
-  height: 500px;
+  height: 620px;
   background: #FAFAFA;
   position: relative;
   display: flex;
