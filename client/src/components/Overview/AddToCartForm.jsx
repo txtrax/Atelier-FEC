@@ -7,8 +7,7 @@ const AddToCartContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const SizeAndQuantity = styled.div`
@@ -19,8 +18,14 @@ const SizeAndQuantity = styled.div`
   justify-content: space-around;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SizeDropdown = styled.select`
-  width: 175px;
+  width: 50%;
   height: 50px;
   border: 1px solid;
   border-color: #5D5F71;
@@ -28,7 +33,7 @@ const SizeDropdown = styled.select`
 `;
 
 const QuantityDropdown = styled.select`
-  width: 75px;
+  width: 20%;
   height: 50px;
   border: 1px solid;
   border-color: #5D5F71;
@@ -36,7 +41,7 @@ const QuantityDropdown = styled.select`
 `;
 
 const AddToCartButton = styled.button`
-  width: 90%;
+  width: 80%;
   height: 50px;
   border: 1px solid;
   border-radius: 26px;
@@ -94,26 +99,32 @@ export default function AddToCartForm(props) {
 
   return (
     <AddToCartContainer>
+
       <SizeAndQuantity>
+
         <SizeDropdown id="size" style={{ color: '#5D5F71' }} onClick={() => { setClicked(true); }} onChange={(e) => { onSizeSelect(e); }}>
           {clicked ? <option value="default">Please select size</option> : <option value="default">Select Size</option>}
           {sizeQuantArr.map((sizeQuan) => (
             <option value={sizeQuan.size} key={sizeQuan.size}>{sizeQuan.size}</option>
           ))}
         </SizeDropdown>
+
         <QuantityDropdown id="quantity" style={{ color: '#5D5F71' }} onChange={(e) => { onQuantitySelect(e); }}>
           {size ? null : <option value="-">-</option>}
           {size && getQuantity(sizeQuantArr).map((option) => option)}
         </QuantityDropdown>
+
       </SizeAndQuantity>
 
-      {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
-        <AddToCartButton onClick={showModal}>
-          Add to Cart
-        </AddToCartButton>
-      ) : (
-        <OutOfStockContainer>-OUT OF STOCK-</OutOfStockContainer>
-      )}
+      <ButtonContainer>
+        {Object.keys(selectedStyle.skus)[0] !== 'null' ? (
+          <AddToCartButton onClick={showModal}>
+            Add to Cart
+          </AddToCartButton>
+        ) : (
+          <OutOfStockContainer>-OUT OF STOCK-</OutOfStockContainer>
+        )}
+      </ButtonContainer>
 
       {isOpen && (
       <CartModal

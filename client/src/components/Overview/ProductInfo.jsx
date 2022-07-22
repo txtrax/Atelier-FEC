@@ -61,7 +61,7 @@ export default function ProductInfo(props) {
     if (selectedStyle.sale_price) {
       return (
         <div>
-          <span style={{ color: '#DABECA', fontSize: '2em' }}>
+          <span style={{ color: '#DABECA', fontSize: '3em' }}>
             {`$${selectedStyle.sale_price}\u00A0\u00A0\u00A0`}
           </span>
           <span style={{ textDecoration: 'line-through', fontSize: '1.5em' }}>
@@ -71,13 +71,13 @@ export default function ProductInfo(props) {
       );
     }
     return (
-      <div style={{ fontSize: '2em' }}>
+      <div style={{ fontSize: '3em' }}>
         $
         {selectedStyle.original_price}
       </div>
     );
   };
-  console.log(styles);
+
   return (
     <InfoContainer>
 
@@ -85,13 +85,13 @@ export default function ProductInfo(props) {
         <Stars id={productId} />
       </StarContainer>
 
-      <div style={{ fontSize: '1em' }}>{overview.category.toUpperCase()}</div>
+      <div style={{ fontSize: '1.5em' }}>{overview.category.toUpperCase()}</div>
 
-      <div style={{ fontSize: '2.5em' }}>{overview.name}</div>
+      <div style={{ fontSize: '3em' }}>{overview.name}</div>
 
       {renderPrice()}
 
-      <div style={{ fontSize: '1em' }}>
+      <div style={{ fontSize: '1.5em' }}>
         <b>
           {'STYLE\u00A0\u00A0>\u00A0\u00A0\u00A0\u00A0'}
         </b>
