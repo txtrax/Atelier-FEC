@@ -24,7 +24,7 @@ const ZoomModalContent = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 65%;
+  width: 60%;
   height: 100%;
 `;
 
