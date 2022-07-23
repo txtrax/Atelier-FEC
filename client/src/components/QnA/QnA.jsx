@@ -11,6 +11,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const SearchDiv = styled.div`

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 const QuestionHelpfulDiv = styled.div`
   font-size: 1em;
@@ -21,7 +22,7 @@ const AnswerModalDiv = styled.div`
   padding-right: 2em;
   padding-top: 2em;
   padding-bottom: 2em;
-  border: 3px solid black;
+  border: 3px solid #BF8B85;
   border-radius: 15px;
 `;
 
@@ -30,6 +31,31 @@ const Button = styled.button`
   background: none;
   text-decoration: underline;
   font-weight: normal;
+`;
+
+const CloseSymbol = styled(AiFillCloseCircle)`
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 10px;
+  right: 10px;
+  color: #BF8B85;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  padding: 0;
+  border: 0;
 `;
 
 function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
@@ -97,12 +123,12 @@ function QuestionHelpful({ questionBody, helpfulness, questionId, productId }) {
   const addAnswerModalBody = (
     <AnswerModalDiv className="answer-modal" onClick={(event) => handleCloseModal(event)}>
       <div className="answer-modal-control" onClick={(event) => event.stopPropagation()}>
-        <span
+        <CloseButton
           className="answer-modal-close-x"
           onClick={(event) => handleCloseModal(event)}
         >
-          &times;
-        </span>
+          <CloseSymbol />
+        </CloseButton>
         <p className="modal-question-title">
           Q:
           {questionBody}

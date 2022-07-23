@@ -11,15 +11,17 @@ const Bar = styled.div`
   width: 100%;
   align-items: center;
   :hover {
-    background-color:#ffcc33;
+    // background-color:#ffcc33;
     // opacity: 0.5;
-    border-radius: 6px;
+    // border-radius: 6px;
     // padding-right: 0.5em;
     // padding-left: 0.5em;
-    color: white;
+    // color: white;
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;
-const BarRating = styled.u`
+const BarRating = styled.div`
   flex-grow: 2;
   padding-right: 0.5em;
 `;
