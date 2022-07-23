@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SearchBarContainer = styled.input`
-  width: 100%;
+  width: 738px;
+  height: 3em;
   box-sizing: border-box;
   border-bottom: 1px solid #ccc;
   font-size: 16px;
-  margin: 10px;
-  background-color: none;
   background-position: 10px 10px;
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  outline: none;
 `;
 function Search({ handleSearch, searchInput }) {
   const handleFocus = (event) => {

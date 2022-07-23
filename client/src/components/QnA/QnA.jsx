@@ -7,65 +7,63 @@ import QuestionsList from './QuestionsList';
 import Search from './Search';
 import AddQuestion from './AddQuestion';
 
-const FlexContainer = styled.div`
-display: flex;
-justify-content: left;
-`;
-
-const Container = styled.div`
-  border-radius: 10px;
-  padding: 5px;
-  margin: 5px;
-  max-width: 1280px;
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const SearchDiv = styled.div`
-  width: 60%;
-  position: relative;
   display: flex;
+  height: 3em;
 `;
 
 const SearchBar = styled.input`
   width: 100%;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
-  font-size: 16px;
-  margin: 10px;
-  background-color: none;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  outline: none;
 
 `;
 const AddButton = styled.button`
-  font-size: medium;
-  height: 60px;
-  width: 235px;
-  padding: 10px;
-  margin: 25px;
-  cursor: pointer;
-  transition: all ease 0.3s;
-  float: left;
+  margin-right: 1em;
+  padding: 1em 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: white;
 `;
 
-const SearchBtn = styled.button`
-  width: 50px;
-  height: 50px;
-  border: 1px solid grey;
-  background:grey;
-  text-align: center;
-  color: black;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+// const SearchBtn = styled.button`
+//   width: 50px;
+//   height: 50px;
+//   border: 1px solid grey;
+//   background:grey;
+//   text-align: center;
+//   color: black;
+//   border-radius: 0 5px 5px 0;
+//   cursor: pointer;
+//   font-size: 20px;
 
-  &:hover {
-    background-color: lightgrey;
-    border: 1px solid black;
-  border-radius: 5px;
-  transition: all ease 0.3s;
-  }
+//   &:hover {
+//     background-color: lightgrey;
+//     border: 1px solid black;
+//   border-radius: 5px;
+//   transition: all ease 0.3s;
+//   }
+// `;
+
+const QuestionListContainer = styled.div`
+  display: flex;
+  flex-direction: column !important;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row !important;
+`;
+
+const Header = styled.div`
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
 `;
 
 function QnA() {
@@ -112,8 +110,8 @@ function QnA() {
   };
 
   return (
-    <Container>
-      <h1 className="questions-and-answers">Questions and Answers</h1>
+    <MainContainer>
+      <Header>Questions and Answers</Header>
       <form onSubmit={(event) => { event.preventDefault(); }}>
         <SearchDiv classname="searchBar">
           {/* <SearchBar
@@ -129,25 +127,37 @@ function QnA() {
           {/* <SearchBtn /> */}
         </SearchDiv>
       </form>
-      {questions !== undefined && Object.keys(questions).length !== 0 ? (
-        <QuestionsList
+      <QuestionListContainer>
+        {questions !== undefined && Object.keys(questions).length !== 0 ? (
+
+          <QuestionsList
+            productId={productId}
+            questions={questions}
+            searchInput={searchInput}
+            displayQuestions={displayQuestions}
+            setDisplayQuestions={setDisplayQuestions}
+          />
+
+        )
+
+          : null}
+      </QuestionListContainer>
+
+      <ButtonContainer>
+
+        <AddButton onClick={handleModalOpen}>
+          Add a Question +
+        </AddButton>
+
+        <AddQuestion
           productId={productId}
-          questions={questions}
-          searchInput={searchInput}
-          displayQuestions={displayQuestions}
-          setDisplayQuestions={setDisplayQuestions}
+          openModal={openModal}
+          handleModalClose={handleModalClose}
         />
-      )
-        : null}
-      <AddButton onClick={handleModalOpen}>
-        Add a Question
-      </AddButton>
-      <AddQuestion
-        productId={productId}
-        openModal={openModal}
-        handleModalClose={handleModalClose}
-      />
-    </Container>
+
+      </ButtonContainer>
+
+    </MainContainer>
   );
 }
 

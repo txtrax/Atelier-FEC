@@ -5,8 +5,9 @@ import Question from './Question';
 import MoreQuestions from './MoreQuestions';
 
 const QuestionListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
-  height: 500px;
 `;
 
 function QuestionsList({ questions, productId, searchInput, displayQuestions, setDisplayQuestions
