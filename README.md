@@ -10,7 +10,7 @@ This is a Front-End-Capstone project created by Theresa Tran, Pan Liu, Peter Pha
 
 
 ## Background
-With the goal of building a dynamic retail application and consolidate our front-end knowledge, this project was built from scratch. The results is an application that allows users to browse the details of the desired product as well as view provided related products and comparisons, questions that have been previously asked and answered, and the product's ratings and reviews.
+With the goal of building a dynamic retail application and consolidating our front-end knowledge, this project was built from scratch. The results is an application that allows users to browse the details of the desired product as well as view provided related products and comparisons, questions that have been previously asked and answered, and the product's ratings and reviews.
 
 ## Contributor
 
@@ -24,10 +24,13 @@ The **Overview** component, created by Theresa Tran, provides pertinent informat
 
 Key Features include: 
 
- - a main carousel that displays the main image
- - a thumbnail carousel that contains other images included with the product
- - product information that dynamically rerenders when a different style of the product is selected
- - an add-to-cart section that allows the user to view information that they added to their bag
+ - a navigation bar
+   - clicking on the test would take a user to the desired section of the page
+ - an image gallery that consists of:
+   - product information that dynamically rerenders when a different style of the product or a related product is selected
+   - a main carousel that displays the main image, clicking on the image would allow the user to view an expanded version of the image
+   - a thumbnail carousel that contains other images included with the product, clicking on the thumbnails would display it as the main image
+   - an add-to-cart section that allows the user to view the subtotal of the items in their cart as well as the products and their respective style and size for checkout
 
 ### Related Products & Outfits
 
