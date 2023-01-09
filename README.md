@@ -26,7 +26,7 @@ With the goal of building a dynamic retail application and consolidating our fro
 
 ## Contributor
 
-### Overview
+### Product Overview
 
 Contributor: Theresa Tran
 
